@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Col, Form, FormControl, FormGroup, Grid, Panel, Row, Tab, Tabs } from 'react-bootstrap';
+import { Col, Grid, Row } from 'react-bootstrap';
+import Login from './Login';
 import './App.css';
 
 class App extends Component {
@@ -7,31 +8,13 @@ class App extends Component {
     return (
       <Grid>
         <Row>
-          <h1>DPS</h1>
+          <Col lg={12}>
+            <h1>DPS</h1>
+          </Col>
         </Row>
         <Row>
           <Col lg={12}>
-            <Panel>
-              <Tabs defaultActiveKey={1}>
-                <Tab title="Log In" eventKey={1}>
-                  <Form>
-                    <FormGroup>
-                      Email <FormControl type="email" />
-                      Password <FormControl type="password" />
-                    </FormGroup>
-                  </Form>
-                </Tab>
-                <Tab title="Register" eventKey={2}>
-                  <Form>
-                    <FormGroup>
-                      Email <FormControl type="email" />
-                      Password <FormControl type="password" />
-                      Confirm Password <FormControl type="password" />
-                    </FormGroup>
-                  </Form>
-                </Tab>
-              </Tabs>
-            </Panel>
+            <Login />
           </Col>
         </Row>
       </Grid>

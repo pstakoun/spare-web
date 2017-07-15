@@ -12,15 +12,25 @@ class App extends Component {
         <Row>
           <Col lg={12}>
             <Panel>
-              <Tabs>
-                <Tab title="Log In"></Tab>
-                <Tab title="Register"></Tab>
+              <Tabs defaultActiveKey={1}>
+                <Tab title="Log In" eventKey={1}>
+                  <Form>
+                    <FormGroup>
+                      Email <FormControl type="email" />
+                      Password <FormControl type="password" />
+                    </FormGroup>
+                  </Form>
+                </Tab>
+                <Tab title="Register" eventKey={2}>
+                  <Form>
+                    <FormGroup>
+                      Email <FormControl type="email" />
+                      Password <FormControl type="password" />
+                      Confirm Password <FormControl type="password" />
+                    </FormGroup>
+                  </Form>
+                </Tab>
               </Tabs>
-              <Form>
-                <FormGroup>
-                  Email <FormControl type="email" />
-                </FormGroup>
-              </Form>
             </Panel>
           </Col>
         </Row>

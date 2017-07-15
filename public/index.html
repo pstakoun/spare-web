@@ -21,6 +21,25 @@
     -->
     <title>React App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+    <!-- React JS -->
+    <script src="https://fb.me/react-15.3.0.min.js"></script>
+    <script src="https://fb.me/react-dom-15.3.0.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <!-- ReactFire -->
+    <script src="https://cdn.firebase.com/libs/reactfire/1.0.0/reactfire.min.js"></script>
+    <script>
+      var config = {
+        apiKey: "AIzaSyDISmmf3W3F_1pAhcZw804Zny7w2ApYjJ8",
+        // Only needed if using Firebase Realtime Database (which we will be in this example)
+        databaseURL: "https://decentralizedps.firebaseio.com",
+        // Only needed if using Firebase Authentication
+        authDomain: "decentralizedps.firebaseapp.com",
+        // Only needed if using Firebase Storage
+        storageBucket: "decentralizedps.appspot.com"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <body>
     <noscript>

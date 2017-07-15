@@ -3,11 +3,11 @@ import { Button, Form, FormControl, FormGroup, Panel, Tab, Tabs } from 'react-bo
 
 class Login extends Component {
   handleLogin(event) {
-    // TODO
+    event.preventDefault();
   }
 
   handleRegister(event) {
-    // TODO
+    event.preventDefault();
   }
 
   render() {
@@ -15,7 +15,7 @@ class Login extends Component {
       <Panel>
         <Tabs defaultActiveKey={1}>
           <Tab title="Log In" eventKey={1}>
-            <Form>
+            <Form onSubmit={this.handleLogin}>
               <FormGroup>
                 Email
                 <FormControl type="email" />
@@ -32,7 +32,7 @@ class Login extends Component {
             </Form>
           </Tab>
           <Tab title="Register" eventKey={2}>
-            <Form>
+            <Form onSubmit={this.handleRegister}>
               <FormGroup>
                 First Name
                 <FormControl type="text" />

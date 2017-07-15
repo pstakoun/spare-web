@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Panel, ButtonGroup, Button } from 'react-bootstrap';
+import { Col, Form, FormControl, FormGroup, Grid, Panel, Row, Tab, Tabs } from 'react-bootstrap';
 import './App.css';
 
 class App extends Component {
@@ -12,10 +12,15 @@ class App extends Component {
         <Row>
           <Col lg={12}>
             <Panel>
-              <ButtonGroup>
-                <Button>Log In</Button>
-                <Button>Register</Button>
-              </ButtonGroup>
+              <Tabs>
+                <Tab title="Log In"></Tab>
+                <Tab title="Register"></Tab>
+              </Tabs>
+              <Form>
+                <FormGroup>
+                  Email <FormControl type="email" />
+                </FormGroup>
+              </Form>
             </Panel>
           </Col>
         </Row>

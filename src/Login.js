@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
-import { Form, FormControl, FormGroup, Panel, Tab, Tabs } from 'react-bootstrap';
+import { Button, Form, FormControl, FormGroup, Panel, Tab, Tabs } from 'react-bootstrap';
 
 class Login extends Component {
+  handleLogin(event) {
+    // TODO
+  }
+
+  handleRegister(event) {
+    // TODO
+  }
+
   render() {
     return (
       <Panel>
@@ -9,19 +17,46 @@ class Login extends Component {
           <Tab title="Log In" eventKey={1}>
             <Form>
               <FormGroup>
-                Email <FormControl type="email" />
-                Password <FormControl type="password" />
+                Email
+                <FormControl type="email" />
+              </FormGroup>
+              <FormGroup>
+                Password
+                <FormControl type="password" />
+              </FormGroup>
+              <FormGroup>
+                <Button type="submit">
+                  Log In
+                </Button>
               </FormGroup>
             </Form>
           </Tab>
           <Tab title="Register" eventKey={2}>
             <Form>
               <FormGroup>
-                First Name <FormControl type="text" />
-                Last Nane <FormControl type="text" />
-                Email <FormControl type="email" />
-                Password <FormControl type="password" />
-                Confirm Password <FormControl type="password" />
+                First Name
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                Last Nane
+                <FormControl type="text" />
+              </FormGroup>
+              <FormGroup>
+                Email
+                <FormControl type="email" />
+              </FormGroup>
+              <FormGroup>
+                Password
+                <FormControl type="password" />
+              </FormGroup>
+              <FormGroup>
+                Confirm Password
+                <FormControl type="password" />
+              </FormGroup>
+              <FormGroup>
+                <Button type="submit">
+                  Register
+                </Button>
               </FormGroup>
             </Form>
           </Tab>

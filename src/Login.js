@@ -17,6 +17,8 @@ class Login extends Component {
           <Tab title="Register" eventKey={2}>
             <Form>
               <FormGroup>
+                First Name <FormControl type="text" />
+                Last Nane <FormControl type="text" />
                 Email <FormControl type="email" />
                 Password <FormControl type="password" />
                 Confirm Password <FormControl type="password" />

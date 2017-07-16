@@ -1,7 +1,12 @@
-body {
-    padding-top: 90px;
+.navbar {
+	position: fixed;
+        width: 100%;
+}
+.jumbotron h1 {
+	padding-top: 50px;
 }
 .panel-login {
+        display: none;
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);

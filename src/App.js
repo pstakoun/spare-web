@@ -36,15 +36,13 @@ class App extends Component {
 
   render() {
     return (
-      <Grid>
+      <Grid fluid>
         <Row>
-          <Col lg={12}>
-            {this.state.user ? (
-              <Account user = {this.state.user} />
-            ) : (
-              <Landing />
-            )}
-          </Col>
+          {this.state.user ? (
+            <Account user = {this.state.user} />
+          ) : (
+            <Landing />
+          )}
         </Row>
       </Grid>
     );

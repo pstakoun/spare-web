@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import Login from './Login';
-import './App.css';
 
 class App extends Component {
+  authHandler(user) {
+    if (user) {
+      alert('IN');
+    } else {
+      alert('OUT');
+    }
+  }
+
   render() {
     return (
       <Grid>
@@ -14,7 +21,7 @@ class App extends Component {
         </Row>
         <Row>
           <Col lg={12}>
-            <Login />
+            <Login authHandler = {this.authHandler} />
           </Col>
         </Row>
       </Grid>

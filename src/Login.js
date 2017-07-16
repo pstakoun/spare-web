@@ -11,6 +11,7 @@ class Login extends Component {
       storageBucket: "decentralizedps.appspot.com"
     };
     firebase.initializeApp(config);
+    firebase.auth().onAuthStateChanged(this.props.authHandler);
   }
 
   handleLogin(event) {

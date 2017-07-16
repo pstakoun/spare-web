@@ -100,3 +100,10 @@ body {
 .error {
 	color: red;
 }
+.nav-tabs>li {
+  float: left;
+  font-size: 2em;
+}
+.nav-tabs>li+li {
+  float: right;
+}

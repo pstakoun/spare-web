@@ -38,7 +38,11 @@ class Login extends Component {
     var confirmPassword = ReactDOM.findDOMNode(this.refs.registerConfirmPassword).value.trim();
 
     var that = this;
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+        firebase.auth().currentUser.sendEmailVerification();
+      });
+    }, function(error) {
       that.setState({
         loginError: '',
         registerError: error.message

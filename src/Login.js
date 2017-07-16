@@ -3,17 +3,6 @@ import { Button, Form, FormControl, FormGroup, Panel, Tab, Tabs } from 'react-bo
 import * as firebase from 'firebase';
 
 class Login extends Component {
-  componentDidMount() {
-    var config = {
-      apiKey: "AIzaSyDISmmf3W3F_1pAhcZw804Zny7w2ApYjJ8",
-      databaseURL: "https://decentralizedps.firebaseio.com",
-      authDomain: "decentralizedps.firebaseapp.com",
-      storageBucket: "decentralizedps.appspot.com"
-    };
-    firebase.initializeApp(config);
-    firebase.auth().onAuthStateChanged(this.props.authHandler);
-  }
-
   handleLogin(event) {
     event.preventDefault();
 

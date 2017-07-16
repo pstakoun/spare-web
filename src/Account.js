@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup } from 'react-bootstrap';
+import { Col, Nav, NavItem, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
+import Preferences from './Preferences';
 
 class Account extends Component {
-  handleLogout(event) {
-    event.preventDefault();
-    firebase.auth().signOut();
-  }
-
   render() {
     return (
-      <div>
-        <p>{this.props.user.email}</p>
-        <Form onSubmit={this.handleLogout}>
-          <FormGroup>
-            <Button type="submit">
-              Log Out
-            </Button>
-          </FormGroup>
-        </Form>
-      </div>
+      <Row>
+        <Col sm={3}>
+          <Nav bsStyle="pills" stacked={true}>
+            <NavItem>Profile</NavItem>
+            <NavItem>History</NavItem>
+            <NavItem>Preferences</NavItem>
+          </Nav>
+        </Col>
+        <Col sm={9}>
+          <Preferences />
+        </Col>
+      </Row>
     );
   }
 }

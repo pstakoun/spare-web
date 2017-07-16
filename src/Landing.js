@@ -6,7 +6,7 @@ import './App.css';
 class Landing extends Component {
   render() {
     return (
-      <Grid fluid>
+      <Row>
         <Row>
           <Navbar collapseOnSelect>
             <Navbar.Header>
@@ -41,7 +41,7 @@ class Landing extends Component {
         <Row>
           <Login />
         </Row>
-      </Grid>
+      </Row>
     );
   }
 }

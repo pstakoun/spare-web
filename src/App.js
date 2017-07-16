@@ -3,11 +3,22 @@ import { Col, Grid, Row } from 'react-bootstrap';
 import Login from './Login';
 
 class App extends Component {
-  authHandler(user) {
-    if (user) {
-      alert('IN');
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+  }
+
+  authHandler(newUser) {
+    if (newUser) {
+      this.setState({
+        user: newUser
+      });
     } else {
-      alert('OUT');
+      this.setState({
+        user: null
+      });
     }
   }
 

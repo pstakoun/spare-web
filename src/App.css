@@ -97,3 +97,6 @@ body {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+.error {
+	color: red;
+}

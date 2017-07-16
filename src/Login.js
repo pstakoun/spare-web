@@ -19,10 +19,12 @@ class Login extends Component {
     var email = ReactDOM.findDOMNode(this.refs.loginEmail).value.trim();
     var password = ReactDOM.findDOMNode(this.refs.loginPassword).value.trim();
 
+    var that = this;
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      alert(error.code);
-      console.log(error.code);
-      console.log(error.message);
+      that.setState({
+        loginError: error.message,
+        registerError: ''
+      });
     });
   }
 
@@ -35,10 +37,12 @@ class Login extends Component {
     var password = ReactDOM.findDOMNode(this.refs.registerPassword).value.trim();
     var confirmPassword = ReactDOM.findDOMNode(this.refs.registerConfirmPassword).value.trim();
 
+    var that = this;
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      alert(error.code);
-      console.log(error.code);
-      console.log(error.message);
+      that.setState({
+        loginError: '',
+        registerError: error.message
+      });
     });
   }
 

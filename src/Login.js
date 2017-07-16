@@ -1,13 +1,42 @@
 import React, { Component } from 'react';
 import { Button, Form, FormControl, FormGroup, Panel, Tab, Tabs } from 'react-bootstrap';
+import * as firebase from 'firebase';
 
 class Login extends Component {
+  componentDidMount() {
+    var config = {
+      apiKey: "AIzaSyDISmmf3W3F_1pAhcZw804Zny7w2ApYjJ8",
+      databaseURL: "https://decentralizedps.firebaseio.com",
+      authDomain: "decentralizedps.firebaseapp.com",
+      storageBucket: "decentralizedps.appspot.com"
+    };
+    firebase.initializeApp(config);
+  }
+
   handleLogin(event) {
     event.preventDefault();
+
+    var email = 'peter@stakoun.com';
+    var password = 'password';
+
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      alert(error.code);
+      console.log(error.code);
+      console.log(error.message);
+    });
   }
 
   handleRegister(event) {
     event.preventDefault();
+
+    var email = 'peter@stakoun.com';
+    var password = 'password';
+
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      alert(error.code);
+      console.log(error.code);
+      console.log(error.message);
+    });
   }
 
   render() {

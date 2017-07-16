@@ -17,7 +17,7 @@ class Login extends Component {
     event.preventDefault();
 
     var email = ReactDOM.findDOMNode(this.refs.loginEmail).value.trim();
-    var password = ReactDOM.findDOMNode(this.refs.loginPassword).value.trim();
+    var password = ReactDOM.findDOMNode(this.refs.loginPassword).value;
 
     var that = this;
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
@@ -34,8 +34,8 @@ class Login extends Component {
     var firstName = ReactDOM.findDOMNode(this.refs.registerFirstName).value.trim();
     var lastName = ReactDOM.findDOMNode(this.refs.registerLastName).value.trim();
     var email = ReactDOM.findDOMNode(this.refs.registerEmail).value.trim();
-    var password = ReactDOM.findDOMNode(this.refs.registerPassword).value.trim();
-    var confirmPassword = ReactDOM.findDOMNode(this.refs.registerConfirmPassword).value.trim();
+    var password = ReactDOM.findDOMNode(this.refs.registerPassword).value;
+    var confirmPassword = ReactDOM.findDOMNode(this.refs.registerConfirmPassword).value;
 
     var that = this;
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {

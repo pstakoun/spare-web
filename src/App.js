@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import Account from './Account';
-import Login from './Login';
+import Landing from './Landing';
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class App extends Component {
             {this.state.user ? (
               <Account user = {this.state.user} />
             ) : (
-              <Login />
+              <Landing />
             )}
           </Col>
         </Row>

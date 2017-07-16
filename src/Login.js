@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Button, Form, FormControl, FormGroup, Panel, Tab, Tabs } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import './App.css';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginError: '',
+      registerError: ''
+    };
+  }
+
   handleLogin(event) {
     event.preventDefault();
 
-    var email = 'peter@stakoun.com';
-    var password = 'password';
+    var email = ReactDOM.findDOMNode(this.refs.loginEmail).value.trim();
+    var password = ReactDOM.findDOMNode(this.refs.loginPassword).value.trim();
 
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       alert(error.code);
@@ -20,8 +29,11 @@ class Login extends Component {
   handleRegister(event) {
     event.preventDefault();
 
-    var email = 'peter@stakoun.com';
-    var password = 'password';
+    var firstName = ReactDOM.findDOMNode(this.refs.registerFirstName).value.trim();
+    var lastName = ReactDOM.findDOMNode(this.refs.registerLastName).value.trim();
+    var email = ReactDOM.findDOMNode(this.refs.registerEmail).value.trim();
+    var password = ReactDOM.findDOMNode(this.refs.registerPassword).value.trim();
+    var confirmPassword = ReactDOM.findDOMNode(this.refs.registerConfirmPassword).value.trim();
 
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
       alert(error.code);
@@ -35,15 +47,16 @@ class Login extends Component {
       <Panel className="panel panel-login panel-heading">
         <Tabs defaultActiveKey={1}>
           <Tab className="panel-heading" title="Log In" eventKey={1}>
-            <Form className="panel-body" onSubmit={this.handleLogin}>
+            <Form className="panel-body" onSubmit={this.handleLogin.bind(this)}>
+              <center><p className="error">{this.state.loginError}</p></center>
               <FormGroup>
-                <FormControl className="form-control" type="email" placeholder="Email Address"/>
+                <FormControl ref="loginEmail" type="email" placeholder="Email Address"/>
               </FormGroup>
               <FormGroup>
-                <FormControl className="form-control" type="password" placeholder="Password"/>
+                <FormControl ref="loginPassword" type="password" placeholder="Password"/>
               </FormGroup>
               <FormGroup>
-                <Button className="form-control btn btn-login" type="submit">
+                <Button className="form-control btn-login" type="submit">
                   Log In
                 </Button>
               </FormGroup>
@@ -53,27 +66,29 @@ class Login extends Component {
               <center><p className="forgot-password">
                 Forgot Password?
               </p></center>
+
             </Form>
           </Tab>
           <Tab className="panel-heading" title="Register" eventKey={2}>
-            <Form onSubmit={this.handleRegister}>
+            <Form onSubmit={this.handleRegister.bind(this)}>
+              <center><p className="error">{this.state.registerError}</p></center>
               <FormGroup>
-                <FormControl className="form-control" type="text" placeholder="First Name" />
+                <FormControl ref="registerFirstName" type="text" placeholder="First Name" />
               </FormGroup>
               <FormGroup>
-                <FormControl className="form-control" type="text" placeholder="Last Name" />
+                <FormControl ref="registerLastName" type="text" placeholder="Last Name" />
               </FormGroup>
               <FormGroup>
-                <FormControl className="form-control" type="email" placeholder="Email Address" />
+                <FormControl ref="registerEmail" type="email" placeholder="Email Address" />
               </FormGroup>
               <FormGroup>
-                <FormControl className="form-control" type="password" placeholder="Password" />
+                <FormControl ref="registerPassword" type="password" placeholder="Password" />
               </FormGroup>
               <FormGroup>
-                <FormControl className="form-control" type="password" placeholder="Confirm Password" />
+                <FormControl ref="registerConfirmPassword" type="password" placeholder="Confirm Password" />
               </FormGroup>
               <FormGroup>
-                <Button className="form-control btn btn-register" type="submit">
+                <Button className="form-control btn-register" type="submit">
                   Register Now
                 </Button>
               </FormGroup>

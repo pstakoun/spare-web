@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
-import Settings from './Settings';
+import Account from './Account';
 import Login from './Login';
 
 class App extends Component {
@@ -39,12 +39,11 @@ class App extends Component {
       <Grid>
         <Row>
           <Col lg={12}>
-            <h1>DPS</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg={12}>
-            {this.state.user ? <Settings /> :  <Login />}
+            {this.state.user ? (
+              <Account user = {this.state.user} />
+            ) : (
+              <Login />
+            )}
           </Col>
         </Row>
       </Grid>

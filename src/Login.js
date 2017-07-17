@@ -74,7 +74,6 @@ class Login extends Component {
               <center><p className="forgot-password">
                 Forgot Password?
               </p></center>
-
             </Form>
           </Tab>
           <Tab className="panel-heading" title="Register" eventKey={2}>

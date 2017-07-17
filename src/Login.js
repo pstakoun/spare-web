@@ -41,6 +41,10 @@ class Login extends Component {
     if (password == confirmPassword) {
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
           firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+            firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+                fname: firstName,
+                lname: lastName,
+            });
             firebase.auth().currentUser.sendEmailVerification();
           });
         }, function(error) {

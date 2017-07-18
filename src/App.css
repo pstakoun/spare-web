@@ -49,6 +49,18 @@ h4 {
 	font-size: 3.5em;
 	letter-spacing: 0.2em;
 }
+.step1,
+.step2,
+.step3 {
+	margin: 20px -10px;
+	padding: 10px;
+}
+.step1 p,
+.step2 p,
+.step3 p {
+	font-size: 2em;
+	font-weight: 200;
+}
 .step1 {
 	background-color: #e2e2e2;
 }

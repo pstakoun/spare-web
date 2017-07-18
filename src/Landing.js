@@ -39,16 +39,19 @@ class Landing extends Component {
           <Col sm={4}>
             <div className="step1">
               <h4>STEP 1</h4>
+              <p>Find a Spare provider near you</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step2">
               <h4>STEP 2</h4>
+              <p>Drop off items at your convenience</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step3">
               <h4>STEP 3</h4>
+              <p>Pick up and rate your provider</p>
             </div>
           </Col>
         </Row>

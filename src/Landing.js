@@ -38,18 +38,21 @@ class Landing extends Component {
           </Col>
           <Col sm={4}>
             <div className="step1">
+              <img src="https://cl.ly/1H2A2M2i0p3T/search.png"></img>
               <h4>STEP 1</h4>
               <p>Find a Spare provider near you</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step2">
+              <img src="https://cl.ly/3n2r0H2C3C07/pack.png"></img>
               <h4>STEP 2</h4>
               <p>Drop off items at your convenience</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step3">
+              <img src="https://cl.ly/1B0T1s250u0T/star.png"></img>
               <h4>STEP 3</h4>
               <p>Pick up and rate your provider</p>
             </div>

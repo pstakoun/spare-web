@@ -48,12 +48,19 @@ h4 {
 	color: #1a3863;
 	font-size: 3.5em;
 	letter-spacing: 0.2em;
+	margin-bottom: 20px;
 }
 .step1,
 .step2,
 .step3 {
 	margin: 20px -10px;
-	padding: 10px;
+	padding: 50px;
+}
+.step1 img,
+.step2 img,
+.step3 img {
+	width: 50px;
+	margin: 20px;
 }
 .step1 p,
 .step2 p,

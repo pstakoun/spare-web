@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, Jumbotron, Nav, Navbar, NavItem, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Jumbotron, Nav, Navbar, NavItem, Row } from 'react-bootstrap';
 import Login from './Login';
 import './App.css';
 
@@ -33,10 +33,25 @@ class Landing extends Component {
           </Jumbotron>
         </Row>
         <Row>
-          <center><h3>Optimize your storage experience</h3></center>
+          <h3>Optimize your storage experience</h3>
+          <Col sm={4}>
+            <div className="step1">
+              <h4>STEP 1</h4>
+            </div>
+          </Col>
+          <Col sm={4}>
+            <div className="step2">
+              <h4>STEP 2</h4>
+            </div>
+          </Col>
+          <Col sm={4}>
+            <div className="step3">
+              <h4>STEP 3</h4>
+            </div>
+          </Col>
         </Row>
         <Row>
-          <center><h3>Features</h3></center>
+          <h3>Features</h3>
         </Row>
         <Row>
           <Login />

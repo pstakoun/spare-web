@@ -8,7 +8,7 @@ class Landing extends Component {
     return (
       <Row>
         <Row>
-          <Navbar collapseOnSelect>
+          <Navbar collapseOnSelect fixedTop fluid>
             <Navbar.Header>
               <Navbar.Brand>
                 <a href="#">S</a>

@@ -4,10 +4,18 @@ import { withGoogleMap, GoogleMap } from 'react-google-maps';
 
 class Map extends Component {
   render() {
+    var SpareMap = withGoogleMap(props => (
+      <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }} />
+    ));
     return (
-      <Row>
-        <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }} />
-      </Row>
+      <SpareMap
+        containerElement={
+          <div style={{ height: `100%` }} />
+        }
+        mapElement={
+          <div style={{ height: `100%` }} />
+        }
+      />
     );
   }
 }

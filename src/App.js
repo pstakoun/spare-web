@@ -39,10 +39,10 @@ class App extends Component {
     return (
       <Grid fluid>
         {this.state.user ? (
-          <Row>
+          <div>
             <Map user = {this.state.user} />
             <Account user = {this.state.user} />
-          </Row>
+          </div>
         ) : (
           <Landing />
         )}

@@ -40,7 +40,7 @@ class App extends Component {
       <Grid fluid>
         {this.state.user ? (
           <Row>
-            <Map />
+            <Map user = {this.state.user} />
             <Account user = {this.state.user} />
           </Row>
         ) : (

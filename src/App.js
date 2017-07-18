@@ -41,6 +41,7 @@ class App extends Component {
         {this.state.user ? (
           <div>
             <Map user = {this.state.user} />
+            <img className="map-avatar" src="https://conferencecloud-assets.s3.amazonaws.com/default_avatar.png" />
             <Account user = {this.state.user} />
           </div>
         ) : (

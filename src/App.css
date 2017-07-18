@@ -222,3 +222,10 @@ h3 {
 	font-size: 20px;
 	text-align: left;
 }
+.map-avatar {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 60px;
+	border-radius: 50%;
+}

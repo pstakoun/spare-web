@@ -70,6 +70,12 @@ body {
 	border-color: #fff;
 	text-align:center;
 }
+
+.feature-icon {
+	margin-top: 6px;
+	max-width: 40%;
+}
+
 .panel-login>.panel-heading a{
 	text-decoration: none;
 	color: #666;

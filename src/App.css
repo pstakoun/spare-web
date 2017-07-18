@@ -93,6 +93,7 @@ h3 {
 	margin-top: 30px;
 	background-color: #1a3863;
 	text-align: center;
+	margin-bottom: 50px;
 }
 .feature-icon {
 	margin-top: 20px;
@@ -204,4 +205,14 @@ h3 {
 }
 .nav-tabs>li+li {
   float: right;
+}
+.footer-nav {
+	text-align: left;
+	font-size: 20px;
+	font-weight: normal;
+}
+.footer-link {
+	font-weight: 100;
+	font-size: 20px;
+	text-align: left;
 }

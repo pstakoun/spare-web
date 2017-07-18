@@ -10,7 +10,7 @@ class Map extends Component {
     return (
       <SpareMap
         containerElement={
-          <div style={{ height: `100%` }} />
+          <Row/>
         }
         mapElement={
           <div style={{ height: `100%` }} />

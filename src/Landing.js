@@ -92,6 +92,35 @@ class Landing extends Component {
         <Row>
           <Login />
         </Row>
+        <Row>
+            <Col xs={6} md={2} className="footer-link" mdOffset={1}>
+                <Row className="footer-nav">Company</Row>
+                <Row><br/></Row>
+                <Row href="#">About Us</Row>
+                <Row href="#">Mission</Row>
+                <Row href="#">Partner with Us</Row>
+            </Col>
+            <Col xs={6} md={2} className="footer-link">
+                <Row className="footer-nav">Serivces and Pricing</Row>
+                <Row href="#"><br/></Row>
+                <Row href="#">Get Quotes</Row>
+                <Row href="#">Pricing</Row>
+                <Row href="#">Find Spare near you</Row>
+            </Col>
+            <Col xs={6} md={3} className="footer-link">
+                <Row className="footer-nav">Support</Row>
+                <Row href="#"><br/></Row>
+                <Row href="#">FAQ</Row>
+                <Row href="#">Terms</Row>
+                <Row href="#">Privacy</Row>
+            </Col>
+            <Col xs={6} md={2}>
+            </Col>
+            <Col xs={6} md={2}>
+            </Col>
+            <Col xs={6} md={2}>
+            </Col>
+        </Row>
       </div>
     );
   }

@@ -90,9 +90,6 @@ class Landing extends Component {
             </Col>
         </Row>
         <Row>
-          <Login />
-        </Row>
-        <Row>
             <Col xs={6} md={2} className="footer-link" mdOffset={1}>
                 <Row className="footer-nav">Company</Row>
                 <Row><br/></Row>
@@ -121,6 +118,7 @@ class Landing extends Component {
             <Col xs={6} md={2}>
             </Col>
         </Row>
+        <Login />
       </div>
     );
   }

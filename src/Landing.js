@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Grid, Jumbotron, Nav, Navbar, NavItem, Row } from 'react-bootstrap';
+import { Button, Grid, Jumbotron, Nav, Navbar, NavItem, Row, Col } from 'react-bootstrap';
 import Login from './Login';
 import './App.css';
 
@@ -59,6 +59,17 @@ class Landing extends Component {
           <Col sm={12}>
             <h3>Features</h3>
           </Col>
+        </Row>
+        <Row className="feature">
+            <Col xs={6} md={2}>
+                <Row><img src="https://cl.ly/313k2P0C1E1R/dollar.png" /></Row>
+                <Row>ABS</Row>
+            </Col>
+            <Col xs={6} md={2}></Col>
+            <Col xs={6} md={2}></Col>
+            <Col xs={6} md={2}></Col>
+            <Col xs={6} md={2}></Col>
+            <Col xs={6} md={2}></Col>
         </Row>
         <Row>
           <Login />

@@ -60,27 +60,27 @@ class Landing extends Component {
         <Row className="feature">
             <Col xs={6} md={2}>
                 <Row><img className="feature-icon" src="https://cl.ly/313k2P0C1E1R/dollar.png" /></Row>
-                <Row>Instant Quote</Row>
+                <Row className="feature-font">Instant Quote</Row>
             </Col>
             <Col xs={6} md={2}>
                 <Row><img className="feature-icon" src="https://cl.ly/2V290s0w011A/daytime.png" /></Row>
-                <Row>24/7 Access</Row>
+                <Row className="feature-font">24/7 Access</Row>
             </Col>
             <Col xs={6} md={2}>
                 <Row><img className="feature-icon" src="https://cl.ly/3q1z0X23010S/sync.png" /></Row>
-                <Row>Smart Match</Row>
+                <Row className="feature-font">Smart Match</Row>
             </Col>
             <Col xs={6} md={2}>
                 <Row><img className="feature-icon" src="https://cl.ly/1P2D0j0X3725/location.png" /></Row>
-                <Row>Best Locations</Row>
+                <Row className="feature-font">Best Locations</Row>
             </Col>
             <Col xs={6} md={2}>
                 <Row><img className="feature-icon" src="https://cl.ly/0W152T3M0R2B/message.png" /></Row>
-                <Row>Feedback</Row>
+                <Row className="feature-font">Feedback</Row>
             </Col>
             <Col xs={6} md={2}>
                 <Row><img className="feature-icon" src="https://cl.ly/012W1b190l39/security.png" /></Row>
-                <Row>Security</Row>
+                <Row className="feature-font">Security</Row>
             </Col>
         </Row>
         <Row>

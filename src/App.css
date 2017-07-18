@@ -65,11 +65,19 @@ h3 {
 	padding-bottom: 0px;
 	margin-bottom: 3px;
 }
-
+.feature-font {
+	font-size: 22px;
+	color: #e26e25;
+	margin-bottom: 20px;
+}
 .feature {
 	margin-top: 10px;
 	background-color: #1a3863;
 	text-align: center;
+}
+.feature-icon {
+	margin-top: 20px;
+	max-width: 20%;
 }
 .panel-login {
     display: none;
@@ -83,11 +91,6 @@ h3 {
 	background-color: #fff;
 	border-color: #fff;
 	text-align:center;
-}
-
-.feature-icon {
-	margin-top: 6px;
-	max-width: 40%;
 }
 
 .panel-login>.panel-heading a{

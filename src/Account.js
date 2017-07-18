@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Nav, NavItem, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import Preferences from './Preferences';
+import Profile from './Profile';
 
 class Account extends Component {
   render() {
@@ -15,6 +16,7 @@ class Account extends Component {
           </Nav>
         </Col>
         <Col sm={9}>
+          <Profile />
           <Preferences />
         </Col>
       </Row>

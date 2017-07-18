@@ -99,7 +99,6 @@ h3 {
 	max-width: 20%;
 }
 .panel-login {
-    display: none;
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);

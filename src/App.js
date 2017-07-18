@@ -3,6 +3,7 @@ import { Col, Grid, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import Account from './Account';
 import Landing from './Landing';
+import Map from './Map';
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +39,10 @@ class App extends Component {
     return (
       <Grid fluid>
         {this.state.user ? (
-          <Account user = {this.state.user} />
+          <Row>
+            <Map />
+            <Account user = {this.state.user} />
+          </Row>
         ) : (
           <Landing />
         )}

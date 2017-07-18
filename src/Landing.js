@@ -33,10 +33,29 @@ class Landing extends Component {
           </Jumbotron>
         </Row>
         <Row>
-          <center><h3 className="heading">Optimize your storage experience</h3></center>
+          <Col sm={12}>
+          	<h3>Optimize your storage experience</h3>
+          </Col>
+          <Col sm={4}>
+            <div className="step1">
+              <h4>STEP 1</h4>
+            </div>
+          </Col>
+          <Col sm={4}>
+            <div className="step2">
+              <h4>STEP 2</h4>
+            </div>
+          </Col>
+          <Col sm={4}>
+            <div className="step3">
+              <h4>STEP 3</h4>
+            </div>
+          </Col>
         </Row>
         <Row>
-          <center><h3 className="heading">Features</h3></center>
+          <Col sm={12}>
+            <h3>Features</h3>
+          </Col>
         </Row>
         <Row className="feature">
             <Col xs={6} md={2}>

@@ -1,6 +1,7 @@
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
+	text-align: center;
 }
 @media (min-width: 768px) {
 	.navbar-brand,
@@ -21,6 +22,7 @@ body {
 }
 .jumbotron {
 	background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('http://johnsteinmetz.net/wp-content/uploads/2015/08/localstorage.jpg');
+	text-align: left;
 }
 .jumbotron h1 {
 	padding-top: 100px;
@@ -42,11 +44,24 @@ body {
 	font-size: 1.5em;
 	font-weight: 200;
 }
-
-.heading {
+h4 {
+	color: #1a3863;
+	font-size: 3.5em;
+	letter-spacing: 0.2em;
+}
+.step1 {
+	background-color: #e2e2e2;
+}
+.step2 {
+	background-color: #cecece;
+}
+.step3 {
+	background-color: #bcbcbc;
+}
+h3 {
 	font-weight: 100;
 	border-bottom: solid 1px #e26e25;
-    display: inline;
+	display: inline;
 	padding-bottom: 0px;
 	margin-bottom: 3px;
 }
@@ -56,7 +71,6 @@ body {
 	background-color: #1a3863;
 	text-align: center;
 }
-
 .panel-login {
     display: none;
 	border-color: #ccc;

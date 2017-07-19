@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
-import Account from './Account';
 import Landing from './Landing';
 import Map from './Map';
+import Sidebar from './Sidebar';
 
 class App extends Component {
   constructor(props) {
@@ -39,11 +39,14 @@ class App extends Component {
     return (
       <Grid fluid>
         {this.state.user ? (
-          <div>
-            <Map user = {this.state.user} />
-            <img className="map-avatar" src="https://conferencecloud-assets.s3.amazonaws.com/default_avatar.png" />
-            <Account user = {this.state.user} />
-          </div>
+          <Row>
+            <Col sm={2}>
+              <Sidebar user = {this.state.user} />
+            </Col>
+            <Col sm={10}>
+              <Map user = {this.state.user} />
+            </Col>
+          </Row>
         ) : (
           <Landing />
         )}

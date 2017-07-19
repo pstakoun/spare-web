@@ -4,6 +4,25 @@ import Login from './Login';
 import './App.css';
 
 class Landing extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginKey: 0
+    };
+  }
+
+  handleLogin() {
+    this.setState({
+      loginKey: 1
+    });
+  }
+
+  handleSignup() {
+    this.setState({
+      loginKey: 2
+    });
+  }
+
   render() {
     return (
       <div>
@@ -17,10 +36,10 @@ class Landing extends Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-                <NavItem eventKey={1} href="#">About</NavItem>
-                <NavItem eventKey={2} href="#">Become a Provider</NavItem>
-                <NavItem eventKey={3} href="#">Sign Up</NavItem>
-                <NavItem eventKey={4} href="#">Log In</NavItem>
+                <NavItem>About</NavItem>
+                <NavItem>Become a Provider</NavItem>
+                <NavItem onClick={this.handleSignup.bind(this)}>Sign Up</NavItem>
+                <NavItem onClick={this.handleLogin.bind(this)}>Log In</NavItem>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
@@ -118,7 +137,7 @@ class Landing extends Component {
             <Col xs={6} md={2}>
             </Col>
         </Row>
-        <Login />
+        { this.state.loginKey > 0 ? <Login activeKey = {this.state.loginKey} /> : null }
       </div>
     );
   }

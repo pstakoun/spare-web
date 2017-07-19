@@ -62,7 +62,7 @@ class Login extends Component {
   render() {
     return (
       <Panel className="panel panel-login panel-heading">
-        <Tabs defaultActiveKey={0}>
+        <Tabs defaultActiveKey={this.props.activeKey}>
           <Tab className="panel-heading" title="Log In" eventKey={1}>
             <Form className="panel-body" onSubmit={this.handleLogin.bind(this)}>
               <center><p className="error">{this.state.loginError}</p></center>

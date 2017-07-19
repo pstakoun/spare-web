@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Col, Grid, Nav, NavItem, Row, Tab } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import Landing from './Landing';
+import Preferences from './Preferences';
+import Profile from './Profile';
 import Map from './Map';
-import Sidebar from './Sidebar';
 
 class App extends Component {
   constructor(props) {
@@ -39,14 +40,36 @@ class App extends Component {
     return (
       <Grid fluid>
         {this.state.user ? (
-          <Row>
-            <Col sm={2}>
-              <Sidebar user = {this.state.user} />
-            </Col>
-            <Col sm={10}>
-              <Map user = {this.state.user} />
-            </Col>
-          </Row>
+          <Tab.Container defaultActiveKey={1}>
+            <Row>
+              <Col sm={2}>
+                <Nav stacked>
+                  <NavItem eventKey={1}>
+                    Map
+                  </NavItem>
+                  <NavItem eventKey={2}>
+                    Profile
+                  </NavItem>
+                  <NavItem eventKey={3}>
+                    Preferences
+                  </NavItem>
+                </Nav>
+              </Col>
+              <Col sm={10}>
+                <Tab.Content animation>
+                  <Tab.Pane eventKey={1}>
+                    <Map />
+                  </Tab.Pane>
+                  <Tab.Pane eventKey={2}>
+                    <Profile />
+                  </Tab.Pane>
+                  <Tab.Pane eventKey={3}>
+                    <Preferences />
+                  </Tab.Pane>
+                </Tab.Content>
+              </Col>
+            </Row>
+          </Tab.Container>
         ) : (
           <Landing />
         )}

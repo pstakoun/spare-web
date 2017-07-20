@@ -48,7 +48,7 @@ class Profile extends Component {
                     <FormControl className="profile-input" ref="userPhoneNum"/>
                 </FormGroup>
                 <FormGroup>
-                    <Button className="form-control btn" type="submit">Submit Info</Button>
+                    <Button className="profile-button" type="submit">Submit Info</Button>
                 </FormGroup>
             </Form>
         </div>

@@ -240,10 +240,21 @@ h3 {
 }
 .profile-input {
 	background-color:transparent !important;
+	height: 5vh;
 }
 .profile-form {
 	padding-top: 5vh;
 	padding: 5vh 5vh;
 	text-align: left;
 	background-color: #e2e2e2;
+}
+.profile-button {
+	background-color: #e26e25;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	margin: 20px 0;
+	padding: 10px 15px;
+	font-size: 1.5em;
+	font-weight: 200;
 }

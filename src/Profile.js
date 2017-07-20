@@ -28,31 +28,33 @@ class Profile extends Component {
 
   render() {
     return (
-        <Form className="panel-body" onSubmit={this.handleInfoChange.bind(this)}>
-          <center><h4>User Profile</h4></center>
-          <FormGroup>
-            <FormControl ref="userFirstName" placeholder="First Name"/>
-          </FormGroup>
-          <FormGroup>
-            <FormControl ref="userLastName" placeholder="Last Name"/>
-          </FormGroup>
-          <FormGroup>
-            <FormControl ref="userEmail" type="email" placeholder="Email Address for Correspondence"/>
-          </FormGroup>
-          <FormGroup>
-            <FormControl ref="userPhoneNum" placeholder="Phone Number"/>
-          </FormGroup>
-          <FormGroup>
-            <Button className="form-control btn" type="submit">
-              Submit Info
-            </Button>
-          </FormGroup>
-          <FormGroup onSubmit={this.handleLogout}>
-            <Button type="submit">
-              Log Out
-            </Button>
-          </FormGroup>
-        </Form>
+        <div>
+            <h4 className="profile-title">PROFILE</h4>
+            <Form className="profile-form" onSubmit={this.handleInfoChange.bind(this)}>
+                <FormGroup>
+                    <p className="profile-qtitle">First Name</p>
+                    <FormControl className="profile-input" ref="userFirstName"/>
+                </FormGroup>
+                <FormGroup>
+                    <p className="profile-qtitle">Last Name</p>
+                    <FormControl className="profile-input" ref="userLastName"/>
+                </FormGroup>
+                <FormGroup>
+                    <p className="profile-qtitle">Email Address to Communicate</p>
+                    <FormControl className="profile-input" ref="userEmail" type="email"/>
+                </FormGroup>
+                <FormGroup>
+                    <p className="profile-qtitle">Phone Number</p>
+                    <FormControl className="profile-input" ref="userPhoneNum"/>
+                </FormGroup>
+                <FormGroup>
+                    <Button className="form-control btn" type="submit">Submit Info</Button>
+                </FormGroup>
+                <FormGroup onSubmit={this.handleLogout}>
+                    <Button type="submit">Log Out</Button>
+                </FormGroup>
+            </Form>
+        </div>
     );
   }
 }

@@ -50,9 +50,6 @@ class Profile extends Component {
                 <FormGroup>
                     <Button className="form-control btn" type="submit">Submit Info</Button>
                 </FormGroup>
-                <FormGroup onSubmit={this.handleLogout}>
-                    <Button type="submit">Log Out</Button>
-                </FormGroup>
             </Form>
         </div>
     );

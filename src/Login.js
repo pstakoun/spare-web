@@ -59,6 +59,14 @@ class Login extends Component {
     }
   }
 
+  handleToggle(event) {
+      event.preventDefault();
+      console.log("Canceled");
+      this.state = {
+        loginKey: 0
+      };
+  }
+
   render() {
     return (
       <Panel className="panel panel-login panel-heading">

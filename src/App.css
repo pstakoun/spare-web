@@ -193,7 +193,7 @@ h3 {
   font-size: 2em;
 }
 .nav-tabs>li+li {
-  float: right;
+  float: left;
 }
 .footer-nav {
 	text-align: left;
@@ -215,7 +215,9 @@ h3 {
 .profile-title {
 	text-align: left;
 	color: #e26d1e;
+	margin-top: 10vh;
 	margin-bottom: 10vh;
+	padding: 3vh 3vh;
 }
 .profile-qtitle {
 	font-weight: 100;

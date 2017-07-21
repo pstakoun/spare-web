@@ -14,7 +14,7 @@ class Map extends Component {
         </Col>
         <SpareMap
           containerElement={ <Col sm={6} /> }
-          mapElement={ <div style={{ height: `100vh`, paddingTop: `50px` }} /> }
+          mapElement={ <div style={{ height: `100vh` }} /> }
         />
       </div>
     );

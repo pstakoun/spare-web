@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Grid, Nav, NavItem, Row, Tab } from 'react-bootstrap';
+import { Col, Grid, Nav, Navbar, NavItem, Row, Tab } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import Landing from './Landing';
 import Preferences from './Preferences';
@@ -42,32 +42,32 @@ class App extends Component {
         {this.state.user ? (
           <Tab.Container defaultActiveKey={1}>
             <Row>
-              <Col sm={2}>
-                <Nav stacked>
-                  <NavItem eventKey={1}>
-                    Map
-                  </NavItem>
-                  <NavItem eventKey={2}>
-                    Profile
-                  </NavItem>
-                  <NavItem eventKey={3}>
-                    Preferences
-                  </NavItem>
-                </Nav>
-              </Col>
-              <Col sm={10}>
-                <Tab.Content animation>
-                  <Tab.Pane eventKey={1}>
-                    <Map />
-                  </Tab.Pane>
-                  <Tab.Pane eventKey={2}>
-                    <Profile />
-                  </Tab.Pane>
-                  <Tab.Pane eventKey={3}>
-                    <Preferences />
-                  </Tab.Pane>
-                </Tab.Content>
-              </Col>
+              <Navbar collapseOnSelect fixedTop fluid>
+                <Navbar.Header>
+                  <Navbar.Brand>
+                    <a href="#">S</a>
+                  </Navbar.Brand>
+                  <Navbar.Toggle />
+                </Navbar.Header>
+                <Navbar.Collapse>
+                  <Nav pullRight>
+                    <NavItem eventKey={1}>Map</NavItem>
+                    <NavItem eventKey={2}>Profile</NavItem>
+                    <NavItem eventKey={3}>Preferences</NavItem>
+                  </Nav>
+                </Navbar.Collapse>
+              </Navbar>
+              <Tab.Content animation>
+                <Tab.Pane eventKey={1}>
+                  <Map />
+                </Tab.Pane>
+                <Tab.Pane eventKey={2}>
+                  <Profile />
+                </Tab.Pane>
+                <Tab.Pane eventKey={3}>
+                  <Preferences />
+                </Tab.Pane>
+              </Tab.Content>
             </Row>
           </Tab.Container>
         ) : (

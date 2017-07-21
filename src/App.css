@@ -3,27 +3,10 @@ body {
 	font-weight: 300;
 	text-align: center;
 }
-@media (min-width: 768px) {
-	.navbar-brand,
-	.navbar-nav li a {
-		line-height: 100px;
-		height: 100px;
-		padding-top: 0;
-	}
-	.navbar-brand {
-		font-size: 2.5em;
-	}
-	.navbar-nav li a {
-		font-size: 1.25em;
-	}
-	.jumbotron {
-		padding: 50px 100px !important;
-	}
-}
 .jumbotron {
 	background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('http://johnsteinmetz.net/wp-content/uploads/2015/08/localstorage.jpg');
 	text-align: left;
-	margin-bottom: 50px;
+	padding: 50px 0;
 }
 .jumbotron h1 {
 	padding-top: 100px;
@@ -257,4 +240,7 @@ h3 {
 	padding: 10px 15px;
 	font-size: 1.5em;
 	font-weight: 200;
+}
+.logout {
+	padding-top: 50px;
 }

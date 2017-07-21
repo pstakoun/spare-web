@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
 
 class Map extends Component {
@@ -8,14 +8,15 @@ class Map extends Component {
       <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }} />
     ));
     return (
-      <SpareMap
-        containerElement={
-          <Row />
-        }
-        mapElement={
-          <div style={{ height: `100vh` }} />
-        }
-      />
+      <div>
+        <Col sm={6}>
+          <h2>List</h2>
+        </Col>
+        <SpareMap
+          containerElement={ <Col sm={6} /> }
+          mapElement={ <div style={{ height: `100vh`, paddingTop: `50px` }} /> }
+        />
+      </div>
     );
   }
 }

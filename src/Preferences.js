@@ -10,7 +10,7 @@ class Preferences extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleLogout}>
+      <Form onSubmit={this.handleLogout} className="logout">
         <FormGroup>
           <Button type="submit">
             Log Out

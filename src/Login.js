@@ -92,7 +92,7 @@ class Login extends Component {
               </FormGroup>
               <FormGroup>
                 <Button className="form-control btn-register" type="submit">
-                  Register Now
+                  Sign Up Now
                 </Button>
               </FormGroup>
             </Form>

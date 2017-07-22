@@ -185,6 +185,9 @@ h3 {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+.close {
+	font-size: 2.5em;
+}
 .error {
 	color: red;
 }

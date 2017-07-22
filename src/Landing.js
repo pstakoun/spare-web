@@ -11,13 +11,19 @@ class Landing extends Component {
     };
   }
 
-  handleLogin() {
+  handleClose() {
+    this.setState({
+      loginKey: 0
+    });
+  }
+
+  handleSignup() {
     this.setState({
       loginKey: 1
     });
   }
 
-  handleSignup() {
+  handleLogin() {
     this.setState({
       loginKey: 2
     });
@@ -137,7 +143,7 @@ class Landing extends Component {
             <Col xs={6} md={2}>
             </Col>
         </Row>
-        { this.state.loginKey > 0 ? <Login activeKey = {this.state.loginKey} /> : null }
+        { this.state.loginKey > 0 ? <Login handleClose = {this.handleClose.bind(this)} activeKey = {this.state.loginKey} /> : null }
       </div>
     );
   }

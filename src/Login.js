@@ -70,30 +70,9 @@ class Login extends Component {
   render() {
     return (
       <Panel className="panel panel-login panel-heading">
+        <Button className="close" onClick={this.props.handleClose}>&times;</Button>
         <Tabs defaultActiveKey={this.props.activeKey}>
-          <Tab className="panel-heading" title="Log In" eventKey={1}>
-            <Form className="panel-body" onSubmit={this.handleLogin.bind(this)}>
-              <center><p className="error">{this.state.loginError}</p></center>
-              <FormGroup>
-                <FormControl ref="loginEmail" type="email" placeholder="Email Address"/>
-              </FormGroup>
-              <FormGroup>
-                <FormControl ref="loginPassword" type="password" placeholder="Password"/>
-              </FormGroup>
-              <FormGroup>
-                <Button className="form-control btn-login" type="submit">
-                  Log In
-                </Button>
-              </FormGroup>
-              <center><p>
-                New to SPARE? Sign Up.
-              </p></center>
-              <center><p className="forgot-password">
-                Forgot Password?
-              </p></center>
-            </Form>
-          </Tab>
-          <Tab className="panel-heading" title="Register" eventKey={2}>
+          <Tab className="panel-heading" title="Sign Up" eventKey={1}>
             <Form onSubmit={this.handleRegister.bind(this)}>
               <center><p className="error">{this.state.registerError}</p></center>
               <FormGroup>
@@ -116,6 +95,28 @@ class Login extends Component {
                   Register Now
                 </Button>
               </FormGroup>
+            </Form>
+          </Tab>
+          <Tab className="panel-heading" title="Log In" eventKey={2}>
+            <Form className="panel-body" onSubmit={this.handleLogin.bind(this)}>
+              <center><p className="error">{this.state.loginError}</p></center>
+              <FormGroup>
+                <FormControl ref="loginEmail" type="email" placeholder="Email Address"/>
+              </FormGroup>
+              <FormGroup>
+                <FormControl ref="loginPassword" type="password" placeholder="Password"/>
+              </FormGroup>
+              <FormGroup>
+                <Button className="form-control btn-login" type="submit">
+                  Log In
+                </Button>
+              </FormGroup>
+              <center><p>
+                New to SPARE? Sign Up.
+              </p></center>
+              <center><p className="forgot-password">
+                Forgot Password?
+              </p></center>
             </Form>
           </Tab>
         </Tabs>

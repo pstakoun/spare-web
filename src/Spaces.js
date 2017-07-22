@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import Space from './Space';
 
 class Spaces extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Spaces extends Component {
   renderSpaces() {
     var arr = [];
     for (var key in this.state.spaces) {
-      arr.push(<img src={this.state.spaces[key].photoURL} />);
+      arr.push(<Space space={this.state.spaces[key]} />);
     }
     return arr;
   }

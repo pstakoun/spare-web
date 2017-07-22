@@ -5,6 +5,7 @@ import Landing from './Landing';
 import Preferences from './Preferences';
 import Profile from './Profile';
 import Spaces from './Spaces';
+import AddSpace from './AddSpace';
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +54,8 @@ class App extends Component {
                   <Nav pullRight>
                     <NavItem eventKey={1}>Map</NavItem>
                     <NavItem eventKey={2}>Profile</NavItem>
-                    <NavItem eventKey={3}>Preferences</NavItem>
+                    <NavItem eventKey={3}>Add a Space</NavItem>
+                    <NavItem eventKey={4}>Preferences</NavItem>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -65,6 +67,9 @@ class App extends Component {
                   <Profile />
                 </Tab.Pane>
                 <Tab.Pane eventKey={3}>
+                  <AddSpace />
+                </Tab.Pane>
+                <Tab.Pane eventKey={4}>
                   <Preferences />
                 </Tab.Pane>
               </Tab.Content>

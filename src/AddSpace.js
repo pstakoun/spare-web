@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import RandomString from 'randomstring';
 
 import './App.css';
 
@@ -12,42 +13,43 @@ class AddSpace extends Component {
     firebase.auth().signOut();
   }
 
-  handleInfoChange(event) {
+  handleSubmission(event) {
     event.preventDefault();
 
     var lat = ReactDOM.findDOMNode(this.refs.listingLatitude).value.trim();
     var long = ReactDOM.findDOMNode(this.refs.listingLongtitude).value.trim();
-    var email = ReactDOM.findDOMNode(this.refs.userEmail).value.trim();
-    var phone = ReactDOM.findDOMNode(this.refs.userPhoneNum).value;
+    var photoURL = ReactDOM.findDOMNode(this.refs.listingCoverPhotoURL).value;
+    var address = ReactDOM.findDOMNode(this.refs.listingAddress).value;
 
-    firebase.database().ref('listing/' + firebase.auth().currentUser.uid).set({
+    firebase.database().ref('spaces/' + RandomString.generate(28)).set({
         lat: lat,
-        long: long,
-        email: email,
-        phone: phone,
+        lng: long,
+        photoURL: photoURL,
+        address: address,
+        user: firebase.auth().currentUser.uid,
     });
   }
 
   render() {
     return (
         <div>
-            <h4 className="profile-title">PROFILE</h4>
-            <Form className="profile-form" onSubmit={this.handleInfoChange.bind(this)}>
+            <h4 className="profile-title">ADD A SPACE</h4>
+            <Form className="profile-form" onSubmit={this.handleSubmission.bind(this)}>
                 <FormGroup>
-                    <p className="profile-qtitle">First Name</p>
-                    <FormControl className="profile-input" ref="userFirstName"/>
+                    <p className="profile-qtitle">Latitude</p>
+                    <FormControl className="profile-input" ref="listingLatitude"/>
                 </FormGroup>
                 <FormGroup>
-                    <p className="profile-qtitle">Last Name</p>
-                    <FormControl className="profile-input" ref="userLastName"/>
+                    <p className="profile-qtitle">Longtitude</p>
+                    <FormControl className="profile-input" ref="listingLongtitude"/>
                 </FormGroup>
                 <FormGroup>
-                    <p className="profile-qtitle">Email Address to Communicate</p>
-                    <FormControl className="profile-input" ref="userEmail" type="email"/>
+                    <p className="profile-qtitle">CoverPhotoURL</p>
+                    <FormControl className="profile-input" ref="listingCoverPhotoURL"/>
                 </FormGroup>
                 <FormGroup>
-                    <p className="profile-qtitle">Phone Number</p>
-                    <FormControl className="profile-input" ref="userPhoneNum"/>
+                    <p className="profile-qtitle">Address</p>
+                    <FormControl className="profile-input" ref="listingAddress"/>
                 </FormGroup>
                 <FormGroup>
                     <Button className="profile-button" type="submit">Submit Info</Button>

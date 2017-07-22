@@ -9,9 +9,11 @@ class Spaces extends Component {
     this.state = {
       spaces: null
     }
-
-    return firebase.database().ref('/spaces/').orderByKey().once('value').then(function(snapshot) {
-      console.log(snapshot.val());
+    var that = this;
+    firebase.database().ref('/spaces/').orderByKey().once('value').then(function(snapshot) {
+      that.setState({
+        spaces: snapshot.val()
+      });
     });
   }
 

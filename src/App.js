@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import Landing from './Landing';
 import Preferences from './Preferences';
 import Profile from './Profile';
-import Map from './Map';
+import Spaces from './Spaces';
 
 class App extends Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class App extends Component {
               </Navbar>
               <Tab.Content animation>
                 <Tab.Pane eventKey={1}>
-                  <Map />
+                  <Spaces />
                 </Tab.Pane>
                 <Tab.Pane eventKey={2}>
                   <Profile />

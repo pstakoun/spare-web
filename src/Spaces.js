@@ -10,7 +10,7 @@ class Spaces extends Component {
       spaces: null
     }
     var that = this;
-    firebase.database().ref('/spaces/').orderByKey().once('value').then(function(snapshot) {
+    firebase.database().ref('spaces').orderByKey().once('value').then(function(snapshot) {
       that.setState({
         spaces: snapshot.val()
       });
@@ -18,7 +18,11 @@ class Spaces extends Component {
   }
 
   renderSpaces() {
-    return JSON.stringify(this.state.spaces);
+    var arr = [];
+    for (var key in this.state.spaces) {
+      arr.push(<img src={this.state.spaces[key].photoURL} />);
+    }
+    return arr;
   }
 
   render() {

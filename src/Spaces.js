@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import Space from './Space';
 
 class Spaces extends Component {
@@ -18,6 +18,14 @@ class Spaces extends Component {
     });
   }
 
+  renderMarkers() {
+    var arr = [];
+    for (var key in this.state.spaces) {
+      arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
+    }
+    return arr;
+  }
+
   renderSpaces() {
     var arr = [];
     for (var key in this.state.spaces) {
@@ -28,7 +36,9 @@ class Spaces extends Component {
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }} />
+      <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+        {this.renderMarkers()}
+      </GoogleMap>
     ));
     return (
       <div>

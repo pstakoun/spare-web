@@ -10,13 +10,12 @@ class Spaces extends Component {
     super(props);
     this.state = {
       spaces: null
-    }
-    var that = this;
-    firebase.database().ref('spaces').orderByKey().once('value').then(function(snapshot) {
-      that.setState({
+    };
+    firebase.database().ref('spaces').orderByKey().once('value').then((snapshot) =>
+      this.setState({
         spaces: snapshot.val()
-      });
-    });
+      })
+    );
   }
 
   renderMarkers() {

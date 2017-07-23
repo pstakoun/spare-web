@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import Geosuggest from 'react-geosuggest';
 import Space from './Space';
 
 class Spaces extends Component {
@@ -40,12 +41,13 @@ class Spaces extends Component {
       </GoogleMap>
     ));
     return (
-      <div>
-        <Col sm={6} style={{ height: `100vh`, padding: `50px`, overflowY: `scroll` }}>
+      <div style={{ height: `100vh`, padding: `60px` }}>
+        <Geosuggest />
+        <Col sm={6} style={{ height: `100%`, overflowY: `scroll` }}>
           {this.renderSpaces()}
         </Col>
         <SpareMap
-          containerElement={ <Col sm={6} style={{ height: `100vh`, paddingTop: `50px` }} /> }
+          containerElement={ <Col sm={6} style={{ height: `100%` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>

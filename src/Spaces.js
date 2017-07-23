@@ -42,13 +42,12 @@ class Spaces extends Component {
     ));
     return (
       <div>
-        <Col sm={6}>
-          <h2>List</h2>
+        <Col sm={6} style={{ height: `100vh`, paddingTop: `50px`, overflowY: `scroll` }}>
           {this.renderSpaces()}
         </Col>
         <SpareMap
-          containerElement={ <Col sm={6} /> }
-          mapElement={ <div style={{ height: `100vh` }} /> }
+          containerElement={ <Col sm={6} style={{ height: `100vh`, paddingTop: `50px` }} /> }
+          mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>
     );

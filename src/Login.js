@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Form, FormControl, FormGroup, Panel, Tab, Tabs } from 'react-bootstrap';
+import { Button, Form, FormControl, FormGroup, Modal, Tab, Tabs } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import './App.css';
 
@@ -61,7 +61,7 @@ class Login extends Component {
 
   render() {
     return (
-      <Panel className="panel panel-login panel-heading">
+      <Modal show={this.props.activeKey > 0} onHide={this.props.handleClose}>
         <Button className="close" onClick={this.props.handleClose}>&times;</Button>
         <Tabs defaultActiveKey={this.props.activeKey}>
           <Tab className="panel-heading" title="Log In" eventKey={1}>
@@ -112,7 +112,7 @@ class Login extends Component {
             </Form>
           </Tab>
         </Tabs>
-      </Panel>
+      </Modal>
     );
   }
 }

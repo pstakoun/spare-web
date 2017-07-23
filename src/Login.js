@@ -64,8 +64,8 @@ class Login extends Component {
       <Modal show={this.props.activeKey > 0} onHide={this.props.handleClose}>
         <Button className="close" onClick={this.props.handleClose}>&times;</Button>
         <Tabs defaultActiveKey={this.props.activeKey}>
-          <Tab className="panel-heading" title="Log In" eventKey={1}>
-            <Form className="panel-body" onSubmit={this.handleLogin.bind(this)}>
+          <Tab className="login-tab" title="Log In" eventKey={1}>
+            <Form onSubmit={this.handleLogin.bind(this)}>
               <center><p className="error">{this.state.loginError}</p></center>
               <FormGroup>
                 <FormControl ref="loginEmail" type="email" placeholder="Email Address"/>
@@ -86,7 +86,7 @@ class Login extends Component {
               </p></center>
             </Form>
           </Tab>
-          <Tab className="panel-heading" title="Sign Up" eventKey={2}>
+          <Tab className="login-tab" title="Sign Up" eventKey={2}>
             <Form onSubmit={this.handleRegister.bind(this)}>
               <center><p className="error">{this.state.registerError}</p></center>
               <FormGroup>

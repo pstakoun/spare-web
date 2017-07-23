@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import SearchBox from 'react-google-maps/lib/places/SearchBox';
 import Space from './Space';
 
 class Spaces extends Component {
@@ -37,7 +36,6 @@ class Spaces extends Component {
   render() {
     var SpareMap = withGoogleMap(props => (
       <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
-        <SearchBox inputPlaceholder="Placeholder" inputStyle={{}} />
         {this.renderMarkers()}
       </GoogleMap>
     ));

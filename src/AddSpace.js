@@ -22,8 +22,8 @@ class AddSpace extends Component {
     var address = ReactDOM.findDOMNode(this.refs.listingAddress).value;
 
     firebase.database().ref('spaces/' + RandomString.generate(28)).set({
-        lat: lat,
-        lng: long,
+        lat: Number(lat),
+        lng: Number(long),
         photoURL: photoURL,
         address: address,
         user: firebase.auth().currentUser.uid,

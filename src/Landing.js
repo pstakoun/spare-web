@@ -17,13 +17,13 @@ class Landing extends Component {
     });
   }
 
-  handleSignup() {
+  handleLogin() {
     this.setState({
       loginKey: 1
     });
   }
 
-  handleLogin() {
+  handleSignup() {
     this.setState({
       loginKey: 2
     });
@@ -44,8 +44,8 @@ class Landing extends Component {
               <Nav pullRight>
                 <NavItem>About</NavItem>
                 <NavItem>Become a Provider</NavItem>
-                <NavItem onClick={this.handleSignup.bind(this)}>Sign Up</NavItem>
                 <NavItem onClick={this.handleLogin.bind(this)}>Log In</NavItem>
+                <NavItem onClick={this.handleSignup.bind(this)}>Sign Up</NavItem>
               </Nav>
             </Navbar.Collapse>
           </Navbar>

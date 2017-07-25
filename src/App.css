@@ -215,7 +215,7 @@ h3 {
 	font-size: 2em;
 }
 .profile-input {
-	background-color:transparent !important;
+	background-color: transparent !important;
 	height: 5vh;
 }
 .profile-form {
@@ -239,11 +239,10 @@ h3 {
 }
 /* GEOSUGGEST */
 .geosuggest {
-  font-size: 18px;
-  font-size: 1rem;
+  width: 500px;
+  font-size: 1em;
   position: relative;
-  width: 50%;
-  margin: 1em auto;
+  margin: 1em;
   text-align: left;
 }
 .geosuggest__input {

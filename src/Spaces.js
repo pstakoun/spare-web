@@ -3,13 +3,19 @@ import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import Geosuggest from 'react-geosuggest';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import SizePicker from './SizePicker';
 import Space from './Space';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 class Spaces extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      spaces: null
+      spaces: null,
+	  startDate: moment()
     };
     firebase.database().ref('spaces').orderByKey().once('value').then((snapshot) =>
       this.setState({
@@ -26,14 +32,6 @@ class Spaces extends Component {
     return arr;
   }
 
-  renderSpaces() {
-    var arr = [];
-    for (var key in this.state.spaces) {
-      arr.push(<Space space={this.state.spaces[key]} />);
-    }
-    return arr;
-  }
-
   render() {
     var SpareMap = withGoogleMap(props => (
       <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
@@ -41,13 +39,12 @@ class Spaces extends Component {
       </GoogleMap>
     ));
     return (
-      <div style={{ height: `100vh`, padding: `60px` }}>
+      <div style={{ height: `100vh`, paddingTop: `50px` }}>
         <Geosuggest />
-        <Col sm={6} style={{ height: `100%`, overflowY: `scroll` }}>
-          {this.renderSpaces()}
-        </Col>
+		<DatePicker selected={this.state.startDate} />
+		<SizePicker />
         <SpareMap
-          containerElement={ <Col sm={6} style={{ height: `100%` }} /> }
+          containerElement={ <div style={{ height: `100%` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>

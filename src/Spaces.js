@@ -30,12 +30,8 @@ class Spaces extends Component {
     }
     return arr;
   }
-
-  handleSuggestSelect(suggest) {
-    this.setState({
-      location: suggest.location
-    });
-
+  
+  updateMarkers() {
     var firebaseRef = firebase.database().ref('geofire');
     var geoFire = new GeoFire(firebaseRef);
 
@@ -47,9 +43,13 @@ class Spaces extends Component {
     geoQuery.on("key_entered", function(key, location) {
       this.state.spaces[key] = { lat: location[0], lng: location[1] };
     }.bind(this));
-    geoQuery.on("key_exited", function(key, location) {
-      delete this.state.spaces[key];
-    }.bind(this));
+  }
+
+  handleSuggestSelect(suggest) {
+    this.setState({
+      spaces: {},
+      location: suggest.location
+    }, this.updateMarkers.bind(this));
   }
 
   render() {

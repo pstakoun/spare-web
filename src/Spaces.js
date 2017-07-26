@@ -14,9 +14,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 class Spaces extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       spaces: {},
-      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : null,
+      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
       startDate: moment(),
       endDate: moment()
     };
@@ -32,8 +33,7 @@ class Spaces extends Component {
 
   handleSuggestSelect(suggest) {
     this.setState({
-		location: suggest.location,
-		spaces: null
+		location: suggest.location
     });
 
     var firebaseRef = firebase.database().ref('spaces');
@@ -44,18 +44,20 @@ class Spaces extends Component {
       radius: 10
     });
 
-    geoQuery.on("key_entered", function(key, location) {
+    var onKeyEnteredRegistration = geoQuery.on("key_entered", function(key, location) {
       this.state.spaces[key] = { lat: location[0], lng: location[1] };
+	  console.log('a');
     });
 
-    geoQuery.on("key_exited", function(key, location) {
+    var onKeyExitedRegistration = geoQuery.on("key_exited", function(key, location) {
       delete this.state.spaces[key];
+	  console.log('b');
     });
   }
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={15} defaultCenter={this.state.location || { lat: 42.361145, lng: -71.057083 }}>
+      <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
         {this.renderMarkers()}
       </GoogleMap>
     ));

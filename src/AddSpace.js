@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import * as firebase from 'firebase';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import RandomString from 'randomstring';
+import Geosuggest from 'react-geosuggest';
+import * as GeoFire from 'geofire';
 
 import './App.css';
 
@@ -20,14 +21,24 @@ class AddSpace extends Component {
     var long = ReactDOM.findDOMNode(this.refs.listingLongtitude).value.trim();
     var photoURL = ReactDOM.findDOMNode(this.refs.listingCoverPhotoURL).value;
     var address = ReactDOM.findDOMNode(this.refs.listingAddress).value;
+    var geofireRef = firebase.database().ref('geofire/');
+    var geoFire = new GeoFire(geofireRef);
+    var spaceId = RandomString.generate(28);
 
-    firebase.database().ref('spaces/' + RandomString.generate(28)).set({
+    firebase.database().ref('spaces/' + spaceId).set({
         lat: Number(lat),
         lng: Number(long),
         photoURL: photoURL,
         address: address,
         user: firebase.auth().currentUser.uid,
     });
+
+    geoFire.set(spaceId, [Number(lat), Number(long)]).then(function() {
+      console.log("Provided key has been added to GeoFire");
+    }, function(error) {
+      console.log("Error: " + error);
+    });
+
   }
 
   render() {
@@ -49,7 +60,7 @@ class AddSpace extends Component {
                 </FormGroup>
                 <FormGroup>
                     <p className="profile-qtitle">Address</p>
-                    <FormControl className="profile-input" ref="listingAddress"/>
+                    <Geosuggest className="profile-input" ref="listingAddress"/>
                 </FormGroup>
                 <FormGroup>
                     <Button className="profile-button" type="submit">Submit Info</Button>

@@ -15,6 +15,7 @@ class Spaces extends Component {
     super(props);
     this.state = {
       spaces: null,
+      address: null,
 	  startDate: moment()
     };
     firebase.database().ref('spaces').orderByKey().once('value').then((snapshot) =>
@@ -32,6 +33,12 @@ class Spaces extends Component {
     return arr;
   }
 
+  updateLocation(suggest) {
+    this.setState({
+      address: suggest
+    });
+  }
+
   render() {
     var SpareMap = withGoogleMap(props => (
       <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
@@ -40,9 +47,11 @@ class Spaces extends Component {
     ));
     return (
       <div style={{ height: `100vh`, paddingTop: `50px` }}>
-        <Geosuggest />
-		<DatePicker selected={this.state.startDate} />
-		<SizePicker />
+        <div className="filters">
+          <Geosuggest ref={el=>this.geoSuggest=el} onSuggestSelect={this.updateLocation.bind(this)} />
+          <DatePicker selected={this.state.startDate} />
+          <SizePicker />
+		</div>
         <SpareMap
           containerElement={ <div style={{ height: `100%` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }

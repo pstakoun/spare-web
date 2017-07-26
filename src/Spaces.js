@@ -33,7 +33,7 @@ class Spaces extends Component {
 
   handleSuggestSelect(suggest) {
     this.setState({
-		location: suggest.location
+      location: suggest.location
     });
 
     var firebaseRef = firebase.database().ref('spaces');

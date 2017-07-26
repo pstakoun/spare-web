@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import {geolocated} from 'react-geolocated';
+import * as GeoFire from 'geofire';
 import Geosuggest from 'react-geosuggest';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
@@ -16,11 +17,13 @@ class Spaces extends Component {
     super(props);
     this.state = {
       spaces: null,
-      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
+      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : null,
       startDate: moment(),
       endDate: moment()
     };
-    firebase.database().ref('spaces').orderByKey().on('value', (snapshot) =>
+    var firebaseRef = firebase.database().ref('spaces');
+    var geoFire = new GeoFire(firebaseRef);
+    firebaseRef.orderByKey().on('value', (snapshot) =>
       this.setState({
         spaces: snapshot.val()
       })
@@ -37,13 +40,13 @@ class Spaces extends Component {
 
   handleSuggestSelect(suggest) {
     this.setState({
-		location: suggest.location ? suggest.location : { lat: 42.361145, lng: -71.057083 }
+		location: suggest.location
     });
   }
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
+      <GoogleMap defaultZoom={15} defaultCenter={this.state.location || { lat: 42.361145, lng: -71.057083 }}>
         {this.renderMarkers()}
       </GoogleMap>
     ));

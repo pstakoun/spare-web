@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import {geolocated} from 'react-geolocated';
 import Geosuggest from 'react-geosuggest';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
@@ -15,7 +16,7 @@ class Spaces extends Component {
     super(props);
     this.state = {
       spaces: null,
-      location: null,
+      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : null,
       startDate: moment(),
       endDate: moment()
     };
@@ -27,14 +28,14 @@ class Spaces extends Component {
   }
 
   renderMarkers() {
-    var arr = [];
+    var arr = [<Marker defaultPosition={this.state.location} title="current" />];
     for (var key in this.state.spaces) {
       arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
     }
     return arr;
   }
 
-  updateLocation(suggest) {
+  handleSuggestSelect(suggest) {
     this.setState({
       location: suggest.location
     });
@@ -42,14 +43,14 @@ class Spaces extends Component {
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={8} defaultCenter={this.state.location}>
+      <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
         {this.renderMarkers()}
       </GoogleMap>
     ));
     return (
       <div style={{ height: `100vh`, paddingTop: `50px` }}>
         <div className="filters">
-          <Geosuggest onSuggestSelect={this.updateLocation.bind(this)} />
+          <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
           <DatePicker selected={this.state.startDate} />
           <SizePicker />
 		</div>
@@ -62,4 +63,4 @@ class Spaces extends Component {
   }
 }
 
-export default Spaces;
+export default geolocated()(Spaces);

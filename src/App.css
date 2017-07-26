@@ -237,9 +237,6 @@ h3 {
 .logout {
 	padding-top: 50px;
 }
-.filters {
-	height: 50px;
-}
 .filters>div {
 	display: inline-block;
 }

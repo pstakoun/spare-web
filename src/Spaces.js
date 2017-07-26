@@ -42,14 +42,14 @@ class Spaces extends Component {
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+      <GoogleMap defaultZoom={8} defaultCenter={this.state.location}>
         {this.renderMarkers()}
       </GoogleMap>
     ));
     return (
       <div style={{ height: `100vh`, paddingTop: `50px` }}>
         <div className="filters">
-          <Geosuggest ref={el=>this.geoSuggest=el} onSuggestSelect={this.updateLocation.bind(this)} />
+          <Geosuggest onSuggestSelect={this.updateLocation.bind(this)} />
           <DatePicker selected={this.state.startDate} />
           <SizePicker />
 		</div>

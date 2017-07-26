@@ -15,8 +15,9 @@ class Spaces extends Component {
     super(props);
     this.state = {
       spaces: null,
-      address: null,
-	  startDate: moment()
+      location: null,
+      startDate: moment(),
+      endDate: moment()
     };
     firebase.database().ref('spaces').orderByKey().once('value').then((snapshot) =>
       this.setState({
@@ -35,7 +36,7 @@ class Spaces extends Component {
 
   updateLocation(suggest) {
     this.setState({
-      address: suggest
+      location: suggest.location
     });
   }
 

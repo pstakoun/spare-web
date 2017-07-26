@@ -36,7 +36,7 @@ class Spaces extends Component {
       location: suggest.location
     });
 
-    var firebaseRef = firebase.database().ref('spaces');
+    var firebaseRef = firebase.database().ref('geofire');
     var geoFire = new GeoFire(firebaseRef);
 
     var geoQuery = geoFire.query({
@@ -44,15 +44,12 @@ class Spaces extends Component {
       radius: 10
     });
 
-    var onKeyEnteredRegistration = geoQuery.on("key_entered", function(key, location) {
+    geoQuery.on("key_entered", function(key, location) {
       this.state.spaces[key] = { lat: location[0], lng: location[1] };
-	  console.log('a');
-    });
-
-    var onKeyExitedRegistration = geoQuery.on("key_exited", function(key, location) {
+    }.bind(this));
+    geoQuery.on("key_exited", function(key, location) {
       delete this.state.spaces[key];
-	  console.log('b');
-    });
+    }.bind(this));
   }
 
   render() {

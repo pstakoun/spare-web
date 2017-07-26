@@ -52,6 +52,7 @@ class Spaces extends Component {
         <div className="filters">
           <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
           <DatePicker selected={this.state.startDate} />
+          <DatePicker selected={this.state.endDate} />
           <SizePicker />
 		</div>
         <SpareMap

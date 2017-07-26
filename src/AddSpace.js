@@ -5,6 +5,7 @@ import * as firebase from 'firebase';
 import RandomString from 'randomstring';
 import Geosuggest from 'react-geosuggest';
 import * as GeoFire from 'geofire';
+import FileUploader from 'react-firebase-file-uploader';
 
 import './App.css';
 
@@ -14,9 +15,27 @@ class AddSpace extends Component {
     super(props);
     this.state = {
       location: null,
-      address: null
+      address: null,
+      isUploading: false,
+      progress: 0,
+      spaceId: RandomString.generate(28)
     };
   }
+
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+
+  handleProgress = (progress) => this.setState({progress});
+
+  handleUploadError = (error) => {
+    this.setState({isUploading: false});
+    console.error(error);
+  }
+
+  handleUploadSuccess = (filename) => {
+    this.setState({progress: 100, isUploading: false});
+    console.log("Upload Success");
+
+  };
 
   updateLocation(suggest) {
     this.setState({
@@ -33,20 +52,19 @@ class AddSpace extends Component {
   handleSubmission(event) {
     event.preventDefault();
 
-    var photoURL = ReactDOM.findDOMNode(this.refs.listingCoverPhotoURL).value;
     var geofireRef = firebase.database().ref('geofire/');
     var geoFire = new GeoFire(geofireRef);
-    var spaceId = RandomString.generate(28);
 
-    firebase.database().ref('spaces/' + spaceId).set({
+
+    firebase.database().ref('spaces/' + this.state.spaceId).set({
         lat: this.state.location.lat,
         lng: this.state.location.lng,
-        photoURL: photoURL,
         address: this.state.address,
         user: firebase.auth().currentUser.uid,
+        photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg"
     });
 
-    geoFire.set(spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {
+    geoFire.set(this.state.spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {
       console.log("Provided key has been added to GeoFire");
     }, function(error) {
       console.log("Error: " + error);
@@ -61,7 +79,15 @@ class AddSpace extends Component {
             <Form className="profile-form" onSubmit={this.handleSubmission.bind(this)}>
                 <FormGroup>
                     <p className="profile-qtitle">CoverPhotoURL</p>
-                    <FormControl className="profile-input" ref="listingCoverPhotoURL"/>
+                    <FileUploader
+                      accept="image/jpg"
+                      filename={this.state.spaceId}
+                      storageRef={firebase.storage().ref('images')}
+                      onUploadStart={this.handleUploadStart}
+                      onUploadError={this.handleUploadError}
+                      onUploadSuccess={this.handleUploadSuccess}
+                      onProgress={this.handleProgress}
+                    />
                 </FormGroup>
                 <FormGroup>
                     <p className="profile-qtitle">Address</p>

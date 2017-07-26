@@ -16,11 +16,11 @@ class Spaces extends Component {
     super(props);
     this.state = {
       spaces: null,
-      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : null,
+      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
       startDate: moment(),
       endDate: moment()
     };
-    firebase.database().ref('spaces').orderByKey().once('value').then((snapshot) =>
+    firebase.database().ref('spaces').orderByKey().on('value', (snapshot) =>
       this.setState({
         spaces: snapshot.val()
       })
@@ -37,7 +37,7 @@ class Spaces extends Component {
 
   handleSuggestSelect(suggest) {
     this.setState({
-      location: suggest.location
+		location: suggest.location ? suggest.location : { lat: 42.361145, lng: -71.057083 }
     });
   }
 

@@ -237,6 +237,9 @@ h3 {
 .logout {
 	padding-top: 50px;
 }
+.filters {
+	text-align: left;
+}
 .filters>div {
 	display: inline-block;
 }

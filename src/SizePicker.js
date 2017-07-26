@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 class SizePicker extends Component {
   render() {

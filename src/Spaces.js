@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import {geolocated} from 'react-geolocated';
@@ -16,18 +15,11 @@ class Spaces extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      spaces: null,
+      spaces: {},
       location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : null,
       startDate: moment(),
       endDate: moment()
     };
-    var firebaseRef = firebase.database().ref('spaces');
-    var geoFire = new GeoFire(firebaseRef);
-    firebaseRef.orderByKey().on('value', (snapshot) =>
-      this.setState({
-        spaces: snapshot.val()
-      })
-    );
   }
 
   renderMarkers() {
@@ -40,7 +32,24 @@ class Spaces extends Component {
 
   handleSuggestSelect(suggest) {
     this.setState({
-		location: suggest.location
+		location: suggest.location,
+		spaces: null
+    });
+
+    var firebaseRef = firebase.database().ref('spaces');
+    var geoFire = new GeoFire(firebaseRef);
+
+    var geoQuery = geoFire.query({
+      center: [this.state.location.lat, this.state.location.lng],
+      radius: 10
+    });
+
+    geoQuery.on("key_entered", function(key, location) {
+      this.state.spaces[key] = { lat: location[0], lng: location[1] };
+    });
+
+    geoQuery.on("key_exited", function(key, location) {
+      delete this.state.spaces[key];
     });
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Grid, Nav, Navbar, NavItem, Row, Tab } from 'react-bootstrap';
+import { Grid, Nav, Navbar, NavItem, Row, Tab } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import Landing from './Landing';
 import Preferences from './Preferences';

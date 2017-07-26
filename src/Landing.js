@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, Jumbotron, Nav, Navbar, NavItem, Row, Col } from 'react-bootstrap';
+import { Button, Jumbotron, Nav, Navbar, NavItem, Row, Col } from 'react-bootstrap';
 import Login from './Login';
 import './App.css';
 

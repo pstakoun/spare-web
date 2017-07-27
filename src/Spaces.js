@@ -18,6 +18,7 @@ class Spaces extends Component {
     this.state = {
       spaces: {},
       location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
+	  size: "0",
       startDate: moment(),
       endDate: moment()
     };
@@ -28,7 +29,7 @@ class Spaces extends Component {
   renderMarkers() {
     var arr = [<Marker defaultPosition={this.state.location} title="current" />];
     for (var key in this.state.spaces) {
-      if (true) {
+      if (this.state.size == this.state.spaces[key].size) {
         arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
       }
     }
@@ -59,6 +60,12 @@ class Spaces extends Component {
     }, this.updateMarkers.bind(this));
   }
 
+  handleSizeUpdate(e) {
+    this.setState({
+      size: e.target.value
+    });
+  }
+
   render() {
     var SpareMap = withGoogleMap(props => (
       <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
@@ -71,7 +78,7 @@ class Spaces extends Component {
           <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
           <DatePicker selected={this.state.startDate} />
           <DatePicker selected={this.state.endDate} />
-          <SizePicker />
+          <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
 		</div>
         <SpareMap
           containerElement={ <div style={{ height: `100%` }} /> }

@@ -42,6 +42,7 @@ class Spaces extends Component {
 
     geoQuery.on("key_entered", function(key, location) {
       this.state.spaces[key] = { lat: location[0], lng: location[1] };
+	  this.setState({});
     }.bind(this));
   }
 

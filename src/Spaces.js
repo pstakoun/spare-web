@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import {geolocated} from 'react-geolocated';
@@ -66,6 +67,10 @@ class Spaces extends Component {
     });
   }
 
+  handleGo(e) {
+    console.log('TODO');
+  }
+
   render() {
     var SpareMap = withGoogleMap(props => (
       <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
@@ -79,6 +84,7 @@ class Spaces extends Component {
           <DatePicker selected={this.state.startDate} />
           <DatePicker selected={this.state.endDate} />
           <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
+          <Button onClick={this.handleGo.bind(this)}>Go</Button>
 		</div>
         <SpareMap
           containerElement={ <div style={{ height: `100%` }} /> }

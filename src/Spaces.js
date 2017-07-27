@@ -21,6 +21,8 @@ class Spaces extends Component {
       startDate: moment(),
       endDate: moment()
     };
+
+	this.updateMarkers();
   }
 
   renderMarkers() {

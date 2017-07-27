@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Form, FormGroup, FormControl, Checkbox } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, Checkbox, Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
+import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import RandomString from 'randomstring';
 import Geosuggest from 'react-geosuggest';
 import * as GeoFire from 'geofire';
@@ -42,11 +43,17 @@ class AddSpace extends Component {
       location: suggest.location,
       address: suggest.description
     });
+
+
   }
 
   handleLogout(event) {
     event.preventDefault();
     firebase.auth().signOut();
+  }
+
+  renderLocation() {
+    return [<Marker defaultPosition={this.state.location} title="current" />];
   }
 
   handleSubmission(event) {
@@ -78,59 +85,78 @@ class AddSpace extends Component {
   }
 
   render() {
+
+    const SpareMap = withGoogleMap(props => (
+      <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
+        {this.renderLocation()}
+      </GoogleMap>
+    ));
+
     return (
       <div>
-        <h4 className="profile-title">ADD A SPACE</h4>
-        <Form className="profile-form" onSubmit={this.handleSubmission.bind(this)}>
-          <FormGroup>
-            <p className="profile-qtitle">Storage Type</p>
-            <FormControl componentClass="select" placeholder="Please select..." ref="spaceType" required="true">
-              <option value="default"></option>
-              <option value="garage">Garage</option>
-              <option value="storage-unit">Storage Unit</option>
-              <option value="attic">Attic</option>
-              <option value="basement">Basement</option>
-              <option value="closet">Closet</option>
-              <option value="shed">Shed</option>
-              <option value="room">Room</option>
-            </FormControl>
-          </FormGroup>
-          <FormGroup>
-            <p className="profile-qtitle">Additional Features</p>
-            <label><input type="checkbox" ref="climate_control" /> Has Climate Control</label><br/>
-            <label><input type="checkbox" ref="all_access" /> 24/7 Access</label><br/>
-            <label><input type="checkbox" ref="has_lock" /> Locks Provided</label><br/>
-            <label><input type="checkbox" ref="has_insurance" /> Insurance Provided</label>
-          </FormGroup>
-          <FormGroup>
-            <p className="profile-qtitle">Storage Size</p>
-            <FormControl componentClass="select" placeholder="Please select..." ref="spaceSize" required="true">
-              <option value="0">Small</option>
-              <option value="1">Medium</option>
-              <option value="2">Large</option>
-            </FormControl>
-          </FormGroup>
-          <FormGroup>
-            <p className="profile-qtitle">Select Cover Photo</p>
-            <FileUploader
-            accept="image/jpg"
-            filename={this.state.spaceId}
-            storageRef={firebase.storage().ref('images')}
-            onUploadStart={this.handleUploadStart}
-            onUploadError={this.handleUploadError}
-            onUploadSuccess={this.handleUploadSuccess}
-            onProgress={this.handleProgress}
-            />
-          </FormGroup>
-          <FormGroup>
-            <p className="profile-qtitle">Address</p>
-            <Geosuggest className="profile-input" ref="listingAddress" onSuggestSelect={this.updateLocation.bind(this)}/>
-          </FormGroup>
-          <FormGroup>
-            <Button className="profile-button" type="submit">Submit Info</Button>
-          </FormGroup>
-        </Form>
-      </div>
+        <Row>
+          <h4 className="profile-title">ADD A SPACE</h4>
+        </Row>
+        <Row>
+          <Col xs={12} md={6}>
+          <Form className="profile-form" onSubmit={this.handleSubmission.bind(this)}>
+            <FormGroup>
+              <p className="profile-qtitle">Address</p>
+              <Geosuggest className="profile-input" ref="listingAddress" onSuggestSelect={this.updateLocation.bind(this)}/>
+            </FormGroup>
+            <FormGroup>
+              <p className="profile-qtitle">Storage Type</p>
+              <FormControl componentClass="select" placeholder="Please select..." ref="spaceType" required="true">
+                <option value="default"></option>
+                <option value="garage">Garage</option>
+                <option value="storage-unit">Storage Unit</option>
+                <option value="attic">Attic</option>
+                <option value="basement">Basement</option>
+                <option value="closet">Closet</option>
+                <option value="shed">Shed</option>
+                <option value="room">Room</option>
+              </FormControl>
+            </FormGroup>
+            <FormGroup>
+              <p className="profile-qtitle">Additional Features</p>
+              <label><input type="checkbox" ref="climate_control" /> Has Climate Control</label><br/>
+              <label><input type="checkbox" ref="all_access" /> 24/7 Access</label><br/>
+              <label><input type="checkbox" ref="has_lock" /> Locks Provided</label><br/>
+              <label><input type="checkbox" ref="has_insurance" /> Insurance Provided</label>
+            </FormGroup>
+            <FormGroup>
+              <p className="profile-qtitle">Storage Size</p>
+              <FormControl componentClass="select" placeholder="Please select..." ref="spaceSize" required="true">
+                <option value="0">Small</option>
+                <option value="1">Medium</option>
+                <option value="2">Large</option>
+              </FormControl>
+            </FormGroup>
+            <FormGroup>
+              <p className="profile-qtitle">Select Cover Photo</p>
+              <FileUploader
+                accept="image/jpg"
+                filename={this.state.spaceId}
+                storageRef={firebase.storage().ref('images')}
+                onUploadStart={this.handleUploadStart}
+                onUploadError={this.handleUploadError}
+                onUploadSuccess={this.handleUploadSuccess}
+                onProgress={this.handleProgress}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Button className="profile-button" type="submit">Submit Info</Button>
+            </FormGroup>
+          </Form>
+        </Col>
+        <Col xs={12} md={6}>
+          <SpareMap
+            containerElement={ <div style={{ height: '400px' }} /> }
+            mapElement={ <div style={{ height: '400px' }} /> }
+          />
+        </Col>
+      </Row>
+    </div>
     );
   }
 }

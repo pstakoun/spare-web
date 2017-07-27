@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import {geolocated} from 'react-geolocated';
@@ -19,38 +18,31 @@ class Spaces extends Component {
     this.state = {
       spaces: {},
       location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
-	  size: "0",
       startDate: moment(),
       endDate: moment()
     };
-
-	this.updateMarkers();
   }
 
   renderMarkers() {
     var arr = [<Marker defaultPosition={this.state.location} title="current" />];
     for (var key in this.state.spaces) {
-      if (this.state.size == this.state.spaces[key].size) {
-        arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
-      }
+      arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
     }
     return arr;
   }
-  
+
   updateMarkers() {
     var firebaseRef = firebase.database().ref('geofire');
     var geoFire = new GeoFire(firebaseRef);
 
     var geoQuery = geoFire.query({
       center: [this.state.location.lat, this.state.location.lng],
-      radius: 5
+      radius: 10
     });
 
     geoQuery.on("key_entered", function(key, location) {
-      firebase.database().ref('spaces/' + key).on('value', function(snapshot) {
-        this.state.spaces[key] = snapshot.val();
-	    this.setState({});
-      }.bind(this));
+      this.state.spaces[key] = { lat: location[0], lng: location[1] };
+	  this.setState({});
     }.bind(this));
   }
 
@@ -59,16 +51,6 @@ class Spaces extends Component {
       spaces: {},
       location: suggest.location
     }, this.updateMarkers.bind(this));
-  }
-
-  handleSizeUpdate(e) {
-    this.setState({
-      size: e.target.value
-    });
-  }
-
-  handleGo(e) {
-    console.log('TODO');
   }
 
   render() {
@@ -83,8 +65,7 @@ class Spaces extends Component {
           <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
           <DatePicker selected={this.state.startDate} />
           <DatePicker selected={this.state.endDate} />
-          <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
-          <Button onClick={this.handleGo.bind(this)}>Go</Button>
+          <SizePicker />
 		</div>
         <SpareMap
           containerElement={ <div style={{ height: `100%` }} /> }

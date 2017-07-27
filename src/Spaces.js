@@ -28,7 +28,9 @@ class Spaces extends Component {
   renderMarkers() {
     var arr = [<Marker defaultPosition={this.state.location} title="current" />];
     for (var key in this.state.spaces) {
-      arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
+      if (true) {
+        arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
+      }
     }
     return arr;
   }
@@ -39,12 +41,14 @@ class Spaces extends Component {
 
     var geoQuery = geoFire.query({
       center: [this.state.location.lat, this.state.location.lng],
-      radius: 10
+      radius: 5
     });
 
     geoQuery.on("key_entered", function(key, location) {
-      this.state.spaces[key] = { lat: location[0], lng: location[1] };
-	  this.setState({});
+      firebase.database().ref('spaces/' + key).on('value', function(snapshot) {
+        this.state.spaces[key] = snapshot.val();
+	    this.setState({});
+      }.bind(this));
     }.bind(this));
   }
 

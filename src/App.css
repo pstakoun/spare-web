@@ -240,7 +240,7 @@ h3 {
 .filters {
 	text-align: left;
 }
-.filters>div {
+.filters>* {
 	display: inline-block;
 }
 /* GEOSUGGEST */

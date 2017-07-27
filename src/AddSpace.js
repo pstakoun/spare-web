@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, Checkbox } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import RandomString from 'randomstring';
 import Geosuggest from 'react-geosuggest';
@@ -55,11 +55,16 @@ class AddSpace extends Component {
     var geofireRef = firebase.database().ref('geofire/');
     var geoFire = new GeoFire(geofireRef);
 
-
     firebase.database().ref('spaces/' + this.state.spaceId).set({
         lat: this.state.location.lat,
         lng: this.state.location.lng,
         address: this.state.address,
+        type: ReactDOM.findDOMNode(this.refs.spaceType).value,
+        size: ReactDOM.findDOMNode(this.refs.spaceSize).value,
+        climate_control: this.refs.climate_control.checked,
+        all_access: this.refs.all_access.checked,
+        has_lock: this.refs.has_lock.checked,
+        has_insurance: this.refs.has_insurance.checked,
         user: firebase.auth().currentUser.uid,
         photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg"
     });
@@ -74,30 +79,58 @@ class AddSpace extends Component {
 
   render() {
     return (
-        <div>
-            <h4 className="profile-title">ADD A SPACE</h4>
-            <Form className="profile-form" onSubmit={this.handleSubmission.bind(this)}>
-                <FormGroup>
-                    <p className="profile-qtitle">CoverPhotoURL</p>
-                    <FileUploader
-                      accept="image/jpg"
-                      filename={this.state.spaceId}
-                      storageRef={firebase.storage().ref('images')}
-                      onUploadStart={this.handleUploadStart}
-                      onUploadError={this.handleUploadError}
-                      onUploadSuccess={this.handleUploadSuccess}
-                      onProgress={this.handleProgress}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <p className="profile-qtitle">Address</p>
-                    <Geosuggest className="profile-input" ref="listingAddress" onSuggestSelect={this.updateLocation.bind(this)}/>
-                </FormGroup>
-                <FormGroup>
-                    <Button className="profile-button" type="submit">Submit Info</Button>
-                </FormGroup>
-            </Form>
-        </div>
+      <div>
+        <h4 className="profile-title">ADD A SPACE</h4>
+        <Form className="profile-form" onSubmit={this.handleSubmission.bind(this)}>
+          <FormGroup>
+            <p className="profile-qtitle">Storage Type</p>
+            <FormControl componentClass="select" placeholder="Please select..." ref="spaceType" required="true">
+              <option value="default"></option>
+              <option value="garage">Garage</option>
+              <option value="storage-unit">Storage Unit</option>
+              <option value="attic">Attic</option>
+              <option value="basement">Basement</option>
+              <option value="closet">Closet</option>
+              <option value="shed">Shed</option>
+              <option value="room">Room</option>
+            </FormControl>
+          </FormGroup>
+          <FormGroup>
+            <p className="profile-qtitle">Additional Features</p>
+            <label><input type="checkbox" ref="climate_control" /> Has Climate Control</label><br/>
+            <label><input type="checkbox" ref="all_access" /> 24/7 Access</label><br/>
+            <label><input type="checkbox" ref="has_lock" /> Locks Provided</label><br/>
+            <label><input type="checkbox" ref="has_insurance" /> Insurance Provided</label>
+          </FormGroup>
+          <FormGroup>
+            <p className="profile-qtitle">Storage Size</p>
+            <FormControl componentClass="select" placeholder="Please select..." ref="spaceSize" required="true">
+              <option value="0">Small</option>
+              <option value="1">Medium</option>
+              <option value="2">Large</option>
+            </FormControl>
+          </FormGroup>
+          <FormGroup>
+            <p className="profile-qtitle">Select Cover Photo</p>
+            <FileUploader
+            accept="image/jpg"
+            filename={this.state.spaceId}
+            storageRef={firebase.storage().ref('images')}
+            onUploadStart={this.handleUploadStart}
+            onUploadError={this.handleUploadError}
+            onUploadSuccess={this.handleUploadSuccess}
+            onProgress={this.handleProgress}
+            />
+          </FormGroup>
+          <FormGroup>
+            <p className="profile-qtitle">Address</p>
+            <Geosuggest className="profile-input" ref="listingAddress" onSuggestSelect={this.updateLocation.bind(this)}/>
+          </FormGroup>
+          <FormGroup>
+            <Button className="profile-button" type="submit">Submit Info</Button>
+          </FormGroup>
+        </Form>
+      </div>
     );
   }
 }

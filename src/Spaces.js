@@ -65,6 +65,7 @@ class Spaces extends Component {
 
   handleSizeUpdate(e) {
     this.setState({
+      activeSpace: null,
       size: e.target.value
     });
   }
@@ -89,7 +90,7 @@ class Spaces extends Component {
             position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-            <div>TODO</div>
+            <Space space={this.state.spaces[this.state.activeSpace]} />
           </OverlayView>
         }
         {this.renderMarkers()}

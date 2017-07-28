@@ -84,7 +84,7 @@ class Spaces extends Component {
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
+      <GoogleMap defaultZoom={14} defaultCenter={this.state.location}>
         {this.state.activeSpace &&
           <OverlayView
             position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import * as firebase from 'firebase';
@@ -26,6 +28,23 @@ class Spaces extends Component {
     };
 
 	this.updateMarkers();
+  }
+
+  onMapLoad(map) {
+    if (map) {
+      map.fitBounds(this.getBounds());
+    }
+  }
+
+  getBounds() {
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(this.state.location);
+    for (var key in this.state.spaces) {
+      if (this.state.size <= this.state.spaces[key].size) {
+        bounds.extend({ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng });
+      }
+    }
+    return bounds;
   }
 
   renderMarkers() {
@@ -84,7 +103,7 @@ class Spaces extends Component {
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={14} defaultCenter={this.state.location}>
+      <GoogleMap ref={this.onMapLoad.bind(this)} defaultZoom={14} defaultCenter={this.state.location}>
         {this.state.activeSpace &&
           <OverlayView
             position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}

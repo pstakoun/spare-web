@@ -31,7 +31,7 @@ class Spaces extends Component {
   renderMarkers() {
     var arr = [<Marker defaultPosition={this.state.location} title="current" />];
     for (var key in this.state.spaces) {
-      if (this.state.size == this.state.spaces[key].size) {
+      if (this.state.size <= this.state.spaces[key].size) {
         arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
       }
     }
@@ -73,7 +73,7 @@ class Spaces extends Component {
   handleGo(e) {
     var space = null;
     for (var key in this.state.spaces) {
-      if (this.state.size == this.state.spaces[key].size && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
+      if (this.state.size <= this.state.spaces[key].size && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
         space = key;
       }
     }

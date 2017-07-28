@@ -90,7 +90,7 @@ class Spaces extends Component {
             position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-            <Space space={this.state.spaces[this.state.activeSpace]} />
+            <Space space={this.state.spaces[this.state.activeSpace]} selectSpace={this.props.selectSpace.bind(this)} />
           </OverlayView>
         }
         {this.renderMarkers()}

@@ -6,12 +6,14 @@ import Preferences from './Preferences';
 import Profile from './Profile';
 import Spaces from './Spaces';
 import AddSpace from './AddSpace';
+import Confirmation from './Confirmation';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      space: null
     };
     if (firebase.apps.length === 0) {
       var config = {
@@ -35,6 +37,12 @@ class App extends Component {
         user: null
       });
     }
+  }
+
+  selectSpace(newSpace) {
+    this.setState({
+      space: newSpace
+    });
   }
 
   render() {
@@ -61,7 +69,7 @@ class App extends Component {
               </Navbar>
               <Tab.Content animation>
                 <Tab.Pane eventKey={1}>
-                  <Spaces />
+				{this.state.space ? <Confirmation space={this.state.space} selectSpace={this.selectSpace.bind(this)} /> : <Spaces selectSpace={this.selectSpace.bind(this)} />}
                 </Tab.Pane>
                 <Tab.Pane eventKey={2}>
                   <Profile />

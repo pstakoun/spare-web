@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import * as firebase from 'firebase';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker, OverlayView } from 'react-google-maps';
 import {geolocated} from 'react-geolocated';
 import * as GeoFire from 'geofire';
 import Geosuggest from 'react-geosuggest';
@@ -19,6 +19,7 @@ class Spaces extends Component {
     this.state = {
       spaces: {},
       location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
+      activeSpace: null,
 	  size: "0",
       startDate: moment(),
       endDate: moment()
@@ -46,7 +47,7 @@ class Spaces extends Component {
       radius: 5
     });
 
-    geoQuery.on("key_entered", function(key, location) {
+    geoQuery.on("key_entered", function(key) {
       firebase.database().ref('spaces/' + key).on('value', function(snapshot) {
         this.state.spaces[key] = snapshot.val();
 	    this.setState({});
@@ -57,7 +58,8 @@ class Spaces extends Component {
   handleSuggestSelect(suggest) {
     this.setState({
       spaces: {},
-      location: suggest.location
+      location: suggest.location,
+      activeSpace: null
     }, this.updateMarkers.bind(this));
   }
 
@@ -68,12 +70,28 @@ class Spaces extends Component {
   }
 
   handleGo(e) {
-    console.log('TODO');
+    var space = null;
+    for (var key in this.state.spaces) {
+      if (this.state.size == this.state.spaces[key].size && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
+        space = key;
+      }
+    }
+    this.setState({
+      activeSpace: space
+    });
   }
 
   render() {
     var SpareMap = withGoogleMap(props => (
       <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
+        {this.state.activeSpace &&
+          <OverlayView
+            position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div>TODO</div>
+          </OverlayView>
+        }
         {this.renderMarkers()}
       </GoogleMap>
     ));

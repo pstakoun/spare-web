@@ -20,7 +20,7 @@ class Spaces extends Component {
 
     this.state = {
       spaces: {},
-      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
+      location: this.getDefaultLocation(),
       activeSpace: null,
 	  size: "0",
       startDate: moment(),
@@ -28,6 +28,10 @@ class Spaces extends Component {
     };
 
 	this.updateMarkers();
+  }
+
+  getDefaultLocation() {
+    return this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 };
   }
 
   onMapLoad(map) {
@@ -77,7 +81,7 @@ class Spaces extends Component {
   handleSuggestSelect(suggest) {
     this.setState({
       spaces: {},
-      location: suggest.location,
+      location: suggest.location ? suggest.location : this.getDefaultLocation(),
       activeSpace: null
     }, this.updateMarkers.bind(this));
   }

@@ -19,7 +19,8 @@ class SpaceOverlay extends Component {
     {this.handleImg()}
     return (
       <Panel>
-        <img className="img-responsive center-block space-overlay" style={{ width: `500px` }} />
+        <img className="center-block space-overlay" style={{ width: `500px` }} />
+		<p>{this.props.space.address}</p>
 		<Button onClick={this.handleGo.bind(this)}>Go</Button>
       </Panel>
     );

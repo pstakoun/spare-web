@@ -22,7 +22,7 @@ class Spaces extends Component {
       spaces: {},
       location: this.getDefaultLocation(),
       activeSpace: null,
-	  size: "0",
+	    size: "0",
       startDate: moment(),
       endDate: moment()
     };
@@ -60,7 +60,7 @@ class Spaces extends Component {
     }
     return arr;
   }
-  
+
   updateMarkers() {
     var firebaseRef = firebase.database().ref('geofire');
     var geoFire = new GeoFire(firebaseRef);

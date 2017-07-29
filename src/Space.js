@@ -13,6 +13,7 @@ class Space extends Component {
   }
 
   handleGo(e) {
+    this.props.selectSpace(this.props.space);
   }
 
 

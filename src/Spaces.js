@@ -10,7 +10,7 @@ import Geosuggest from 'react-geosuggest';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import SizePicker from './SizePicker';
-import Space from './Space';
+import SpaceOverlay from './SpaceOverlay';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -113,7 +113,7 @@ class Spaces extends Component {
             position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-            <Space space={this.state.spaces[this.state.activeSpace]} selectSpace={this.props.selectSpace.bind(this)} />
+            <SpaceOverlay space={this.state.spaces[this.state.activeSpace]} selectSpace={this.props.selectSpace.bind(this)} />
           </OverlayView>
         }
         {this.renderMarkers()}

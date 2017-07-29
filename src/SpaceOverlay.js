@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Button, Panel } from 'react-bootstrap';
 import * as firebase from 'firebase';
 
-class Space extends Component {
-
+class SpaceOverlay extends Component {
   handleImg() {
     firebase.storage().refFromURL(this.props.space.photoURL).getDownloadURL().then(function(url) {
       document.querySelector('img').src = url;
@@ -16,19 +15,15 @@ class Space extends Component {
     this.props.selectSpace(this.props.space);
   }
 
-
-
   render() {
-
     {this.handleImg()}
-
     return (
       <Panel>
         <img className="img-responsive center-block" />
-		    <Button onClick={this.handleGo.bind(this)}>Go</Button>
+		<Button onClick={this.handleGo.bind(this)}>Go</Button>
       </Panel>
     );
   }
 }
 
-export default Space;
+export default SpaceOverlay;

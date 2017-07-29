@@ -16,6 +16,7 @@ class SpaceDetails extends Component {
     return (
       <Panel>
         <img className="img-responsive center-block" />
+		<p>{this.props.space.address}</p>
       </Panel>
     );
   }

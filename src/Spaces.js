@@ -22,7 +22,7 @@ class Spaces extends Component {
       spaces: {},
       location: this.getDefaultLocation(),
       activeSpace: null,
-	    size: "0",
+      size: "0",
       startDate: moment(),
       endDate: moment()
     };
@@ -123,8 +123,8 @@ class Spaces extends Component {
       <div style={{ height: `100vh`, paddingTop: `50px` }}>
         <div className="filters">
           <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
-          <DatePicker selected={this.state.startDate} />
-          <DatePicker selected={this.state.endDate} />
+          <DatePicker selected={this.state.startDate} onChange={(date) => this.setState({ startDate: date })} />
+          <DatePicker selected={this.state.endDate} onChange={(date) => this.setState({ endDate: date })} />
           <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
           <Button onClick={this.handleGo.bind(this)}>Go</Button>
 		</div>

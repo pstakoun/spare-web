@@ -16,8 +16,11 @@ class Confirmation extends Component {
 		  <Col sm={6}>
 		    <SpaceDetails space={this.props.space} />
 		  </Col>
+		  <Col lg={12}>
+	        <Button onClick={() => this.props.selectSpace(null)}>Go</Button>
+	        <Button onClick={() => this.props.selectSpace(null)}>Cancel</Button>
+		  </Col>
 		</Row>
-	    <Button onClick={() => this.props.selectSpace(null)}>Cancel</Button>
       </div>
     );
   }

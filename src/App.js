@@ -4,7 +4,7 @@ import * as firebase from 'firebase';
 import Landing from './Landing';
 import Preferences from './Preferences';
 import Profile from './Profile';
-import Spaces from './Spaces';
+import FindSpace from './FindSpace';
 import AddSpace from './AddSpace';
 import Confirmation from './Confirmation';
 
@@ -69,7 +69,7 @@ class App extends Component {
               </Navbar>
               <Tab.Content animation>
                 <Tab.Pane eventKey={1}>
-				{this.state.space ? <Confirmation space={this.state.space} selectSpace={this.selectSpace.bind(this)} /> : <Spaces selectSpace={this.selectSpace.bind(this)} />}
+				{this.state.space ? <Confirmation space={this.state.space} selectSpace={this.selectSpace.bind(this)} /> : <FindSpace selectSpace={this.selectSpace.bind(this)} />}
                 </Tab.Pane>
                 <Tab.Pane eventKey={2}>
                   <AddSpace />

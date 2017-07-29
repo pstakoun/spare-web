@@ -14,7 +14,7 @@ import SpaceOverlay from './SpaceOverlay';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-class Spaces extends Component {
+class FindSpace extends Component {
   constructor(props) {
     super(props);
 
@@ -137,4 +137,4 @@ class Spaces extends Component {
   }
 }
 
-export default geolocated()(Spaces);
+export default geolocated()(FindSpace);

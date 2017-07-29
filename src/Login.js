@@ -44,6 +44,7 @@ class Login extends Component {
             firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
                 fname: firstName,
                 lname: lastName,
+                email: email
             });
             firebase.auth().currentUser.sendEmailVerification();
           });

@@ -5,9 +5,12 @@ import * as firebase from 'firebase';
 import './App.css';
 
 class Profile extends Component {
-  handleLogout(event) {
-    event.preventDefault();
-    firebase.auth().signOut();
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ user: snapshot.val() }));
   }
 
   handleInfoChange(event) {
@@ -33,19 +36,19 @@ class Profile extends Component {
             <Form className="profile-form" onSubmit={this.handleInfoChange.bind(this)}>
                 <FormGroup>
                     <p className="profile-qtitle">First Name</p>
-                    <FormControl className="profile-input" ref="userFirstName"/>
+                    <FormControl className="profile-input" ref="userFirstName" value={this.state.user && this.state.user.fname ? this.state.user.fname : undefined} />
                 </FormGroup>
                 <FormGroup>
                     <p className="profile-qtitle">Last Name</p>
-                    <FormControl className="profile-input" ref="userLastName"/>
+                    <FormControl className="profile-input" ref="userLastName" value={this.state.user && this.state.user.lname ? this.state.user.lname : undefined} />
                 </FormGroup>
                 <FormGroup>
-                    <p className="profile-qtitle">Email Address to Communicate</p>
-                    <FormControl className="profile-input" ref="userEmail" type="email"/>
+                    <p className="profile-qtitle">Email Address</p>
+                    <FormControl className="profile-input" ref="userEmail" type="email" value={this.state.user && this.state.user.email ? this.state.user.email : undefined} />
                 </FormGroup>
                 <FormGroup>
                     <p className="profile-qtitle">Phone Number</p>
-                    <FormControl className="profile-input" ref="userPhoneNum"/>
+                    <FormControl className="profile-input" ref="userPhoneNum" value={this.state.user && this.state.user.phone ? this.state.user.phone : undefined} />
                 </FormGroup>
                 <FormGroup>
                     <Button className="profile-button" type="submit">Submit Info</Button>

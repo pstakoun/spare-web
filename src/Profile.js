@@ -8,24 +8,22 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+	  fname: null,
+	  lname: null,
+	  email: null,
+	  phone: null
     };
-    firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ user: snapshot.val() }));
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ fname: snapshot.val().fname, lname: snapshot.val().lname, email: snapshot.val().email, phone: snapshot.val().phone }));
   }
 
   handleInfoChange(event) {
     event.preventDefault();
 
-    var firstName = ReactDOM.findDOMNode(this.refs.userFirstName).value.trim();
-    var lastName = ReactDOM.findDOMNode(this.refs.userLastName).value.trim();
-    var email = ReactDOM.findDOMNode(this.refs.userEmail).value.trim();
-    var phone = ReactDOM.findDOMNode(this.refs.userPhoneNum).value;
-
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
-        fname: firstName,
-        lname: lastName,
-        email: email,
-        phone: phone,
+        fname: this.state.fname.trim(),
+        lname: this.state.lname.trim(),
+        email: this.state.email.trim(),
+        phone: this.state.phone.trim(),
     });
   }
 
@@ -36,19 +34,19 @@ class Profile extends Component {
             <Form className="profile-form" onSubmit={this.handleInfoChange.bind(this)}>
                 <FormGroup>
                     <p className="profile-qtitle">First Name</p>
-                    <FormControl className="profile-input" ref="userFirstName" value={this.state.user && this.state.user.fname ? this.state.user.fname : undefined} />
+                    <FormControl className="profile-input" ref="userFirstName" value={this.state.fname ? this.state.fname : undefined} onChange={(event) => this.setState({fname: event.target.value})} />
                 </FormGroup>
                 <FormGroup>
                     <p className="profile-qtitle">Last Name</p>
-                    <FormControl className="profile-input" ref="userLastName" value={this.state.user && this.state.user.lname ? this.state.user.lname : undefined} />
+                    <FormControl className="profile-input" ref="userLastName" value={this.state.lname ? this.state.lname : undefined} onChange={(event) => this.setState({lname: event.target.value})} />
                 </FormGroup>
                 <FormGroup>
                     <p className="profile-qtitle">Email Address</p>
-                    <FormControl className="profile-input" ref="userEmail" type="email" value={this.state.user && this.state.user.email ? this.state.user.email : undefined} />
+                    <FormControl className="profile-input" ref="userEmail" type="email" value={this.state.email ? this.state.email : undefined} onChange={(event) => this.setState({email: event.target.value})} />
                 </FormGroup>
                 <FormGroup>
                     <p className="profile-qtitle">Phone Number</p>
-                    <FormControl className="profile-input" ref="userPhoneNum" value={this.state.user && this.state.user.phone ? this.state.user.phone : undefined} />
+                    <FormControl className="profile-input" ref="userPhoneNum" value={this.state.phone ? this.state.phone : undefined} onChange={(event) => this.setState({phone: event.target.value})} />
                 </FormGroup>
                 <FormGroup>
                     <Button className="profile-button" type="submit">Submit Info</Button>

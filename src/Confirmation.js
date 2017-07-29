@@ -4,8 +4,8 @@ import { Button } from 'react-bootstrap';
 class Confirmation extends Component {
   render() {
     return (
-      <div>
-        <h1>{JSON.stringify(this.props.space)}</h1>
+      <div style={{ paddingTop: `50px` }}>
+        <h1>Confirm</h1>
 	    <Button onClick={() => this.props.selectSpace(null)}>Cancel</Button>
       </div>
     );

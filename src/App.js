@@ -60,9 +60,9 @@ class App extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                   <Nav pullRight>
-                    <NavItem eventKey={1}>Map</NavItem>
-                    <NavItem eventKey={2}>Profile</NavItem>
-                    <NavItem eventKey={3}>Add a Space</NavItem>
+                    <NavItem eventKey={1}>Find a Space</NavItem>
+                    <NavItem eventKey={2}>Add a Space</NavItem>
+                    <NavItem eventKey={3}>Profile</NavItem>
                     <NavItem eventKey={4}>Preferences</NavItem>
                   </Nav>
                 </Navbar.Collapse>
@@ -72,10 +72,10 @@ class App extends Component {
 				{this.state.space ? <Confirmation space={this.state.space} selectSpace={this.selectSpace.bind(this)} /> : <Spaces selectSpace={this.selectSpace.bind(this)} />}
                 </Tab.Pane>
                 <Tab.Pane eventKey={2}>
-                  <Profile />
+                  <AddSpace />
                 </Tab.Pane>
                 <Tab.Pane eventKey={3}>
-                  <AddSpace />
+                  <Profile />
                 </Tab.Pane>
                 <Tab.Pane eventKey={4}>
                   <Preferences />

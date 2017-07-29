@@ -5,7 +5,7 @@ import * as firebase from 'firebase';
 class SpaceOverlay extends Component {
   handleImg() {
     firebase.storage().refFromURL(this.props.space.photoURL).getDownloadURL().then(function(url) {
-      document.querySelector('img').src = url;
+      document.querySelector('.space-overlay').src = url;
     }).catch(function(error) {
       console.error(error);
     });
@@ -19,7 +19,7 @@ class SpaceOverlay extends Component {
     {this.handleImg()}
     return (
       <Panel>
-        <img className="img-responsive center-block" />
+        <img className="img-responsive center-block space-overlay" style={{ width: `500px` }} />
 		<Button onClick={this.handleGo.bind(this)}>Go</Button>
       </Panel>
     );

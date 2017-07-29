@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import Payment from './Payment';
 import SpaceDetails from './SpaceDetails';
 
 class Confirmation extends Component {
@@ -11,7 +12,7 @@ class Confirmation extends Component {
             <h1>Confirm</h1>
 		  </Col>
 		  <Col sm={6}>
-		    <h2>Payment</h2>
+		    <Payment />
 		  </Col>
 		  <Col sm={6}>
 		    <SpaceDetails space={this.props.space} />

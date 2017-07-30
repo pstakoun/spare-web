@@ -19,8 +19,12 @@ class AddSpace extends Component {
       address: null,
       isUploading: false,
       progress: 0,
-      spaceId: RandomString.generate(28)
+      spaceId: RandomString.generate(28),
+      phoneNum: null
     };
+
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ phoneNum: snapshot.val().phone}));
+
   }
 
   handleUploadStart = () => this.setState({isUploading: true, progress: 0});
@@ -74,7 +78,8 @@ class AddSpace extends Component {
         has_insurance: this.refs.has_insurance.checked,
         user: firebase.auth().currentUser.uid,
         photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg",
-        spaceId: this.state.spaceId
+        spaceId: this.state.spaceId,
+        contactNum: this.state.phoneNum
     });
 
     geoFire.set(this.state.spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {

@@ -6,14 +6,18 @@ class History extends Component {
   constructor(props) {
     super(props);
     this.state = {
-	  trans: {}
+	  trans: null
     };
+    firebase.database().ref('trans').orderByChild('userId').equalTo(firebase.auth().currentUser.uid).on('value', (snapshot) => {
+      this.setState({ trans: snapshot.val() });
+    });
   }
 
   render() {
     return (
         <div style={{ paddingTop: `50px` }}>
             <h4>HISTORY</h4>
+            <p>{JSON.stringify(this.state.trans)}</p>
         </div>
     );
   }

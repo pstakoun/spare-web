@@ -20,7 +20,11 @@
     "react-phone-number-input": "^0.11.11",
     "react-places-autocomplete": "^5.3.1",
     "react-scripts": "^1.0.10",
+<<<<<<< HEAD
     "react-time": "^4.3.0"
+=======
+    "react-stripe-elements": "0.0.6"
+>>>>>>> 2a6382ee0e75a45d38514d2ab2e63296cfa011f3
   },
   "scripts": {
     "start": "react-scripts start",

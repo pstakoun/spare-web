@@ -6,6 +6,7 @@ class Checkout extends Component {
     event.preventDefault();
     this.props.stripe.createToken({name: 'Peter Stakoun'}).then(({token}) => {
       console.log('Received Stripe token:', token);
+      this.props.handlePayment(token);
     });
   }
 

@@ -73,7 +73,8 @@ class AddSpace extends Component {
         has_lock: this.refs.has_lock.checked,
         has_insurance: this.refs.has_insurance.checked,
         user: firebase.auth().currentUser.uid,
-        photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg"
+        photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg",
+        spaceId: this.state.spaceId
     });
 
     geoFire.set(this.state.spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {

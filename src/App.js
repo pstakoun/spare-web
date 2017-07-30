@@ -3,6 +3,7 @@ import { Grid, Nav, Navbar, NavItem, Row, Tab } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import Landing from './Landing';
 import Preferences from './Preferences';
+import History from './History';
 import Profile from './Profile';
 import FindSpace from './FindSpace';
 import AddSpace from './AddSpace';
@@ -62,8 +63,9 @@ class App extends Component {
                   <Nav pullRight>
                     <NavItem eventKey={1}>Find a Space</NavItem>
                     <NavItem eventKey={2}>Add a Space</NavItem>
-                    <NavItem eventKey={3}>Profile</NavItem>
-                    <NavItem eventKey={4}>Preferences</NavItem>
+                    <NavItem eventKey={3}>History</NavItem>
+                    <NavItem eventKey={4}>Profile</NavItem>
+                    <NavItem eventKey={5}>Preferences</NavItem>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>
@@ -75,9 +77,12 @@ class App extends Component {
                   <AddSpace />
                 </Tab.Pane>
                 <Tab.Pane eventKey={3}>
-                  <Profile />
+                  <History />
                 </Tab.Pane>
                 <Tab.Pane eventKey={4}>
+                  <Profile />
+                </Tab.Pane>
+                <Tab.Pane eventKey={5}>
                   <Preferences />
                 </Tab.Pane>
               </Tab.Content>

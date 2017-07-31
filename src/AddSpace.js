@@ -15,7 +15,7 @@ class AddSpace extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: null,
+      location: this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 },
       address: null,
       isUploading: false,
       progress: 0,
@@ -157,8 +157,8 @@ class AddSpace extends Component {
         </Col>
         <Col xs={12} md={6}>
           <SpareMap
-            containerElement={ <div style={{ height: '400px' }} /> }
-            mapElement={ <div style={{ height: '400px' }} /> }
+            containerElement={ <div style={{ height: '80vh' }} /> }
+            mapElement={ <div style={{ height: '80vh' }} /> }
           />
         </Col>
       </Row>

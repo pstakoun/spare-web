@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const stripe = require('stripe')('sk_test_nrjKPBtN58e7Nr1xpzD5alQs');
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
@@ -14,10 +14,10 @@ app.get('*', (req, res) => {
 
 app.post('/charge', (req, res) => {
   let amount = 500;
+  console.log(req.body);
 
   stripe.customers.create({
-     email: req.body.stripeEmail,
-    source: req.body.stripeToken
+    source: req.body.stripeToken.id
   })
   .then(customer =>
     stripe.charges.create({

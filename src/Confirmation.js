@@ -10,7 +10,7 @@ import moment from 'moment';
 
 class Confirmation extends Component {
   handlePayment(token) {
-    $.post('/charge', { stripeEmail: 'test@test.test', stripeToken: token }, (data) => {
+    $.post('/charge', { stripeToken: token }, (data) => {
       firebase.database().ref('trans/' + RandomString.generate(28)).set({
         time: moment().format(),
         userId: firebase.auth().currentUser.uid,

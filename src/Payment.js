@@ -5,7 +5,7 @@ import Checkout from './Checkout';
 class Payment extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_live_944zN2eKb5qols09SnwybEz5">
+      <StripeProvider apiKey="pk_test_oy3aPSQm5Bj35CCnpqAuQ8QI">
         <Elements>
           <Checkout handlePayment={this.props.handlePayment.bind(this)} />
         </Elements>

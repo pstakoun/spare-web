@@ -14,8 +14,6 @@ app.get('*', (req, res) => {
 
 app.post('/charge', (req, res) => {
   let amount = 500;
-  console.log(req.body);
-
   stripe.customers.create({
     source: req.body.stripeToken.id
   })

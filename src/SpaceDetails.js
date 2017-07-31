@@ -3,6 +3,7 @@ import { Button, Panel } from 'react-bootstrap';
 import * as firebase from 'firebase';
 
 class SpaceDetails extends Component {
+  
   handleImg() {
     firebase.storage().refFromURL(this.props.space.photoURL).getDownloadURL().then(function(url) {
       document.querySelector('img').src = url;
@@ -30,13 +31,19 @@ class SpaceDetails extends Component {
 
     {this.handleImg()}
     return (
-      <Panel>
+      <Panel className="spaceinfo">
+        <h4> Your Order Confirmation </h4>
         <img className="img-responsive center-block" />
 		    <p>{this.props.space.address}</p>
-        {has_lock_local}
-        {has_insurance_local}
-        {all_access_local}
-        {climate_control_local}
+        <hr/>
+        <ul>
+          {has_lock_local}
+          {has_insurance_local}
+          {all_access_local}
+          {climate_control_local}
+        </ul>
+        <hr/>
+
       </Panel>
     );
   }

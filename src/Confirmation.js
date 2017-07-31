@@ -26,7 +26,7 @@ class Confirmation extends Component {
 		  <Col sm={6}>
 		    <Payment handlePayment={this.handlePayment.bind(this)} />
 		  </Col>
-		  <Col sm={6}>
+		  <Col sm={4}>
 		    <SpaceDetails space={this.props.space} />
 		  </Col>
 		  <Col lg={12}>

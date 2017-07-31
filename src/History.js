@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import './App.css';
+import TransactionDetails from './TransactionDetails';
 
 class History extends Component {
   constructor(props) {
@@ -13,11 +14,19 @@ class History extends Component {
     });
   }
 
+  renderTransactions() {
+    var arr = [];
+    for (var key in this.state.trans) {
+      arr.push(<TransactionDetails trans={this.state.trans[key]} />);
+    }
+    return arr;
+  }
+
   render() {
     return (
         <div style={{ paddingTop: `50px` }}>
             <h4>HISTORY</h4>
-            <p>{JSON.stringify(this.state.trans)}</p>
+            {this.renderTransactions()}
         </div>
     );
   }

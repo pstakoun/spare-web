@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import Payment from './Payment';
@@ -8,11 +10,13 @@ import moment from 'moment';
 
 class Confirmation extends Component {
   handlePayment(token) {
-    firebase.database().ref('trans/' + RandomString.generate(28)).set({
-      time: moment().format(),
-      userId: firebase.auth().currentUser.uid,
-      spaceId: this.props.space.spaceId,
-      paymentToken: token
+    $.post('/charge', { stripeEmail: 'test@test.test', stripeToken: token }, (data) => {
+      firebase.database().ref('trans/' + RandomString.generate(28)).set({
+        time: moment().format(),
+        userId: firebase.auth().currentUser.uid,
+        spaceId: this.props.space.spaceId,
+        paymentToken: token
+      });
     });
   }
 

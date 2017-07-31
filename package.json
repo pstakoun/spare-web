@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
     "firebase": "^4.1.5",
     "geofire": "^4.1.2",
     "jquery": "^3.2.1",
@@ -20,12 +22,15 @@
     "react-phone-number-input": "^0.11.11",
     "react-places-autocomplete": "^5.3.1",
     "react-scripts": "^1.0.10",
-    "react-stripe-elements": "0.0.6"
+    "react-stripe-elements": "0.0.6",
+    "stripe": "^4.23.1"
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:server": "node server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "bs": "npm run build && npm run start:server"
   }
 }

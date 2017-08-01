@@ -21,18 +21,23 @@ app.get('*', (req, res) => {
 });
 
 app.post('/charge', (req, res) => {
-  let amount = 500;
-  stripe.customers.create({
-    source: req.body.stripeToken.id
-  })
-  .then(customer =>
-    stripe.charges.create({
-      amount,
-      description: "Sample Charge",
-         currency: "usd",
-         customer: customer.id
-    }))
-  .then(charge => res.send(charge));
+  firebase.database().ref('spaces/' + req.body.spaceId).once('value')
+  .then(snapshot => {
+    // TODO calculations
+    var size = snapshot.val().size;
+    var amount = size + 50;
+    stripe.customers.create({
+      source: req.body.stripeToken.id
+    })
+    .then(customer =>
+      stripe.charges.create({
+        amount,
+        description: "Sample Charge",
+           currency: "usd",
+           customer: customer.id
+      }))
+    .then(charge => res.send(charge));
+  });
 });
 
 module.exports = app;

@@ -1,12 +1,20 @@
 const express = require('express');
-const path = require('path');
-
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser')
+const firebase = require('firebase');
 const stripe = require('stripe')('sk_test_nrjKPBtN58e7Nr1xpzD5alQs');
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.use(bodyParser.urlencoded({ extended: true }))
+
+var config = {
+  apiKey: "AIzaSyDISmmf3W3F_1pAhcZw804Zny7w2ApYjJ8",
+  databaseURL: "https://decentralizedps.firebaseio.com",
+  authDomain: "decentralizedps.firebaseapp.com",
+  storageBucket: "decentralizedps.appspot.com"
+};
+firebase.initializeApp(config);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));

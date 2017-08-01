@@ -6,6 +6,7 @@ import Preferences from './Preferences';
 import History from './History';
 import Profile from './Profile';
 import FindSpace from './FindSpace';
+import MySpaces from './MySpaces';
 import AddSpace from './AddSpace';
 import Confirmation from './Confirmation';
 
@@ -14,7 +15,8 @@ class App extends Component {
     super(props);
     this.state = {
       user: null,
-      space: null
+      space: null,
+      addingSpace: false
     };
     if (firebase.apps.length === 0) {
       var config = {
@@ -62,7 +64,7 @@ class App extends Component {
                 <Navbar.Collapse>
                   <Nav pullRight>
                     <NavItem eventKey={1}>Find a Space</NavItem>
-                    <NavItem eventKey={2}>Add a Space</NavItem>
+                    <NavItem eventKey={2}>My Spaces</NavItem>
                     <NavItem eventKey={3}>History</NavItem>
                     <NavItem eventKey={4}>Profile</NavItem>
                     <NavItem eventKey={5}>Preferences</NavItem>
@@ -74,7 +76,11 @@ class App extends Component {
 				{this.state.space ? <Confirmation space={this.state.space} selectSpace={this.selectSpace.bind(this)} /> : <FindSpace selectSpace={this.selectSpace.bind(this)} />}
                 </Tab.Pane>
                 <Tab.Pane eventKey={2}>
-                  <AddSpace />
+                  {this.state.addingSpace ? (
+                    <AddSpace cancelAdd={() => this.setState({ addingSpace: false })} />
+                  ) : (
+                    <MySpaces handleAdd={() => this.setState({ addingSpace: true })} />
+                  )}
                 </Tab.Pane>
                 <Tab.Pane eventKey={3}>
                   <History />

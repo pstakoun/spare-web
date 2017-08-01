@@ -152,6 +152,7 @@ class AddSpace extends Component {
             </FormGroup>
             <FormGroup>
               <Button className="profile-button" type="submit">Submit Info</Button>
+              <Button onClick={this.props.cancelAdd}>Cancel</Button>
             </FormGroup>
           </Form>
         </Col>

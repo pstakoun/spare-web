@@ -8,10 +8,10 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-	  fname: null,
-	  lname: null,
-	  email: null,
-	  phone: null
+  	  fname: null,
+  	  lname: null,
+  	  email: null,
+  	  phone: null
     };
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ fname: snapshot.val().fname, lname: snapshot.val().lname, email: snapshot.val().email, phone: snapshot.val().phone }));
   }
@@ -24,6 +24,7 @@ class Profile extends Component {
         lname: this.state.lname.trim(),
         email: this.state.email.trim(),
         phone: this.state.phone.trim(),
+        addInfo: true
     });
   }
 

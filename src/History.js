@@ -9,6 +9,9 @@ class History extends Component {
     this.state = {
 	  trans: null
     };
+  }
+
+  componentDidMount() {
     firebase.database().ref('trans').orderByChild('userId').equalTo(firebase.auth().currentUser.uid).on('value', (snapshot) => {
       this.setState({ trans: snapshot.val() });
     });

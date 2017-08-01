@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, FormControl, Checkbox, Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
@@ -152,7 +153,7 @@ class AddSpace extends Component {
             </FormGroup>
             <FormGroup>
               <Button className="profile-button" type="submit">Submit Info</Button>
-              <Button onClick={this.props.cancelAdd}>Cancel</Button>
+              <Link to='/spaces' className="btn btn-default">Cancel</Link>
             </FormGroup>
           </Form>
         </Col>

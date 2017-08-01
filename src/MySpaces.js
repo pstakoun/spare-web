@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import './App.css';
 import SpaceDetails from './SpaceDetails';
@@ -10,6 +11,9 @@ class MySpaces extends Component {
     this.state = {
 	  spaces: null
     };
+  }
+
+  componentDidMount() {
     firebase.database().ref('spaces').orderByChild('user').equalTo(firebase.auth().currentUser.uid).on('value', (snapshot) => {
       this.setState({ spaces: snapshot.val() });
     });
@@ -28,7 +32,7 @@ class MySpaces extends Component {
         <div style={{ paddingTop: `50px` }}>
             <h4>Spaces</h4>
             {this.renderSpaces()}
-            <Button onClick={this.props.handleAdd}>Add</Button>
+            <Link to='/spaces/add' className="btn btn-default">Add</Link>
         </div>
     );
   }

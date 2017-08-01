@@ -143,7 +143,7 @@ class Landing extends Component {
             <Col xs={6} md={2}>
             </Col>
         </Row>
-        <Login handleClose = {this.handleClose.bind(this)} activeKey = {this.state.loginKey} />
+        <Login handleClose={this.handleClose.bind(this)} activeKey={this.state.loginKey} />
       </div>
     );
   }

@@ -8,6 +8,9 @@ class TransactionDetails extends Component {
     this.state = {
       space: null
     }
+  }
+
+  componentDidMount() {
     firebase.database().ref('spaces/' + this.props.trans.spaceId).on('value', function(snapshot) {
       this.setState({ space: snapshot.val() });
     }.bind(this));

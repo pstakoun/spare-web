@@ -13,6 +13,9 @@ class Profile extends Component {
   	  email: null,
   	  phone: null
     };
+  }
+
+  componentDidMount() {
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ fname: snapshot.val().fname, lname: snapshot.val().lname, email: snapshot.val().email, phone: snapshot.val().phone }));
   }
 

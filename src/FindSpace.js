@@ -128,8 +128,26 @@ class FindSpace extends Component {
       <div style={{ height: `100vh`, paddingTop: `50px` }}>
         <div className="filters">
           <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
-          <DatePicker selected={this.state.startDate} onChange={(date) => {this.setState({ startDate: date }); this.props.setStartDate(date);}} />
-          <DatePicker selected={this.state.endDate} onChange={(date) => {this.setState({ endDate: date }); this.props.setEndDate(date);}} />
+          <DatePicker
+            selected={this.state.startDate}
+            onChange={(date) => {
+              this.setState({ startDate: date });
+              this.props.setStartDate(date);
+              if (this.state.endDate.diff(date) < 0) {
+                this.setState({ endDate: date });
+                this.props.setEndDate(date);
+              }
+            }}
+            minDate={moment()}
+          />
+          <DatePicker
+            selected={this.state.endDate}
+            onChange={(date) => {
+              this.setState({ endDate: date });
+              this.props.setEndDate(date);
+            }}
+            minDate={this.state.startDate}
+          />
           <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
           <Button onClick={this.handleGo.bind(this)}>Go</Button>
 		</div>

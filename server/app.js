@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser')
 const firebase = require('firebase');
+const moment = require('moment');
 const stripe = require('stripe')('sk_test_nrjKPBtN58e7Nr1xpzD5alQs');
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
@@ -25,8 +26,10 @@ app.post('/charge', (req, res) => {
   .then(snapshot => {
     var size = snapshot.val().size;
     var sizeMult = size == 0 ? 1 : size == 1 ? 2.2 : 4.3;
-    var numDays = 1; // TODO
-    var amount = sizeMult * numDays - numDays / 7;
+    var startDate = moment(req.body.startDate);
+    var endDate = moment(req.body.endDate);
+    var numDays = endDate.diff(startDate, 'days') + 1;
+    var amount = Math.round((sizeMult - 1/7) * numDays * 100);
     stripe.customers.create({
       source: req.body.stripeToken.id
     })

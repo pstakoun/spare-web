@@ -10,7 +10,7 @@ import moment from 'moment';
 
 class Confirmation extends Component {
   handlePayment(token) {
-    $.post('/charge', { stripeToken: token, spaceId: this.props.space.spaceId }, (data) => {
+    $.post('/charge', { stripeToken: token, spaceId: this.props.space.spaceId, startDate: this.props.startDate.format(), endDate: this.props.endDate.format() }, (data) => {
       if (data.status === 'succeeded') {
         firebase.database().ref('trans/' + RandomString.generate(28)).set({
           time: moment().format(),

@@ -11,6 +11,7 @@ import FindSpace from './FindSpace';
 import MySpaces from './MySpaces';
 import AddSpace from './AddSpace';
 import Confirmation from './Confirmation';
+import EditSpace from './EditSpace';
 
 class App extends Component {
   constructor(props) {
@@ -100,6 +101,7 @@ class App extends Component {
               <Route exact path='/confirm' render={() => <Confirmation space={this.state.space} startDate={this.state.startDate} endDate={this.state.endDate} deselectSpace={this.deselectSpace.bind(this)} />} />
               <Route exact path='/spaces' component={MySpaces} />
               <Route exact path='/spaces/add' component={AddSpace} />
+              <Route exact path='/spaces/edit' component={EditSpace} />
               <Route exact path='/history' component={History} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/preferences' component={Preferences} />

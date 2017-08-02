@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import Payment from './Payment';
 import SpaceDetails from './SpaceDetails';
 import * as firebase from 'firebase';
@@ -9,6 +10,13 @@ import RandomString from 'randomstring';
 import moment from 'moment';
 
 class Confirmation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      paymentCompleted: false
+    };
+  }
+
   handlePayment(token) {
     $.post('/charge', { stripeToken: token, spaceId: this.props.space.spaceId, startDate: this.props.startDate.format(), endDate: this.props.endDate.format() }, (data) => {
       if (data.status === 'succeeded') {
@@ -17,7 +25,7 @@ class Confirmation extends Component {
           userId: firebase.auth().currentUser.uid,
           spaceId: this.props.space.spaceId,
           charge: data
-        });
+        }, () => this.setState({ paymentCompleted: true }));
       }
     });
   }
@@ -25,6 +33,7 @@ class Confirmation extends Component {
   render() {
     return (
       <div style={{ paddingTop: `50px` }}>
+        {this.state.paymentCompleted && <Redirect to='/history' push />}
 	    <Row>
 		  <Col lg={12}>
             <h1>Confirm</h1>

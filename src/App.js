@@ -71,7 +71,7 @@ class App extends Component {
             <Navbar collapseOnSelect fixedTop fluid>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <a href="#">S</a>
+                  <Link to='/'>S</Link>
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>

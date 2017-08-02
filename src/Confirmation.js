@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Payment from './Payment';
 import SpaceDetails from './SpaceDetails';
 import * as firebase from 'firebase';
@@ -33,6 +33,7 @@ class Confirmation extends Component {
   render() {
     return (
       <div style={{ paddingTop: `50px` }}>
+        {this.props.space ? null : <Redirect to='/' push />}
         {this.state.paymentCompleted && <Redirect to='/history' push />}
 	    <Row>
 		  <Col lg={12}>
@@ -45,7 +46,7 @@ class Confirmation extends Component {
 		    <SpaceDetails space={this.props.space} />
 		  </Col>
 		  <Col lg={12}>
-	        <Button onClick={() => this.props.selectSpace(null)}>Cancel</Button>
+	        <Link to='/' onClick={this.props.deselectSpace.bind(this)} className='btn btn-default'>Cancel</Link>
 		  </Col>
 		</Row>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Nav, Navbar, NavItem, Row, Tab } from 'react-bootstrap';
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Redirect, Route, Switch } from 'react-router-dom'
 import * as firebase from 'firebase';
 import moment from 'moment';
 import Landing from './Landing';
@@ -19,9 +19,10 @@ class App extends Component {
       user: null,
       space: null,
       startDate: moment(),
-      endDate: moment()
+      endDate: moment(),
+      confirmation: false
     };
-    if (firebase.apps.length === 0) {
+   if (firebase.apps.length === 0) {
       var config = {
         apiKey: "AIzaSyDISmmf3W3F_1pAhcZw804Zny7w2ApYjJ8",
         databaseURL: "https://decentralizedps.firebaseio.com",
@@ -59,13 +60,22 @@ class App extends Component {
 
   selectSpace(newSpace) {
     this.setState({
-      space: newSpace
+      space: newSpace,
+      confirmation: true
+    });
+  }
+
+  deselectSpace() {
+    this.setState({
+      space: null,
+      confirmation: false
     });
   }
 
   render() {
     return (
       <Grid fluid>
+        {this.state.user && this.state.confirmation && <Redirect to='/confirm' push />}
         {this.state.user ? (
           <Row>
             <Navbar collapseOnSelect fixedTop fluid>
@@ -86,7 +96,8 @@ class App extends Component {
               </Navbar.Collapse>
             </Navbar>
             <Switch>
-              <Route exact path='/' render={() => this.state.space ? <Confirmation space={this.state.space} startDate={this.state.startDate} endDate={this.state.endDate} selectSpace={this.selectSpace.bind(this)} /> : <FindSpace setStartDate={this.setStartDate.bind(this)} setEndDate={this.setEndDate.bind(this)} selectSpace={this.selectSpace.bind(this)} />} />
+              <Route exact path='/' render={() => <FindSpace setStartDate={this.setStartDate.bind(this)} setEndDate={this.setEndDate.bind(this)} selectSpace={this.selectSpace.bind(this)} />} />
+              <Route exact path='/confirm' render={() => <Confirmation space={this.state.space} startDate={this.state.startDate} endDate={this.state.endDate} deselectSpace={this.deselectSpace.bind(this)} />} />
               <Route exact path='/spaces' component={MySpaces} />
               <Route exact path='/spaces/add' component={AddSpace} />
               <Route exact path='/history' component={History} />

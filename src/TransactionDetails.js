@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Panel, Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
 class TransactionDetails extends Component {

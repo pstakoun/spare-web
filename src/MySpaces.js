@@ -22,7 +22,7 @@ class MySpaces extends Component {
   renderSpaces() {
     var arr = [];
     for (var key in this.state.spaces) {
-      arr.push(<SpaceDetails space={this.state.spaces[key]} />);
+      arr.push(<SpaceDetails space={this.state.spaces[key]} /><Link to='/spaces/edit' className="btn btn-default">Edit</Link>);
     }
     return arr;
   }

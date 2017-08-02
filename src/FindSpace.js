@@ -52,10 +52,10 @@ class FindSpace extends Component {
   }
 
   renderMarkers() {
-    var arr = [<Marker defaultPosition={this.state.location} title="current" />];
+    var arr = [<Marker icon={{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/600px-000080_Navy_Blue_Square.svg.png', size: new google.maps.Size(20, 20) }} defaultPosition={this.state.location} title="current" />];
     for (var key in this.state.spaces) {
       if (this.state.size <= this.state.spaces[key].size) {
-        arr.push(<Marker defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
+        arr.push(<Marker icon={{ url: 'http://i.imgur.com/9yILi61.png', size: new google.maps.Size(20, 20) }} defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
       }
     }
     return arr;
@@ -107,7 +107,12 @@ class FindSpace extends Component {
 
   render() {
     var SpareMap = withGoogleMap(props => (
-      <GoogleMap ref={this.onMapLoad.bind(this)} defaultZoom={14} defaultCenter={this.state.location}>
+      <GoogleMap
+        ref={this.onMapLoad.bind(this)}
+        defaultZoom={14}
+        defaultCenter={this.state.location}
+        defaultOptions={{ styles: [{"elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#f5f5f5"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#dadada"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#c9c9c9"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]}] }}
+      >
         {this.state.activeSpace &&
           <OverlayView
             position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}

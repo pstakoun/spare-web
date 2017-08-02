@@ -11,10 +11,6 @@ class SpaceOverlay extends Component {
     });
   }
 
-  handleGo(e) {
-    this.props.selectSpace(this.props.space);
-  }
-
   render() {
 
     let has_lock_local, has_insurance_local, all_access_local, climate_control_local = null;
@@ -42,7 +38,7 @@ class SpaceOverlay extends Component {
         {has_insurance_local}
         {all_access_local}
         {climate_control_local}
-    		<Button onClick={this.handleGo.bind(this)}>Go</Button>
+    		<Button onClick={() => this.props.selectSpace(this.props.space)}>Go</Button>
       </Panel>
     );
   }

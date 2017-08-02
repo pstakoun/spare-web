@@ -11,13 +11,12 @@ import moment from 'moment';
 class Confirmation extends Component {
   handlePayment(token) {
     $.post('/charge', { stripeToken: token, spaceId: this.props.space.spaceId }, (data) => {
-      alert(data.status);
       if (data.status === 'succeeded') {
         firebase.database().ref('trans/' + RandomString.generate(28)).set({
           time: moment().format(),
           userId: firebase.auth().currentUser.uid,
           spaceId: this.props.space.spaceId,
-          paymentToken: token
+          charge: data
         });
       }
     });

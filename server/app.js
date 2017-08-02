@@ -23,9 +23,10 @@ app.get('*', (req, res) => {
 app.post('/charge', (req, res) => {
   firebase.database().ref('spaces/' + req.body.spaceId).once('value')
   .then(snapshot => {
-    // TODO calculations
     var size = snapshot.val().size;
-    var amount = size + 50;
+    var sizeMult = size == 0 ? 1 : size == 1 ? 2.2 : 4.3;
+    var numDays = 1; // TODO
+    var amount = sizeMult * numDays - numDays / 7;
     stripe.customers.create({
       source: req.body.stripeToken.id
     })

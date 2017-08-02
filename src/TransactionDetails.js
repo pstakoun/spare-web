@@ -18,10 +18,12 @@ class TransactionDetails extends Component {
 
   render() {
     return (
-      <Panel>
-        <h2>{this.state.space ? this.state.space.address : null}</h2>
-        <h2>{this.props.trans.time}</h2>
-      </Panel>
+      <tr>
+        <th>{this.state.space ? this.state.space.address : null}</th>
+        <th>{this.state.space ? this.state.space.size : null}</th>
+        <th>{this.props.trans.time}</th>
+        <th>{this.props.trans.paymentToken.card.brand} {this.props.trans.paymentToken.card.last4}</th>
+      </tr>
     );
   }
 }

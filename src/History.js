@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import './App.css';
+import { Table } from 'react-bootstrap';
 import TransactionDetails from './TransactionDetails';
 
 class History extends Component {
@@ -27,10 +28,22 @@ class History extends Component {
 
   render() {
     return (
-        <div style={{ paddingTop: `50px` }}>
-            <h4>HISTORY</h4>
+      <div style={{ paddingTop: `50px` }}>
+        <h4>HISTORY</h4>
+        <Table responsive hover>
+          <thead>
+            <tr>
+              <th>Address</th>
+              <th>Size</th>
+              <th>Date</th>
+              <th>Payment Method</th>
+            </tr>
+          </thead>
+          <tbody>
             {this.renderTransactions()}
-        </div>
+          </tbody>
+        </Table>
+      </div>
     );
   }
 }

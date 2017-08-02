@@ -13,6 +13,7 @@
     "react": "^15.6.1",
     "react-alertify-js": "0.0.1",
     "react-bootstrap": "^0.31.1",
+    "react-bootstrap-table": "^3.5.0",
     "react-datepicker": "^0.52.0",
     "react-dom": "^15.6.1",
     "react-firebase-file-uploader": "^2.2.1",

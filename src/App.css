@@ -276,6 +276,21 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
+.transPanel {
+	width: 70vw;
+	margin-left: 15vw;
+	margin-right: 15vw;
+	text-align: left;
+	padding: 5px 5px 5px 5px;
+}
+.transPanel .p-title {
+	font-weight: 400 !important;
+	font-size: 1.3em;
+}
+.transPanel .p-body {
+	font-size: 1.3em;
+	font-weight: 200;
+}
 /* GEOSUGGEST */
 .geosuggest {
   width: 500px;

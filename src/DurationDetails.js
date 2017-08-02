@@ -4,6 +4,10 @@ import * as firebase from 'firebase';
 
 class DurationDetails extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Panel className="spaceinfo">

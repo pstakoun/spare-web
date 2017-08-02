@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import './App.css';
-import { Table } from 'react-bootstrap';
+import { Table, Col } from 'react-bootstrap';
 import TransactionDetails from './TransactionDetails';
 
 class History extends Component {
   constructor(props) {
     super(props);
     this.state = {
-	  trans: null
+	    trans: null
     };
   }
 
@@ -21,7 +21,8 @@ class History extends Component {
   renderTransactions() {
     var arr = [];
     for (var key in this.state.trans) {
-      arr.push(<TransactionDetails trans={this.state.trans[key]} />);
+      arr.push(<Col md={12}><TransactionDetails trans={this.state.trans[key]} /></Col>);
+      setTimeout(1000);
     }
     return arr;
   }
@@ -30,19 +31,7 @@ class History extends Component {
     return (
       <div style={{ paddingTop: `50px` }}>
         <h4>HISTORY</h4>
-        <Table responsive hover>
-          <thead>
-            <tr>
-              <th>Address</th>
-              <th>Size</th>
-              <th>Date</th>
-              <th>Payment Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderTransactions()}
-          </tbody>
-        </Table>
+        {this.renderTransactions()}
       </div>
     );
   }

@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
-import { Panel, Col, Row } from 'react-bootstrap';
+import { Button, Panel, Col } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-class TransactionDetails extends Component {
+class SpaceListing extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      space: null,
       location: null
     }
   }
 
   componentDidMount() {
-    firebase.database().ref('spaces/' + this.props.trans.spaceId).on('value', function(snapshot) {
+    firebase.database().ref('spaces/' + this.props.space.spaceId).on('value', function(snapshot) {
       this.setState({ space: snapshot.val(), location: { lat: snapshot.val().lat, lng: snapshot.val().lng}});
     }.bind(this));
   }
 
   handleImg() {
-    firebase.storage().refFromURL("gs://decentralizedps.appspot.com/images/"+ this.props.trans.spaceId + ".jpg").getDownloadURL().then(function(url) {
-      document.querySelector('.space-overlay').src = url;
-      console.log("succeeded" + url);
+    firebase.storage().refFromURL(this.props.space.photoURL).getDownloadURL().then(function(url) {
+      document.querySelector('img').src = url;
     }).catch(function(error) {
       console.error(error);
     });
   }
 
   renderLocation() {
-    return [<Marker defaultPosition={this.state.location} title="current" />];
+    return [<Marker defaultPosition={this.state.location} title="" />];
   }
 
   render() {
@@ -43,42 +42,51 @@ class TransactionDetails extends Component {
       </GoogleMap>
     ));
 
-    let size = null;
+    let has_lock_local, has_insurance_local, all_access_local, climate_control_local = null;
 
-    if ((this.state.space ? this.state.space.size : null) == 0){
-      size = [<p className="p-body">Small</p>];
-    } else if ((this.state.space ? this.state.space.size : null) == 1) {
-      size = [<p className="p-body">Medium</p>];
-    } else if ((this.state.space ? this.state.space.size : null) == 2) {
-      size = [<p className="p-body">Large</p>];
+    if (this.props.space.has_lock) {
+      has_lock_local = [<h5> Has Security Locks </h5>];
+    }
+    if (this.props.space.has_insurance) {
+      has_insurance_local = [<h5> Has Insurance Plans </h5>];
+    }
+    if (this.props.space.all_access) {
+      all_access_local = [<h5> 24/7 Access </h5>];
+    }
+    if (this.props.space.climate_control) {
+      climate_control_local = [<h5> Has Climate Control System </h5>];
     }
 
     return (
-      <Panel className="transPanel">
+      <div>
         <Col xs={12} md={4}>
           <SpareMap
             containerElement={ <div style={{ height: '15vw' }} /> }
             mapElement={ <div style={{ height: '15vw' }} /> }
           />
         </Col>
-        <Col xs={12} md={4}>
-          <p className="p-title">Location</p>
-          <p className="p-body">{this.state.space ? this.state.space.address : null}</p>
-          <p className="p-title">Duration</p>
-          <p className="p-title">Size</p>
-          {size}
+        <Col xs={12} md={3}>
+		      <p className="p-title">Listing Address</p>
+          <p className="p-body">{this.props.space.address}</p>
+          <Col xs={12} md={6} className="col-no-padding">
+            <p className="p-title">Type</p>
+            <p className="p-body">{this.props.space.type}</p>
+          </Col>
+          <Col xs={12} md={6} className="col-no-padding">
+            <p className="p-title">Size</p>
+            <p className="p-body">{this.props.space.size}</p>
+          </Col>
         </Col>
-        <Col xs={12} md={4}>
-          <p className="p-title">Transaction Timestamp</p>
-          <p className="p-body">{this.props.trans.time}</p>
-          <p className="p-title">Payment Method</p>
-          <p className="p-body">{this.props.trans.charge.source.brand} {this.props.trans.charge.source.last4}</p>
-          <p className="p-title">Amount</p>
-          <p className="p-body">USD {this.props.trans.charge.amount}</p>
+        <Col xs={12} md={3}>
+          <p className="p-title">Features</p>
+            {has_lock_local}
+            {has_insurance_local}
+            {all_access_local}
+            {climate_control_local}
         </Col>
-      </Panel>
+      </div>
     );
   }
 }
 
-export default TransactionDetails;
+export default SpaceListing;

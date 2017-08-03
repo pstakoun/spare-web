@@ -129,6 +129,9 @@ h3 {
 	box-shadow: none;
 	border-color: #ccc;
 }
+.btn {
+	margin-bottom: 10px;
+}
 .btn-login {
 	background-color: #59B2E0;
 	outline: none;
@@ -290,6 +293,29 @@ hr {
 .transPanel .p-body {
 	font-size: 1.3em;
 	font-weight: 200;
+}
+.listingPanel {
+	width: 70vw;
+	margin-left: 15vw;
+	margin-right: 15vw;
+	text-align: left;
+	padding: 5px 5px 5px 5px;
+}
+.listingPanel .p-title {
+	font-weight: 400 !important;
+	font-size: 1.3em;
+}
+.listingPanel .p-body {
+	font-size: 1.3em;
+	font-weight: 200;
+}
+.listingPanel h5 {
+	font-size: 1.1em;
+	font-weight: 200;
+}
+.col-no-padding {
+	padding: 0 !important;
+	margin: 0 !important;
 }
 /* GEOSUGGEST */
 .geosuggest {

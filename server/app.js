@@ -59,7 +59,7 @@ app.post('/price', (req, res) => {
     var endDate = moment(req.body.endDate);
     var numDays = endDate.diff(startDate, 'days') + 1;
 
-    res.send(getPrice(size, numDays));
+    res.send(''+getPrice(size, numDays));
   });
 });
 

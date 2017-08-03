@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, Panel } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import './App.css';
 
@@ -26,36 +26,38 @@ class Profile extends Component {
         lname: this.state.lname.trim(),
         email: this.state.email.trim(),
         phone: this.state.phone.trim(),
-        addInfo: true
+        addInfo: false
     });
   }
 
   render() {
     return (
-        <div>
-            <h4 className="profile-title">PROFILE</h4>
-            <Form className="profile-form" onSubmit={this.handleInfoChange.bind(this)}>
-                <FormGroup>
-                    <p className="profile-qtitle">First Name</p>
-                    <FormControl className="profile-input" ref="userFirstName" value={this.state.fname ? this.state.fname : undefined} onChange={(event) => this.setState({fname: event.target.value})} />
-                </FormGroup>
-                <FormGroup>
-                    <p className="profile-qtitle">Last Name</p>
-                    <FormControl className="profile-input" ref="userLastName" value={this.state.lname ? this.state.lname : undefined} onChange={(event) => this.setState({lname: event.target.value})} />
-                </FormGroup>
-                <FormGroup>
-                    <p className="profile-qtitle">Email Address</p>
-                    <FormControl className="profile-input" ref="userEmail" type="email" value={this.state.email ? this.state.email : undefined} onChange={(event) => this.setState({email: event.target.value})} />
-                </FormGroup>
-                <FormGroup>
-                    <p className="profile-qtitle">Phone Number</p>
-                    <FormControl className="profile-input" ref="userPhoneNum" value={this.state.phone ? this.state.phone : undefined} onChange={(event) => this.setState({phone: event.target.value})} />
-                </FormGroup>
-                <FormGroup>
-                    <Button className="profile-button" type="submit">Submit Info</Button>
-                </FormGroup>
-            </Form>
-        </div>
+      <div>
+      <h4 style={{ paddingTop: `50px` }}>PROFILE</h4>
+      <Panel className="listingPanel">
+        <Form className="profile-form" onSubmit={this.handleInfoChange.bind(this)}>
+          <FormGroup>
+            <p className="profile-qtitle">First Name</p>
+            <FormControl className="profile-input" ref="userFirstName" value={this.state.fname ? this.state.fname : undefined} onChange={(event) => this.setState({fname: event.target.value})} />
+          </FormGroup>
+          <FormGroup>
+            <p className="profile-qtitle">Last Name</p>
+            <FormControl className="profile-input" ref="userLastName" value={this.state.lname ? this.state.lname : undefined} onChange={(event) => this.setState({lname: event.target.value})} />
+          </FormGroup>
+          <FormGroup>
+            <p className="profile-qtitle">Email Address</p>
+            <FormControl className="profile-input" ref="userEmail" type="email" value={this.state.email ? this.state.email : undefined} onChange={(event) => this.setState({email: event.target.value})} />
+          </FormGroup>
+          <FormGroup>
+            <p className="profile-qtitle">Phone Number</p>
+            <FormControl className="profile-input" ref="userPhoneNum" value={this.state.phone ? this.state.phone : undefined} onChange={(event) => this.setState({phone: event.target.value})} />
+          </FormGroup>
+          <FormGroup>
+            <Button className="btn profile-button" bsStyle="info" type="submit">Update Profile</Button>
+          </FormGroup>
+        </Form>
+      </Panel>
+      </div>
     );
   }
 }

@@ -94,9 +94,9 @@ class EditSpace extends Component {
     ));
 
     return (
-      <div>
+      <div style={{ paddingTop: `50px` }}>
         <Row>
-          <h4 className="profile-title">ADD A SPACE</h4>
+          <h4>Edit Space Information</h4>
         </Row>
         <Row>
           <Col xs={12} md={6}>

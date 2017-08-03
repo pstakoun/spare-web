@@ -3,7 +3,7 @@ import { Panel, Col } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
-class TransactionDetails extends Component {
+class BookingDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,4 +73,4 @@ class TransactionDetails extends Component {
   }
 }
 
-export default TransactionDetails;
+export default BookingDetails;

@@ -12,6 +12,7 @@ import MySpaces from './MySpaces';
 import AddSpace from './AddSpace';
 import Confirmation from './Confirmation';
 import EditSpace from './EditSpace';
+import BookingHistory from './BookingHistory';
 
 class App extends Component {
   constructor(props) {
@@ -79,6 +80,12 @@ class App extends Component {
     });
   }
 
+  manageSpace(newSpace) {
+    this.setState({
+      space: newSpace
+    });
+  }
+
   render() {
     return (
       <Grid fluid>
@@ -108,6 +115,7 @@ class App extends Component {
               <Route exact path='/spaces' render={() => <MySpaces editSpace={this.editSpace.bind(this)} />} />
               <Route exact path='/spaces/add' component={AddSpace} />
               <Route exact path='/spaces/edit' render={() => <EditSpace space={this.state.space} />} />
+              <Route exact path='/spaces/manage' render={() => <BookingHistory space={this.state.space} />} />
               <Route exact path='/history' component={History} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/preferences' component={Preferences} />

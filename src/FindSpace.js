@@ -30,6 +30,10 @@ class FindSpace extends Component {
 	this.updateMarkers();
   }
 
+  componentDidMount() {
+    this.props.resetSpace();
+  }
+
   getDefaultLocation() {
     return this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 };
   }

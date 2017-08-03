@@ -36,6 +36,15 @@ class App extends Component {
     firebase.auth().onAuthStateChanged(this.authHandler.bind(this));
   }
 
+  resetSpace() {
+    this.setState({
+      space: null,
+      startDate: moment(),
+      endDate: moment(),
+	  confirmation: false
+    });
+  }
+
   authHandler(newUser) {
     if (newUser) {
       this.setState({
@@ -110,7 +119,7 @@ class App extends Component {
               </Navbar.Collapse>
             </Navbar>
             <Switch>
-              <Route exact path='/' render={() => <FindSpace setStartDate={this.setStartDate.bind(this)} setEndDate={this.setEndDate.bind(this)} selectSpace={this.selectSpace.bind(this)} />} />
+              <Route exact path='/' render={() => <FindSpace resetSpace={this.resetSpace.bind(this)} setStartDate={this.setStartDate.bind(this)} setEndDate={this.setEndDate.bind(this)} selectSpace={this.selectSpace.bind(this)} />} />
               <Route exact path='/confirm' render={() => <Confirmation space={this.state.space} startDate={this.state.startDate} endDate={this.state.endDate} deselectSpace={this.deselectSpace.bind(this)} />} />
               <Route exact path='/spaces' render={() => <MySpaces editSpace={this.editSpace.bind(this)} />} />
               <Route exact path='/spaces/add' component={AddSpace} />

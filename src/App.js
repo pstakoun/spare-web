@@ -101,11 +101,11 @@ class App extends Component {
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav pullRight>
-                  <NavItem><Link to='/'>Find a Space</Link></NavItem>
-                  <NavItem><Link to='/spaces'>My Spaces</Link></NavItem>
-                  <NavItem><Link to='/history'>History</Link></NavItem>
-                  <NavItem><Link to='/profile'>Profile</Link></NavItem>
-                  <NavItem><Link to='/preferences'>Preferences</Link></NavItem>
+                  <li><Link to='/'>Find a Space</Link></li>
+                  <li><Link to='/spaces'>My Spaces</Link></li>
+                  <li><Link to='/history'>History</Link></li>
+                  <li><Link to='/profile'>Profile</Link></li>
+                  <li><Link to='/preferences'>Preferences</Link></li>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>

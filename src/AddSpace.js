@@ -74,7 +74,8 @@ class AddSpace extends Component {
         user: firebase.auth().currentUser.uid,
         photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg",
         spaceId: this.state.spaceId,
-        contactNum: this.state.phoneNum
+        contactNum: this.state.phoneNum,
+        status: "active"
     });
 
     geoFire.set(this.state.spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {

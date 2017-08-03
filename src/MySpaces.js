@@ -20,11 +20,13 @@ class MySpaces extends Component {
   renderSpaces() {
     var arr = [];
     for (var key in this.state.spaces) {
-      arr.push(
-        <Panel className="listingPanel">
-          <SpaceListing space={this.state.spaces[key]} editSpace={this.props.editSpace.bind(this)} />
-        </Panel>
-      );
+      if (this.state.spaces[key].status == "active"){
+        arr.push(
+          <Panel className="listingPanel">
+            <SpaceListing space={this.state.spaces[key]} editSpace={this.props.editSpace.bind(this)} />
+          </Panel>
+        );
+      }
     }
     return arr;
   }

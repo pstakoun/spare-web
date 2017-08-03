@@ -55,7 +55,7 @@ class EditSpace extends Component {
     var geofireRef = firebase.database().ref('geofire/');
     new GeoFire(geofireRef);
 
-    firebase.database().ref('spaces/' + this.state.spaceId).set({
+    firebase.database().ref('spaces/' + this.state.spaceId).update({
         lat: this.state.location.lat,
         lng: this.state.location.lng,
         address: this.state.address,
@@ -68,13 +68,13 @@ class EditSpace extends Component {
         user: firebase.auth().currentUser.uid,
         photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg",
         spaceId: this.state.spaceId,
-        contactNum: this.state.phoneNum
+        contactNum: this.state.phoneNum,
     });
   }
 
   handleDeletion(event) {
     event.preventDefault();
-    firebase.database().ref('spaces/' + this.state.spaceId).remove();
+    firebase.database().ref('spaces/' + this.state.spaceId).update({status: "inactive"});
     firebase.database().ref('geofire/' + this.state.spaceId).remove();
   }
 

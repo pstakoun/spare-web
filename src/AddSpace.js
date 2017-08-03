@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, FormControl, Checkbox, Col, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import RandomString from 'randomstring';
@@ -20,7 +21,8 @@ class AddSpace extends Component {
       isUploading: false,
       progress: 0,
       spaceId: RandomString.generate(28),
-      phoneNum: null
+      phoneNum: null,
+	  done: false
     };
 
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ phoneNum: snapshot.val().phone}));
@@ -51,11 +53,6 @@ class AddSpace extends Component {
 
   }
 
-  handleLogout(event) {
-    event.preventDefault();
-    firebase.auth().signOut();
-  }
-
   renderLocation() {
     return [<Marker defaultPosition={this.state.location} title="current" />];
   }
@@ -83,8 +80,8 @@ class AddSpace extends Component {
     });
 
     geoFire.set(this.state.spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {
-      console.log("Provided key has been added to GeoFire");
-    }, function(error) {
+      this.setState({ done: true });
+    }.bind(this), function(error) {
       console.log("Error: " + error);
     });
 
@@ -100,6 +97,7 @@ class AddSpace extends Component {
 
     return (
       <div>
+	    { this.state.done && <Redirect to='/spaces' push /> }
         <Row>
           <h4 className="profile-title">ADD A SPACE</h4>
         </Row>

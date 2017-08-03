@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Form, FormGroup, FormControl, Checkbox, Col, Row } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, Col, Row } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import RandomString from 'randomstring';
 import Geosuggest from 'react-geosuggest';
 import * as GeoFire from 'geofire';
 import FileUploader from 'react-firebase-file-uploader';
@@ -44,13 +43,6 @@ class EditSpace extends Component {
       location: suggest.location,
       address: suggest.description
     });
-
-
-  }
-
-  handleLogout(event) {
-    event.preventDefault();
-    firebase.auth().signOut();
   }
 
   renderLocation() {
@@ -61,7 +53,7 @@ class EditSpace extends Component {
     event.preventDefault();
 
     var geofireRef = firebase.database().ref('geofire/');
-    var geoFire = new GeoFire(geofireRef);
+    new GeoFire(geofireRef);
 
     firebase.database().ref('spaces/' + this.state.spaceId).set({
         lat: this.state.location.lat,
@@ -111,7 +103,7 @@ class EditSpace extends Component {
               <FormControl componentClass="select" placeholder="Please select..." ref="spaceType" required="true">
                 <option value="default"></option>
                 <option value="Garage">Garage</option>
-                <option value="Storage-unit">Storage Unit</option>
+                <option value="Storage Unit">Storage Unit</option>
                 <option value="Attic">Attic</option>
                 <option value="Basement">Basement</option>
                 <option value="Closet">Closet</option>

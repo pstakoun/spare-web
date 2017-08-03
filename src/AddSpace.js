@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Form, FormGroup, FormControl, Checkbox, Col, Row, Panel } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, Col, Row } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
@@ -115,7 +115,7 @@ class AddSpace extends Component {
               <FormControl componentClass="select" placeholder="Please select..." ref="spaceType" required="true">
                 <option value="default"></option>
                 <option value="Garage">Garage</option>
-                <option value="Storage-unit">Storage Unit</option>
+                <option value="Storage Unit">Storage Unit</option>
                 <option value="Attic">Attic</option>
                 <option value="Basement">Basement</option>
                 <option value="Closet">Closet</option>

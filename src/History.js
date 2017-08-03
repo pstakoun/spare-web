@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import './App.css';
-import { Table, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import TransactionDetails from './TransactionDetails';
 
 class History extends Component {

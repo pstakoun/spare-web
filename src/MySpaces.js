@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import { Link } from 'react-router-dom';
-import { Button, Panel, Col } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 import './App.css';
 import SpaceListing from './SpaceListing';
 

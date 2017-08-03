@@ -147,7 +147,7 @@ class EditSpace extends Component {
             </FormGroup>
             <FormGroup>
               <Button className="profile-button" type="submit">Submit Info</Button>
-              <Button className="profile-button" bsStyle="danger" onClick={this.handleDeletion()}>Delete Space</Button>
+              <Button className="profile-button" bsStyle="danger" onClick={this.handleDeletion.bind(this)}>Delete Space</Button>
             </FormGroup>
           </Form>
         </Col>

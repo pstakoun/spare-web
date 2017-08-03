@@ -73,6 +73,12 @@ class App extends Component {
     });
   }
 
+  editSpace(newSpace) {
+    this.setState({
+      space: newSpace
+    });
+  }
+
   render() {
     return (
       <Grid fluid>
@@ -99,9 +105,9 @@ class App extends Component {
             <Switch>
               <Route exact path='/' render={() => <FindSpace setStartDate={this.setStartDate.bind(this)} setEndDate={this.setEndDate.bind(this)} selectSpace={this.selectSpace.bind(this)} />} />
               <Route exact path='/confirm' render={() => <Confirmation space={this.state.space} startDate={this.state.startDate} endDate={this.state.endDate} deselectSpace={this.deselectSpace.bind(this)} />} />
-              <Route exact path='/spaces' component={MySpaces} />
+              <Route exact path='/spaces' render={() => <MySpaces editSpace={this.editSpace.bind(this)} />} />
               <Route exact path='/spaces/add' component={AddSpace} />
-              <Route exact path='/spaces/edit' component={EditSpace} />
+              <Route exact path='/spaces/edit' render={() => <EditSpace space={this.state.space} />} />
               <Route exact path='/history' component={History} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/preferences' component={Preferences} />

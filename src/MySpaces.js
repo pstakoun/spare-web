@@ -28,7 +28,7 @@ class MySpaces extends Component {
           <SpaceListing space={this.state.spaces[key]} />
           <Col xs={12} md={2}>
             <Button bsStyle="info">Manage Booking</Button>
-            <Link to='/spaces/edit' className="btn btn-default">Edit Info</Link>
+            <Link to='/spaces/edit' onClick={() => this.props.editSpace(this.state.spaces[key])} className="btn btn-default">Edit Info</Link>
           </Col>
         </Panel>
       );

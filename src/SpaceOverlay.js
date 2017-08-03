@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Panel } from 'react-bootstrap';
+import { Button, Col, Row, Panel } from 'react-bootstrap';
 import * as firebase from 'firebase';
 
 class SpaceOverlay extends Component {
@@ -30,19 +30,28 @@ class SpaceOverlay extends Component {
 
     {this.handleImg()}
     return (
-      <Panel style={{ width: `500px` }}>
-        <Col xs={6} style={{ padding: `none` }}>
-          <img className="img-responsive space-overlay" style={{ maxWidth: `100%` }} />
-        </Col>
-        <Col xs={6} style={{ padding: `none` }}>
-          <p> Address: {this.props.space.address} </p>
-          <p> Contact via: {this.props.space.contactNum} </p>
-          {has_lock_local}
-          {has_insurance_local}
-          {all_access_local}
-          {climate_control_local}
-          <Button onClick={() => this.props.selectSpace(this.props.space)}>Go</Button>
-        </Col>
+      <Panel style={{ width: `30vw` }}>
+        <Row style={{ padding: `none` }}>
+          <p style={{ fontSize: `1.5em` }}>{this.props.space.address}</p>
+        </Row>
+        <Row>
+          <Col xs={6} style={{ padding: `none` }}>
+            <img className="img-responsive space-overlay" style={{ maxWidth: `100%` }} />
+          </Col>
+          <Col xs={6} style={{ padding: `none`, textAlign: `left` }}>
+            <p style={{ fontSize: `1.2em`, fontWeight: `400` }}> Features </p>
+            {has_lock_local}
+            {has_insurance_local}
+            {all_access_local}
+            {climate_control_local}
+            <hr/>
+            <p style={{ fontSize: `1.2em`, fontWeight: `400` }}> Contact </p>
+            {this.props.space.contactNum}
+          </Col>
+        </Row>
+        <Row>
+          <Button style={{ marginTop: `1vh`, width: `40%` }} onClick={() => this.props.selectSpace(this.props.space)}>Take this Space</Button>
+        </Row>
       </Panel>
     );
   }

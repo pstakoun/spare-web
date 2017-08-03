@@ -54,7 +54,7 @@ class Landing extends Component {
           <Jumbotron>
             <h1>SPARE</h1>
             <h2>If there's room to spare<br/>There's room to share</h2>
-            <Button>Find a provider</Button>
+            <Button onClick={this.handleSignup.bind(this)}>Find a provider</Button>
           </Jumbotron>
         </Row>
         <Row>

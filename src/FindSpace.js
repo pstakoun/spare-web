@@ -54,10 +54,10 @@ class FindSpace extends Component {
 
   renderMarkers() {
     var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
-    var arr = [<Marker icon={{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/600px-000080_Navy_Blue_Square.svg.png', size: new google.maps.Size(20, 20) }} defaultPosition={this.state.location} title="current" />];
+    var arr = [<Marker defaultPosition={this.state.location} />];
     for (var key in this.state.spaces) {
       if (sizeDict[this.state.size] <= sizeDict[this.state.spaces[key].size]) {
-        arr.push(<Marker icon={{ url: 'http://i.imgur.com/9yILi61.png', size: new google.maps.Size(20, 20) }} defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
+        arr.push(<Marker icon={{ url: 'http://i.imgur.com/9yILi61.png', size: new google.maps.Size(20, 20) }} defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} />);
       }
     }
     return arr;

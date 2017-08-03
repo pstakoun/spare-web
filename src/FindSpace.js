@@ -22,7 +22,7 @@ class FindSpace extends Component {
       spaces: {},
       location: this.getDefaultLocation(),
       activeSpace: null,
-      size: "0",
+      size: 'Small',
       startDate: moment(),
       endDate: moment()
     };
@@ -41,10 +41,11 @@ class FindSpace extends Component {
   }
 
   getBounds() {
+    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
     var bounds = new google.maps.LatLngBounds();
     bounds.extend(this.state.location);
     for (var key in this.state.spaces) {
-      if (this.state.size <= this.state.spaces[key].size) {
+      if (sizeDict[this.state.size] <= sizeDict[this.state.spaces[key].size]) {
         bounds.extend({ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng });
       }
     }
@@ -52,9 +53,10 @@ class FindSpace extends Component {
   }
 
   renderMarkers() {
+    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
     var arr = [<Marker icon={{ url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/000080_Navy_Blue_Square.svg/600px-000080_Navy_Blue_Square.svg.png', size: new google.maps.Size(20, 20) }} defaultPosition={this.state.location} title="current" />];
     for (var key in this.state.spaces) {
-      if (this.state.size <= this.state.spaces[key].size) {
+      if (sizeDict[this.state.size] <= sizeDict[this.state.spaces[key].size]) {
         arr.push(<Marker icon={{ url: 'http://i.imgur.com/9yILi61.png', size: new google.maps.Size(20, 20) }} defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} title={key} />);
       }
     }
@@ -94,9 +96,10 @@ class FindSpace extends Component {
   }
 
   handleGo(e) {
+    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
     var space = null;
     for (var key in this.state.spaces) {
-      if (this.state.size <= this.state.spaces[key].size && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
+      if (sizeDict[this.state.size] <= sizeDict[this.state.spaces[key].size] && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
         space = key;
       }
     }

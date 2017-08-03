@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Panel } from 'react-bootstrap';
+import { Button, Col, Panel } from 'react-bootstrap';
 import * as firebase from 'firebase';
 
 class SpaceOverlay extends Component {
@@ -30,15 +30,19 @@ class SpaceOverlay extends Component {
 
     {this.handleImg()}
     return (
-      <Panel>
-        <img className="center-block space-overlay" style={{ width: `500px` }} />
-    		<p> Address: {this.props.space.address} </p>
-        <p> Contact via: {this.props.space.contactNum} </p>
-        {has_lock_local}
-        {has_insurance_local}
-        {all_access_local}
-        {climate_control_local}
-    		<Button onClick={() => this.props.selectSpace(this.props.space)}>Go</Button>
+      <Panel style={{ width: `500px` }}>
+        <Col xs={6} style={{ padding: `none` }}>
+          <img className="img-responsive space-overlay" style={{ maxWidth: `100%` }} />
+        </Col>
+        <Col xs={6} style={{ padding: `none` }}>
+          <p> Address: {this.props.space.address} </p>
+          <p> Contact via: {this.props.space.contactNum} </p>
+          {has_lock_local}
+          {has_insurance_local}
+          {all_access_local}
+          {climate_control_local}
+          <Button onClick={() => this.props.selectSpace(this.props.space)}>Go</Button>
+        </Col>
       </Panel>
     );
   }

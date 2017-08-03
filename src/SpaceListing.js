@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Col } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
@@ -83,6 +84,10 @@ class SpaceListing extends Component {
             {has_insurance_local}
             {all_access_local}
             {climate_control_local}
+        </Col>
+        <Col xs={12} md={2}>
+          <Button bsStyle="info">Manage Booking</Button>
+          <Link to='/spaces/edit' onClick={() => this.props.editSpace(this.state.space)} className="btn btn-default">Edit Info</Link>
         </Col>
       </div>
     );

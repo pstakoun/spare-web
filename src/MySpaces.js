@@ -14,22 +14,15 @@ class MySpaces extends Component {
   }
 
   componentDidMount() {
-    firebase.database().ref('spaces').orderByChild('user').equalTo(firebase.auth().currentUser.uid).on('value', (snapshot) => {
-      this.setState({ spaces: snapshot.val() });
-    });
+    firebase.database().ref('spaces').orderByChild('user').equalTo(firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ spaces: snapshot.val() }));
   }
 
   renderSpaces() {
-
     var arr = [];
     for (var key in this.state.spaces) {
       arr.push(
         <Panel className="listingPanel">
-          <SpaceListing space={this.state.spaces[key]} />
-          <Col xs={12} md={2}>
-            <Button bsStyle="info">Manage Booking</Button>
-            <Link to='/spaces/edit' onClick={() => this.props.editSpace(this.state.spaces[key])} className="btn btn-default">Edit Info</Link>
-          </Col>
+          <SpaceListing space={this.state.spaces[key]} editSpace={this.props.editSpace.bind(this)} />
         </Panel>
       );
     }

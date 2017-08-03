@@ -319,6 +319,25 @@ hr {
 	margin-right: 1vw;
 	text-align: left;
 }
+.orderPanel {
+	width: 35vw;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	text-align: left;
+}
+.orderPanel h3 {
+	color: #1a3863;
+	font-size: 2em !important;
+	font-weight: 400;
+	margin-bottom: 2vh !important;
+}
+.orderPanel h4 {
+	color: #1a3863;
+	font-size: 1.5em !important;
+	font-weight: 400;
+	margin-bottom: 2vh !important;
+	letter-spacing: 0em;
+}
 /* GEOSUGGEST */
 .geosuggest {
   font-size: 1em;

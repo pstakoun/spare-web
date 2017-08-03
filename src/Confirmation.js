@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Row, Panel } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import Payment from './Payment';
-import SpaceDetails from './SpaceDetails';
+import OrderDetails from './OrderDetails';
 import * as firebase from 'firebase';
 import RandomString from 'randomstring';
 import moment from 'moment';
@@ -36,20 +36,18 @@ class Confirmation extends Component {
       <div style={{ paddingTop: `50px` }}>
         {this.props.space ? null : <Redirect to='/' push />}
         {this.state.paymentCompleted && <Redirect to='/history' push />}
-	    <Row>
-		  <Col lg={12}>
-            <h1>Confirm</h1>
-		  </Col>
+      <h4>CONFIRM</h4>
+	    <Panel>
 		  <Col sm={6}>
 		    <Payment handlePayment={this.handlePayment.bind(this)} />
 		  </Col>
 		  <Col sm={4}>
-		    <SpaceDetails space={this.props.space} />
+		    <OrderDetails space={this.props.space} startDate={this.props.startDate} endDate={this.props.endDate}/>
 		  </Col>
 		  <Col lg={12}>
 	        <Link to='/' onClick={this.props.deselectSpace.bind(this)} className='btn btn-default'>Cancel</Link>
 		  </Col>
-		</Row>
+		</Panel>
       </div>
     );
   }

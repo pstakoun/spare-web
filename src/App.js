@@ -95,7 +95,7 @@ class App extends Component {
             <Navbar collapseOnSelect fixedTop fluid>
               <Navbar.Header>
                 <Navbar.Brand>
-                  <Link to='/'>S</Link>
+                  <Link to='/'><img src="logo.png" style={{ height: `100%` }} /></Link>
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>

@@ -6,7 +6,7 @@ class SpaceDetails extends Component {
 
   handleImg() {
     firebase.storage().refFromURL(this.props.space.photoURL).getDownloadURL().then(function(url) {
-      document.querySelector('img').src = url;
+      document.querySelector('.cover-image').src = url;
     }).catch(function(error) {
       console.error(error);
     });
@@ -32,7 +32,7 @@ class SpaceDetails extends Component {
     {this.handleImg()}
     return (
       <Panel className="spaceinfo">
-        <img className="img-responsive center-block" />
+        <img className="img-responsive center-block cover-image" />
 		    <p>{this.props.space.address}</p>
         <hr/>
         {has_lock_local}

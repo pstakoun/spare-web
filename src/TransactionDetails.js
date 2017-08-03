@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Col, Row } from 'react-bootstrap';
+import { Panel, Col } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 
@@ -43,15 +43,7 @@ class TransactionDetails extends Component {
       </GoogleMap>
     ));
 
-    let size = null;
-
-    if ((this.state.space ? this.state.space.size : null) == 0){
-      size = [<p className="p-body">Small</p>];
-    } else if ((this.state.space ? this.state.space.size : null) == 1) {
-      size = [<p className="p-body">Medium</p>];
-    } else if ((this.state.space ? this.state.space.size : null) == 2) {
-      size = [<p className="p-body">Large</p>];
-    }
+    var transAmount = this.props.trans.charge.amount / 100;
 
     return (
       <Panel className="transPanel">
@@ -66,7 +58,7 @@ class TransactionDetails extends Component {
           <p className="p-body">{this.state.space ? this.state.space.address : null}</p>
           <p className="p-title">Duration</p>
           <p className="p-title">Size</p>
-          {size}
+          <p className="p-body">{this.state.space ? this.state.space.size : null}</p>
         </Col>
         <Col xs={12} md={4}>
           <p className="p-title">Transaction Timestamp</p>
@@ -74,7 +66,7 @@ class TransactionDetails extends Component {
           <p className="p-title">Payment Method</p>
           <p className="p-body">{this.props.trans.charge.source.brand} {this.props.trans.charge.source.last4}</p>
           <p className="p-title">Amount</p>
-          <p className="p-body">USD {this.props.trans.charge.amount}</p>
+          <p className="p-body">USD$ {transAmount}</p>
         </Col>
       </Panel>
     );

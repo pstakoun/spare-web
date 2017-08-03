@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, FormControl } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import './App.css';

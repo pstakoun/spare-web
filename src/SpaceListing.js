@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Panel, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 

@@ -156,10 +156,10 @@ class FindSpace extends Component {
             minDate={this.state.startDate}
           />
           <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
-          <button onClick={this.handleGo.bind(this)}>Go</button>
+          <div><button onClick={this.handleGo.bind(this)}>Go</button></div>
 		</div>
         <SpareMap
-          containerElement={ <div style={{ height: `90vh` }} /> }
+          containerElement={ <div style={{ height: `85vh` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>

@@ -230,12 +230,14 @@ h3 {
 	padding-top: 50px;
 }
 .filters {
+	display: table-cell;
+	vertical-align: middle;
 	padding-top: 50px;
-	height: 10vh;
-	text-align: left;
+	height: 15vh;
 }
 .filters>* {
 	display: inline-block;
+	margin: 10px;
 }
 .spaceinfo {
 	background-color: #e5eceb;

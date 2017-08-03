@@ -25,18 +25,45 @@ app.post('/charge', (req, res) => {
   firebase.database().ref('spaces/' + req.body.spaceId).once('value')
   .then(snapshot => {
     var size = snapshot.val().size;
-    var sizeMult = size == 0 ? 1 : size == 1 ? 2.2 : 4.3;
     var startDate = moment(req.body.startDate);
     var endDate = moment(req.body.endDate);
     var numDays = endDate.diff(startDate, 'days') + 1;
-    var amount = Math.round((sizeMult - 1/7) * numDays * 100);
+
+    var amount;
+    if (size == 'Small') {
+      if (numDays <= 2) {
+        amount = 171.4 * numDays + 427.6;
+      } else if (numDays <= 10) {
+        amount = 128.55 * numDays + 513.3;
+      } else {
+        amount = 85.7 * numDays + 941.8;
+      }
+    } else if (size == 'Medium') {
+      if (numDays <= 2) {
+        amount = 308.55 * numDays + 490.45;
+      } else if (numDays <= 10) {
+        amount = 240.669 * numDays + 626.212;
+      } else {
+        amount = 172.788 * numDays + 1305.022;
+      }
+    } else if (size == 'Large') {
+      if (numDays <= 2) {
+        amount = 623.55 * numDays + 375.45;
+      } else if (numDays <= 10) {
+        amount = 486.369 * numDays + 649.812;
+      } else {
+        amount = 345.031 * numDays + 2063.192;
+      }
+    }
+	amount = Math.round(amount);
+
     stripe.customers.create({
       source: req.body.stripeToken.id
     })
     .then(customer =>
       stripe.charges.create({
         amount,
-        description: "Sample Charge",
+        description: size + " - " + numDays + " Day" + (numDays > 1 ? "s" : ""),
            currency: "usd",
            customer: customer.id
       }))

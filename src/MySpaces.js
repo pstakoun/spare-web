@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Panel } from 'react-bootstrap';
 import './App.css';
 import SpaceDetails from './SpaceDetails';
 
@@ -22,7 +22,12 @@ class MySpaces extends Component {
   renderSpaces() {
     var arr = [];
     for (var key in this.state.spaces) {
-      arr.push(<SpaceDetails space={this.state.spaces[key]} /><Link to='/spaces/edit' className="btn btn-default">Edit</Link>);
+      arr.push(
+        <Panel>
+          <SpaceDetails space={this.state.spaces[key]} />
+          <Link to='/spaces/edit' className="btn btn-default">Edit</Link>
+        </Panel>
+      );
     }
     return arr;
   }

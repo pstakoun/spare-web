@@ -8,19 +8,22 @@ import moment from 'moment';
 class OrderDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      transAmount: 0
+    };
   }
 
   handleImg() {
     firebase.storage().refFromURL(this.props.space.photoURL).getDownloadURL().then(function(url) {
       document.querySelector('.cover-image').src = url;
     }).catch(function(error) {
-      console.error(error);
+      return;
     });
   }
 
   getPrice() {
     $.post('/price', { spaceId: this.props.space.spaceId, startDate: this.props.startDate.format(), endDate: this.props.endDate.format() }, (data) => {
-      return data;
+      this.setState({transAmount: data});
     });
   }
 
@@ -40,8 +43,7 @@ class OrderDetails extends Component {
     if (this.props.space.climate_control) {
       climate_control_local = [<p> Has Climate Control System </p>];
     }
-    var transAmount = Number(this.getPrice()) / 100;
-    console.log(this.getPrice());
+    var Amount = this.state.transAmount / 100;
     {this.handleImg()}
     {this.getPrice()}
     return (
@@ -57,10 +59,10 @@ class OrderDetails extends Component {
         {climate_control_local}
         <hr/>
         <h4>Duration</h4>
-        {moment(this.props.endDate).diff(moment(this.props.startDate), 'days') + 1}
+        {moment(this.props.endDate).diff(moment(this.props.startDate), 'days') + 1} Day(s)
         <hr/>
         <h4>Price</h4>
-        {transAmount}
+        USD$ {Amount}
       </Panel>
     );
   }

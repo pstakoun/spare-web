@@ -159,7 +159,7 @@ class FindSpace extends Component {
           <div><button onClick={this.handleGo.bind(this)}>Go</button></div>
 		</div>
         <SpareMap
-          containerElement={ <div style={{ height: `85vh` }} /> }
+          containerElement={ <div style={{ height: `80vh` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>

@@ -229,11 +229,31 @@ h3 {
 .logout {
 	padding-top: 50px;
 }
+@media (min-width: 768px) {
+    .navbar {
+		background-color: white;
+		border: none;
+	}
+	.navbar-brand,
+	.navbar-nav li a {
+		line-height: 100px;
+		height: 100px;
+	}
+	.navbar-brand {
+		font-size: 2.5em;
+        padding: 30px;
+	}
+	.navbar-nav li a {
+		font-size: 1.25em;
+		padding-top: 0;
+	}
+}
 .filters {
 	display: table-cell;
 	vertical-align: middle;
-	padding-top: 50px;
-	height: 15vh;
+	padding-top: 100px;
+	padding-left: 20px;
+	height: 20vh;
 }
 .filters>* {
 	display: inline-block;

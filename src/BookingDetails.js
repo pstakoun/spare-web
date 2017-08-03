@@ -57,6 +57,7 @@ class BookingDetails extends Component {
           <p className="p-title">Location</p>
           <p className="p-body">{this.state.space ? this.state.space.address : null}</p>
           <p className="p-title">Duration</p>
+          <p className="p-body">{this.props.trans.duration} Days</p>
           <p className="p-title">Size</p>
           <p className="p-body">{this.state.space ? this.state.space.size : null}</p>
         </Col>

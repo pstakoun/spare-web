@@ -24,7 +24,8 @@ class Confirmation extends Component {
           time: moment().format(),
           userId: firebase.auth().currentUser.uid,
           spaceId: this.props.space.spaceId,
-          charge: data
+          charge: data,
+          duration: moment(this.props.endDate).diff(moment(this.props.startDate), 'days') + 1
         }, () => this.setState({ paymentCompleted: true }));
       }
     });

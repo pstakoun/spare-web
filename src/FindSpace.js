@@ -132,7 +132,7 @@ class FindSpace extends Component {
       </GoogleMap>
     ));
     return (
-      <div style={{ height: `100vh`, paddingTop: `50px` }}>
+      <div>
         <div className="filters">
           <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
           <DatePicker
@@ -159,7 +159,7 @@ class FindSpace extends Component {
           <button onClick={this.handleGo.bind(this)}>Go</button>
 		</div>
         <SpareMap
-          containerElement={ <div style={{ height: `100%` }} /> }
+          containerElement={ <div style={{ height: `90vh` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>

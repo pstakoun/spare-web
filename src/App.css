@@ -340,6 +340,7 @@ hr {
 }
 /* GEOSUGGEST */
 .geosuggest {
+  width: 500px;
   font-size: 1em;
   position: relative;
   text-align: left;
@@ -400,4 +401,33 @@ hr {
 }
 .geosuggest__item__matched-text {
   font-weight: bold;
+}
+/* DATEPICKER */
+.react-datepicker__input-container input {
+  width: 100%;
+  border: 2px transparent;
+	border-style: inset;
+  box-shadow: 0 0 1px #3d464d;
+  padding: .5em 1em;
+  -webkit-transition: border 0.2s, box-shadow 0.2s;
+          transition: border 0.2s, box-shadow 0.2s;
+}
+/**/
+.filters select {
+  border: 2px transparent;
+	border-style: inset;
+  box-shadow: 0 0 1px #3d464d;
+  padding: .5em 1em;
+  -webkit-transition: border 0.2s, box-shadow 0.2s;
+          transition: border 0.2s, box-shadow 0.2s;
+  background-color: white;
+}
+.filters button {
+  border: 2px transparent;
+	border-style: inset;
+  box-shadow: 0 0 1px #3d464d;
+  padding: .5em 1em;
+  -webkit-transition: border 0.2s, box-shadow 0.2s;
+          transition: border 0.2s, box-shadow 0.2s;
+  background-color: white;
 }

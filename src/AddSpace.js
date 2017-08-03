@@ -87,7 +87,6 @@ class AddSpace extends Component {
   }
 
   render() {
-
     const SpareMap = withGoogleMap(props => (
       <GoogleMap
         defaultZoom={15}

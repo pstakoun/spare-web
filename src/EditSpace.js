@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Form, FormGroup, FormControl, Col, Row } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import Geosuggest from 'react-geosuggest';
@@ -10,7 +11,6 @@ import FileUploader from 'react-firebase-file-uploader';
 import './App.css';
 
 class EditSpace extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,8 @@ class EditSpace extends Component {
       isUploading: false,
       progress: 0,
       spaceId: this.props.space.spaceId,
-      phoneNum: null
+      phoneNum: null,
+	  done: false
     };
   }
 
@@ -35,7 +36,6 @@ class EditSpace extends Component {
   handleUploadSuccess = (filename) => {
     this.setState({progress: 100, isUploading: false});
     console.log("Upload Success");
-
   };
 
   updateLocation(suggest) {
@@ -69,12 +69,12 @@ class EditSpace extends Component {
         photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg",
         spaceId: this.state.spaceId,
         contactNum: this.state.phoneNum,
-    });
+    }, function() { this.setState({ done: true }); }.bind(this));
   }
 
   handleDeletion(event) {
     event.preventDefault();
-    firebase.database().ref('spaces/' + this.state.spaceId).update({status: "inactive"});
+    firebase.database().ref('spaces/' + this.state.spaceId).update({status: "inactive"}, function() { this.setState({ done: true }); }.bind(this));
     firebase.database().ref('geofire/' + this.state.spaceId).remove();
   }
 
@@ -88,6 +88,7 @@ class EditSpace extends Component {
 
     return (
       <div style={{ paddingTop: `50px` }}>
+	    { this.state.done && <Redirect to='/spaces' push /> }
         <Row>
           <h4>Edit Space Information</h4>
         </Row>

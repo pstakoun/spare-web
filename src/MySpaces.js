@@ -32,7 +32,7 @@ class MySpaces extends Component {
   render() {
     return (
         <div style={{ paddingTop: `50px` }}>
-            <h4>My Listings</h4>
+            <h4>MY SPACES</h4>
             {this.renderSpaces()}
             <Link to='/spaces/add' className="btn btn-default">Add</Link>
         </div>

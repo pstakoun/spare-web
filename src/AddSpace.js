@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Form, FormGroup, FormControl, Checkbox, Col, Row } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, Checkbox, Col, Row, Panel } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import * as firebase from 'firebase';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
@@ -49,8 +49,6 @@ class AddSpace extends Component {
       location: suggest.location,
       address: suggest.description
     });
-
-
   }
 
   renderLocation() {
@@ -90,16 +88,20 @@ class AddSpace extends Component {
   render() {
 
     const SpareMap = withGoogleMap(props => (
-      <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
+      <GoogleMap
+        defaultZoom={15}
+        defaultCenter={this.state.location}
+        defaultOptions={{ styles: [{"elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#f5f5f5"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#dadada"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#c9c9c9"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]}], mapTypeControl: false, streetViewControl: false }}
+      >
         {this.renderLocation()}
       </GoogleMap>
     ));
 
     return (
-      <div>
+      <div style={{ paddingTop: `50px` }}>
 	    { this.state.done && <Redirect to='/spaces' push /> }
         <Row>
-          <h4 className="profile-title">ADD A SPACE</h4>
+          <h4>ADD A SPACE</h4>
         </Row>
         <Row>
           <Col xs={12} md={6}>
@@ -113,7 +115,7 @@ class AddSpace extends Component {
               <FormControl componentClass="select" placeholder="Please select..." ref="spaceType" required="true">
                 <option value="default"></option>
                 <option value="Garage">Garage</option>
-                <option value="Storage Unit">Storage Unit</option>
+                <option value="Storage-unit">Storage Unit</option>
                 <option value="Attic">Attic</option>
                 <option value="Basement">Basement</option>
                 <option value="Closet">Closet</option>

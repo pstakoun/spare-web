@@ -313,17 +313,22 @@ hr {
 	padding: 0 !important;
 	margin: 0 !important;
 }
+.spacePanel {
+	width: 46vw;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	text-align: left;
+}
 /* GEOSUGGEST */
 .geosuggest {
-  width: 500px;
   font-size: 1em;
   position: relative;
-  margin: 1em;
   text-align: left;
 }
 .geosuggest__input {
   width: 100%;
-  border: 2px solid transparent;
+  border: 2px transparent;
+	border-style: inset;
   box-shadow: 0 0 1px #3d464d;
   padding: .5em 1em;
   -webkit-transition: border 0.2s, box-shadow 0.2s;

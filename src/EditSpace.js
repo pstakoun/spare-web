@@ -83,6 +83,7 @@ class EditSpace extends Component {
   handleDeletion(event) {
     event.preventDefault();
     firebase.database().ref('spaces/' + this.state.spaceId).remove();
+    firebase.database().ref('geofire/' + this.state.spaceId).remove();
   }
 
   render() {
@@ -109,13 +110,13 @@ class EditSpace extends Component {
               <p className="profile-qtitle">Storage Type</p>
               <FormControl componentClass="select" placeholder="Please select..." ref="spaceType" required="true">
                 <option value="default"></option>
-                <option value="garage">Garage</option>
-                <option value="storage-unit">Storage Unit</option>
-                <option value="attic">Attic</option>
-                <option value="basement">Basement</option>
-                <option value="closet">Closet</option>
-                <option value="shed">Shed</option>
-                <option value="room">Room</option>
+                <option value="Garage">Garage</option>
+                <option value="Storage-unit">Storage Unit</option>
+                <option value="Attic">Attic</option>
+                <option value="Basement">Basement</option>
+                <option value="Closet">Closet</option>
+                <option value="Shed">Shed</option>
+                <option value="Room">Room</option>
               </FormControl>
             </FormGroup>
             <FormGroup>
@@ -128,9 +129,9 @@ class EditSpace extends Component {
             <FormGroup>
               <p className="profile-qtitle">Storage Size</p>
               <FormControl componentClass="select" placeholder="Please select..." ref="spaceSize" required="true">
-                <option value="0">Small</option>
-                <option value="1">Medium</option>
-                <option value="2">Large</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
               </FormControl>
             </FormGroup>
             <FormGroup>

@@ -107,6 +107,9 @@ class Login extends Component {
                 <FormControl ref="registerConfirmPassword" type="password" placeholder="Confirm Password" />
               </FormGroup>
               <FormGroup>
+                <label><input type="checkbox" ref="accept_tos" /> By Signing Up, I agree to the <a href="https://spare.ly/tos">Terms of Use</a>.</label><br/>
+              </FormGroup>
+              <FormGroup>
                 <Button className="form-control btn-register" type="submit">
                   Sign Up Now
                 </Button>

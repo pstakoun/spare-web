@@ -13,6 +13,7 @@ import AddSpace from './AddSpace';
 import Confirmation from './Confirmation';
 import EditSpace from './EditSpace';
 import BookingHistory from './BookingHistory';
+import ToS from './ToS';
 import './App.css';
 
 class App extends Component {
@@ -129,6 +130,7 @@ class App extends Component {
               <Route exact path='/history' component={History} />
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/preferences' component={Preferences} />
+              <Route exact path='/tos' component={ToS} />
             </Switch>
           </Row>
         ) : (

@@ -56,6 +56,7 @@ class App extends Component {
 	  firebase.database().ref('users/' + newUser.uid).on('value', (snapshot) => FS.identify(newUser.uid, {
         displayName: snapshot.val().fname + ' ' + snapshot.val().lname,
         email: newUser.email
+      }));
     } else {
       this.setState({
         user: null

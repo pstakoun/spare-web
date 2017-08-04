@@ -17,14 +17,17 @@ class Preferences extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.handleLogout.bind(this)} className="logout">
+      <div>
         {this.state.loggedOut && <Redirect to='/' push />}
-        <FormGroup>
-          <Button type="submit">
-            Log Out
-          </Button>
-        </FormGroup>
-      </Form>
+        <h1>Preferences</h1>
+        <Form onSubmit={this.handleLogout.bind(this)} className="logout">
+          <FormGroup>
+            <Button type="submit">
+              Log Out
+            </Button>
+          </FormGroup>
+        </Form>
+	  </div>
     );
   }
 }

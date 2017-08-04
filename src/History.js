@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import './App.css';
 import { Col } from 'react-bootstrap';
 import TransactionDetails from './TransactionDetails';
 
@@ -29,8 +28,8 @@ class History extends Component {
 
   render() {
     return (
-      <div style={{ paddingTop: `50px` }}>
-        <h4>HISTORY</h4>
+      <div>
+        <h1>HISTORY</h1>
         {this.renderTransactions()}
       </div>
     );

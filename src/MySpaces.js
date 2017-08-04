@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import { Link } from 'react-router-dom';
 import { Panel } from 'react-bootstrap';
-import './App.css';
 import SpaceListing from './SpaceListing';
 
 class MySpaces extends Component {
@@ -33,8 +32,8 @@ class MySpaces extends Component {
 
   render() {
     return (
-        <div style={{ paddingTop: `50px` }}>
-            <h4>MY SPACES</h4>
+        <div>
+            <h1>MY SPACES</h1>
             <Link to='/spaces/add' className="profile-button btn btn-default">Add A New Space</Link>
             {this.renderSpaces()}
         </div>

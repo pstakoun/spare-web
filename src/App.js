@@ -13,6 +13,7 @@ import AddSpace from './AddSpace';
 import Confirmation from './Confirmation';
 import EditSpace from './EditSpace';
 import BookingHistory from './BookingHistory';
+import './App.css';
 
 class App extends Component {
   constructor(props) {

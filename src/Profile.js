@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, FormControl, Panel } from 'react-bootstrap';
 import * as firebase from 'firebase';
-import './App.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -33,7 +32,7 @@ class Profile extends Component {
   render() {
     return (
       <div>
-      <h4 style={{ paddingTop: `50px` }}>PROFILE</h4>
+      <h1>PROFILE</h1>
       <Panel className="listingPanel">
         <Form className="profile-form" onSubmit={this.handleInfoChange.bind(this)}>
           <FormGroup>

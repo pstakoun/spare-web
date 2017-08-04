@@ -3,232 +3,20 @@ body {
 	font-weight: 300;
 	text-align: center;
 }
-.jumbotron {
-	background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('http://johnsteinmetz.net/wp-content/uploads/2015/08/localstorage.jpg');
-	text-align: left;
-	padding: 50px 0;
-}
-.jumbotron h1 {
-	padding-top: 100px;
-	color: white;
-	letter-spacing: 0.75em;
-}
-.jumbotron h2 {
-	color: white;
-	font-weight: 200;
-	line-height: 1.5em;
-}
-.jumbotron button {
-	background-color: #e26e25;
-	border: none;
-	border-radius: 10px;
-	color: white;
-	margin: 20px 0;
-	padding: 10px 15px;
-	font-size: 1.5em;
-	font-weight: 200;
-}
-h4 {
+h1 {
 	color: #1a3863;
 	font-size: 3.5em;
 	letter-spacing: 0.2em;
 	margin-bottom: 20px;
-	margin-top: 50px;
+	margin-top: 100px;
 }
-.step1,
-.step2,
-.step3 {
-	margin: 30px -10px 50px -10px;
-	padding: 50px;
-}
-.step1 img,
-.step2 img,
-.step3 img {
-	width: 50px;
-	margin: 20px;
-}
-.step1 p,
-.step2 p,
-.step3 p {
-	font-size: 1.5em;
-	font-weight: 200;
-}
-.step1 {
-	background-color: #e2e2e2;
-}
-.step2 {
-	background-color: #cecece;
-}
-.step3 {
-	background-color: #bcbcbc;
-}
-h3 {
-	font-size: 2em;
-	font-weight: 100;
-	border-bottom: solid 1px #e26e25;
-	display: inline;
-}
-.feature-font {
-	font-size: 22px;
-	color: #e26e25;
-	margin-bottom: 20px;
-}
-.feature {
-	margin-top: 30px;
-	background-color: #1a3863;
-	text-align: center;
-	margin-bottom: 50px;
-}
-.feature-icon {
-	margin-top: 20px;
-	max-width: 20%;
-}
-.login-tab {
-	color: #00415d;
-	background-color: #fff;
-	border-color: #fff;
-	text-align: center;
-	padding: 10px 20px;
-}
-.login-tab a {
-	text-decoration: none;
-	color: #666;
-	font-weight: bold;
-	font-size: 15px;
-	-webkit-transition: all 0.1s linear;
-	-moz-transition: all 0.1s linear;
-	transition: all 0.1s linear;
-}
-.login-tab a.active {
-	color: #029f5b;
-	font-size: 18px;
-}
-.login-tab hr {
-	margin-top: 10px;
-	margin-bottom: 0px;
-	clear: both;
-	border: 0;
-	height: 1px;
-	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
-	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-}
-.login-tab input[type="text"], .login-tab input[type="email"], .login-tab input[type="password"] {
-	height: 45px;
-	border: 1px solid #ddd;
-	font-size: 16px;
-	-webkit-transition: all 0.1s linear;
-	-moz-transition: all 0.1s linear;
-	transition: all 0.1s linear;
-}
-.login-tab input:hover,
-.login-tab input:focus {
-	outline:none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border-color: #ccc;
-}
-.btn {
-	margin-bottom: 10px;
-}
-.btn-login {
-	background-color: #59B2E0;
-	outline: none;
-	color: #fff;
-	font-size: 14px;
-	height: auto;
-	font-weight: normal;
-	padding: 14px 0;
-	text-transform: uppercase;
-	border-color: #59B2E6;
-}
-.btn-login:hover,
-.btn-login:focus {
-	color: #fff;
-	background-color: #53A3CD;
-	border-color: #53A3CD;
-}
-.forgot-password {
-	text-decoration: underline;
-	color: #888;
-}
-.forgot-password:hover,
-.forgot-password:focus {
-	text-decoration: underline;
-	color: #666;
-}
-
-.btn-register {
-	background-color: #1CB94E;
-	outline: none;
-	color: #fff;
-	font-size: 14px;
-	height: auto;
-	font-weight: normal;
-	padding: 14px 0;
-	text-transform: uppercase;
-	border-color: #1CB94A;
-}
-.btn-register:hover,
-.btn-register:focus {
-	color: #fff;
-	background-color: #1CA347;
-	border-color: #1CA347;
-}
-.close {
-	font-size: 2.5em;
-}
-.error {
-	color: red;
-}
-.nav-tabs>li {
-  float: left;
-  font-size: 2em;
-}
-.nav-tabs>li+li {
-  float: left;
-}
-.footer-nav {
-	text-align: left;
-	font-size: 20px;
-	font-weight: normal;
-}
-.footer-link {
-	font-weight: 100;
-	font-size: 20px;
-	text-align: left;
-}
-.profile-title {
-	text-align: left;
-	color: #e26d1e;
-	margin-top: 10vh;
-	margin-bottom: 10vh;
-	padding: 3vh 3vh;
-}
-.profile-qtitle {
-	font-weight: 100;
-	font-size: 2em;
-}
-.profile-input {
-	background-color: transparent !important;
-	height: 5vh;
-}
-.profile-form {
-	padding-top: 5vh;
-	padding: 5vh 5vh;
-	text-align: left;
-}
-.profile-button {
-	border-radius: 10px;
-	margin: 20px 0;
-	padding: 10px 15px;
-	font-size: 1.2em;
-	font-weight: 200;
-}
-.logout {
-	padding-top: 50px;
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 @media (min-width: 768px) {
     .navbar {
@@ -260,6 +48,54 @@ h3 {
 	display: inline-block;
 	margin: 10px;
 }
+.filters select {
+  border: 2px transparent;
+	border-style: inset;
+  box-shadow: 0 0 1px #3d464d;
+  padding: .5em 1em;
+  -webkit-transition: border 0.2s, box-shadow 0.2s;
+          transition: border 0.2s, box-shadow 0.2s;
+  background-color: white;
+}
+.filters button {
+  border: 2px transparent;
+	border-style: inset;
+  box-shadow: 0 0 1px #3d464d;
+  padding: .5em 1em;
+  -webkit-transition: border 0.2s, box-shadow 0.2s;
+          transition: border 0.2s, box-shadow 0.2s;
+  background-color: white;
+}
+.profile-title {
+	text-align: left;
+	color: #e26d1e;
+	margin-top: 10vh;
+	margin-bottom: 10vh;
+	padding: 3vh 3vh;
+}
+.profile-qtitle {
+	font-weight: 100;
+	font-size: 2em;
+}
+.profile-input {
+	background-color: transparent !important;
+	height: 5vh;
+}
+.profile-form {
+	padding-top: 5vh;
+	padding: 5vh 5vh;
+	text-align: left;
+}
+.profile-button {
+	border-radius: 10px;
+	margin: 20px 0;
+	padding: 10px 15px;
+	font-size: 1.2em;
+	font-weight: 200;
+}
+.logout {
+	padding-top: 50px;
+}
 .spaceinfo {
 	background-color: #e5eceb;
 	text-align: left;
@@ -284,14 +120,6 @@ h3 {
 	color: #00197a;
 	letter-spacing: 0.05em;
 	margin-bottom: 20px;
-}
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
 }
 .transPanel {
 	width: 70vw;
@@ -348,6 +176,7 @@ hr {
 	font-size: 2em !important;
 	font-weight: 400;
 	margin-bottom: 2vh !important;
+	border: none;
 }
 .orderPanel h4 {
 	color: #1a3863;
@@ -429,23 +258,4 @@ hr {
   padding: .5em 1em;
   -webkit-transition: border 0.2s, box-shadow 0.2s;
           transition: border 0.2s, box-shadow 0.2s;
-}
-/**/
-.filters select {
-  border: 2px transparent;
-	border-style: inset;
-  box-shadow: 0 0 1px #3d464d;
-  padding: .5em 1em;
-  -webkit-transition: border 0.2s, box-shadow 0.2s;
-          transition: border 0.2s, box-shadow 0.2s;
-  background-color: white;
-}
-.filters button {
-  border: 2px transparent;
-	border-style: inset;
-  box-shadow: 0 0 1px #3d464d;
-  padding: .5em 1em;
-  -webkit-transition: border 0.2s, box-shadow 0.2s;
-          transition: border 0.2s, box-shadow 0.2s;
-  background-color: white;
 }

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 import React, { Component } from 'react';
 import { Grid, Nav, Navbar, NavItem, Row, Tab } from 'react-bootstrap';
 import { Link, Redirect, Route, Switch } from 'react-router-dom'

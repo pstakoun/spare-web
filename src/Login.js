@@ -39,26 +39,36 @@ class Login extends Component {
     var confirmPassword = ReactDOM.findDOMNode(this.refs.registerConfirmPassword).value;
 
     var that = this;
-    if (password === confirmPassword) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
-          firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-            firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
-                fname: firstName,
-                lname: lastName,
-                email: email,
-                addInfo: false
+    if (this.refs.accept_tos.checked === true){
+      if (password === confirmPassword) {
+          firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
+            firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+              firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+                  fname: firstName,
+                  lname: lastName,
+                  email: email,
+                  addInfo: false
+              });
+              firebase.auth().currentUser.sendEmailVerification();
             });
-            firebase.auth().currentUser.sendEmailVerification();
+          }, function(error) {
+            that.setState({
+              loginError: '',
+              registerError: error.message
+            });
           });
-        }, function(error) {
-          that.setState({
-            loginError: '',
-            registerError: error.message
-          });
+      }
+      else {
+        that.setState({
+          registerError: 'Password Mismatch'
         });
+      }
     }
     else {
-        console.log('Password mismatch.');
+      that.setState({
+        registerError: 'You must accept our Terms of Use'
+      });
+      return;
     }
   }
 

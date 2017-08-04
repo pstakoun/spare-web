@@ -62,8 +62,8 @@ class SpaceListing extends Component {
       <div>
         <Col xs={12} md={4}>
           <SpareMap
-            containerElement={ <div style={{ height: '15vw' }} /> }
-            mapElement={ <div style={{ height: '15vw' }} /> }
+            containerElement={ <div className="map-sm" /> }
+            mapElement={ <div className="map-sm" /> }
           />
         </Col>
         <Col xs={12} md={3}>

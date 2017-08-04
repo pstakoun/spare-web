@@ -138,11 +138,18 @@ hr {
 	font-weight: 200;
 }
 .listingPanel {
+	width: 90vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
+	text-align: left;
+	padding: 5px 5px 5px 5px;
+}
+@media (min-width: 768px) {
+  .listingPanel {
 	width: 70vw;
 	margin-left: 15vw;
 	margin-right: 15vw;
-	text-align: left;
-	padding: 5px 5px 5px 5px;
+  }
 }
 .listingPanel .p-title {
 	font-weight: 400 !important;
@@ -155,6 +162,9 @@ hr {
 .listingPanel h5 {
 	font-size: 1.1em;
 	font-weight: 200;
+}
+.map-sm {
+	height: 30vh;
 }
 .col-no-padding {
 	padding: 0 !important;
@@ -188,14 +198,13 @@ hr {
 }
 /* GEOSUGGEST */
 .geosuggest {
-  width: 500px;
   font-size: 1em;
   position: relative;
   text-align: left;
 }
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .geosuggest {
-    width: auto;
+    width: 500px;
   }
 }
 .geosuggest__input {

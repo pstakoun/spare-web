@@ -3,3 +3,4 @@ npm-debug.log.*
 *.pyc
 *.swp
 .DS_Store
+build/

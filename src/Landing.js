@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Jumbotron, Nav, Navbar, NavItem, Row, Col } from 'react-bootstrap';
 import Login from './Login';
+import { Link } from 'react-router-dom';
 import './Landing.css';
 
 class Landing extends Component {
@@ -36,14 +37,13 @@ class Landing extends Component {
           <Navbar collapseOnSelect fixedTop fluid>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="#">S</a>
+                <Link to='/'><img src="logo.png" style={{ height: `100%` }} /></Link>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-                <NavItem>About</NavItem>
-                <NavItem>Become a Provider</NavItem>
+                <li><Link to='/faq'>FAQ</Link></li>
                 <NavItem onClick={this.handleLogin.bind(this)}>Log In</NavItem>
                 <NavItem onClick={this.handleSignup.bind(this)}>Sign Up</NavItem>
               </Nav>
@@ -89,59 +89,33 @@ class Landing extends Component {
           </Col>
         </Row>
         <Row className="feature">
-            <Col xs={6} md={2}>
+            <Col xs={12} md={2} className="feature-col">
                 <Row><img className="feature-icon" src="https://cl.ly/313k2P0C1E1R/dollar.png" /></Row>
                 <Row className="feature-font">Instant Quote</Row>
             </Col>
-            <Col xs={6} md={2}>
+            <Col xs={12} md={2} className="feature-col">
                 <Row><img className="feature-icon" src="https://cl.ly/2V290s0w011A/daytime.png" /></Row>
                 <Row className="feature-font">24/7 Access</Row>
             </Col>
-            <Col xs={6} md={2}>
+            <Col xs={12} md={2} className="feature-col">
                 <Row><img className="feature-icon" src="https://cl.ly/3q1z0X23010S/sync.png" /></Row>
                 <Row className="feature-font">Smart Match</Row>
             </Col>
-            <Col xs={6} md={2}>
+            <Col xs={12} md={2} className="feature-col">
                 <Row><img className="feature-icon" src="https://cl.ly/1P2D0j0X3725/location.png" /></Row>
                 <Row className="feature-font">Best Locations</Row>
             </Col>
-            <Col xs={6} md={2}>
+            <Col xs={12} md={2} className="feature-col">
                 <Row><img className="feature-icon" src="https://cl.ly/0W152T3M0R2B/message.png" /></Row>
                 <Row className="feature-font">Feedback</Row>
             </Col>
-            <Col xs={6} md={2}>
+            <Col xs={12} md={2} className="feature-col">
                 <Row><img className="feature-icon" src="https://cl.ly/012W1b190l39/security.png" /></Row>
                 <Row className="feature-font">Security</Row>
             </Col>
         </Row>
         <Row>
-            <Col xs={6} md={2} className="footer-link" mdOffset={1}>
-                <Row className="footer-nav">Company</Row>
-                <Row><br/></Row>
-                <Row href="#">About Us</Row>
-                <Row href="#">Mission</Row>
-                <Row href="#">Partner with Us</Row>
-            </Col>
-            <Col xs={6} md={2} className="footer-link">
-                <Row className="footer-nav">Serivces and Pricing</Row>
-                <Row href="#"><br/></Row>
-                <Row href="#">Get Quotes</Row>
-                <Row href="#">Pricing</Row>
-                <Row href="#">Find Spare near you</Row>
-            </Col>
-            <Col xs={6} md={3} className="footer-link">
-                <Row className="footer-nav">Support</Row>
-                <Row href="#"><br/></Row>
-                <Row href="#">FAQ</Row>
-                <Row href="#">Terms</Row>
-                <Row href="#">Privacy</Row>
-            </Col>
-            <Col xs={6} md={2}>
-            </Col>
-            <Col xs={6} md={2}>
-            </Col>
-            <Col xs={6} md={2}>
-            </Col>
+          <Button className="btn-provider" onClick={this.handleSignup.bind(this)}>Find a provider</Button>
         </Row>
         <Login handleClose={this.handleClose.bind(this)} activeKey={this.state.loginKey} />
       </div>

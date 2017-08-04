@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Form, FormControl, FormGroup, Modal, Tab, Tabs } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 import './App.css';
 
@@ -107,7 +108,7 @@ class Login extends Component {
                 <FormControl ref="registerConfirmPassword" type="password" placeholder="Confirm Password" />
               </FormGroup>
               <FormGroup>
-                <label><input type="checkbox" ref="accept_tos" /> By Signing Up, I agree to the <a href="https://spare.ly/tos">Terms of Use</a>.</label><br/>
+                <label><input type="checkbox" ref="accept_tos" /> By Signing Up, I agree to the <Link to='/tos'>Terms of Use</Link>.</label><br/>
               </FormGroup>
               <FormGroup>
                 <Button className="form-control btn-register" type="submit">

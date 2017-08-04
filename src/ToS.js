@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
-import './Landing.css';
-
-
 class ToS extends Component {
 
   render() {

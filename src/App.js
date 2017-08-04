@@ -134,7 +134,10 @@ class App extends Component {
             </Switch>
           </Row>
         ) : (
-          <Landing />
+          <Switch>
+            <Route exact path='/' component={Landing} />
+            <Route exact path='/tos' component={ToS} />
+          </Switch>
         )}
       </Grid>
     );

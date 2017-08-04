@@ -104,6 +104,7 @@ class App extends Component {
         {this.state.user && this.state.confirmation && <Redirect to='/confirm' push />}
         {this.state.user ? (
           <Row>
+            <div className="mobile-overlay"><h1>Spare.ly is not yet optimized for mobile. Please use a larger screen!</h1></div>
             <Navbar collapseOnSelect fixedTop fluid>
               <Navbar.Header>
                 <Navbar.Brand>

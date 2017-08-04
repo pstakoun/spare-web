@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const firebase = require('firebase');
 const moment = require('moment');
-const stripe = require('stripe')('sk_test_nrjKPBtN58e7Nr1xpzD5alQs');
+const stripe = require('stripe')('sk_live_GZo1QSQDVbdzUi6ssto24s0p');
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.use(bodyParser.urlencoded({ extended: true }))

@@ -50,7 +50,7 @@ class OrderDetails extends Component {
       <Panel className="orderPanel">
         <h3>Your Order Confirmation</h3>
         <img className="img-responsive center-block cover-image" />
-		    <h4>{this.props.space.address}</h4>
+        <h4>{this.props.space.address}</h4>
         <hr/>
         <h4>Features</h4>
         {has_lock_local}

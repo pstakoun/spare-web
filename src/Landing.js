@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Jumbotron, Nav, Navbar, NavItem, Row, Col } from 'react-bootstrap';
 import Login from './Login';
-import './App.css';
+import './Landing.css';
 
 class Landing extends Component {
   constructor(props) {

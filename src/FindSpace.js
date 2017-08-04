@@ -134,20 +134,22 @@ class FindSpace extends Component {
     return (
       <div>
         <div className="filters">
-          <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
-          <DatePicker
-            selected={this.state.startDate}
-            onChange={(date) => {
-              this.setState({ startDate: date });
-              this.props.setStartDate(date);
-              if (this.state.endDate.diff(date) < 0) {
-                this.setState({ endDate: date });
-                this.props.setEndDate(date);
-              }
-            }}
-            minDate={moment()}
+          <p>I need a</p><SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
+          <p>space near</p><Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
+          <p>from</p><DatePicker placeholderText="Start Date"
+          selected={this.state.startDate}
+          onChange={(date) => {
+            this.setState({ startDate: date });
+            this.props.setStartDate(date);
+            if (this.state.endDate.diff(date) < 0) {
+              this.setState({ endDate: date });
+              this.props.setEndDate(date);
+            }
+          }}
+
+          minDate={moment()}
           />
-          <DatePicker
+          <p>to</p><DatePicker placeholderText="End Date"
             selected={this.state.endDate}
             onChange={(date) => {
               this.setState({ endDate: date });
@@ -155,9 +157,8 @@ class FindSpace extends Component {
             }}
             minDate={this.state.startDate}
           />
-          <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
-          <div><button onClick={this.handleGo.bind(this)}>Go</button></div>
-		</div>
+          <div><button onClick={this.handleGo.bind(this)}>Find Match</button></div>
+		    </div>
         <SpareMap
           containerElement={ <div style={{ height: `80vh` }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }

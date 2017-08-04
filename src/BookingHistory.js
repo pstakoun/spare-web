@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import './App.css';
 import { Col } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import BookingDetails from './BookingDetails';
 
 class BookingHistory extends Component  {
@@ -9,7 +9,7 @@ class BookingHistory extends Component  {
     super(props);
     this.state = {
 	    trans: null,
-      spaceId: this.props.space.spaceId
+      spaceId: this.props.space ? this.props.space.spaceId : null
     };
   }
 
@@ -30,8 +30,9 @@ class BookingHistory extends Component  {
 
   render() {
     return (
-      <div style={{ paddingTop: `50px` }}>
-        <h4>BOOKING HISTORY</h4>
+      <div>
+	    {!this.state.spaceId && <Redirect to='/spaces' />}
+        <h1>BOOKING HISTORY</h1>
         {this.renderBookingHistory()}
       </div>
     );

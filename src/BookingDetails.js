@@ -8,13 +8,17 @@ class BookingDetails extends Component {
     super(props);
     this.state = {
       space: null,
+      user: null,
       location: null
-    }
+    };
   }
 
   componentDidMount() {
     firebase.database().ref('spaces/' + this.props.trans.spaceId).on('value', function(snapshot) {
       this.setState({ space: snapshot.val(), location: { lat: snapshot.val().lat, lng: snapshot.val().lng}});
+    }.bind(this));
+    firebase.database().ref('users/' + this.props.trans.userId).on('value', function(snapshot) {
+      this.setState({ user: snapshot.val()});
     }.bind(this));
   }
 
@@ -47,13 +51,13 @@ class BookingDetails extends Component {
 
     return (
       <Panel className="transPanel">
-        <Col xs={12} md={4}>
+        <Col md={3}>
           <SpareMap
             containerElement={ <div style={{ height: '15vw' }} /> }
             mapElement={ <div style={{ height: '15vw' }} /> }
           />
         </Col>
-        <Col xs={12} md={4}>
+        <Col md={3}>
           <p className="p-title">Location</p>
           <p className="p-body">{this.state.space ? this.state.space.address : null}</p>
           <p className="p-title">Duration</p>
@@ -61,13 +65,21 @@ class BookingDetails extends Component {
           <p className="p-title">Size</p>
           <p className="p-body">{this.state.space ? this.state.space.size : null}</p>
         </Col>
-        <Col xs={12} md={4}>
+        <Col md={3}>
           <p className="p-title">Transaction Timestamp</p>
           <p className="p-body">{this.props.trans.time}</p>
           <p className="p-title">Payment Method</p>
           <p className="p-body">{this.props.trans.charge.source.brand} {this.props.trans.charge.source.last4}</p>
           <p className="p-title">Amount</p>
           <p className="p-body">USD$ {transAmount}</p>
+        </Col>
+        <Col md={3}>
+          <p className="p-title">Contact Name</p>
+          <p className="p-body">{this.state.user ? this.state.user.fname + ' ' + this.state.user.lname : null}</p>
+          <p className="p-title">Contact Email</p>
+          <p className="p-body">{this.state.user ? this.state.user.email : null}</p>
+          <p className="p-title">Contact Phone</p>
+          <p className="p-body">{this.state.user ? this.state.user.phone : null}</p>
         </Col>
       </Panel>
     );

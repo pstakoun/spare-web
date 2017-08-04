@@ -28,12 +28,11 @@
     "stripe": "^4.23.1"
   },
   "scripts": {
-    "start": "npm run bs",
+    "start": "npm run build && npm run start:server",
     "start:client": "react-scripts start",
     "start:server": "node server",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "bs": "npm run build && npm run start:server"
+    "eject": "react-scripts eject"
   }
 }

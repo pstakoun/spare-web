@@ -253,3 +253,15 @@ hr {
 	font-size: 1.1em;
 	font-weight: 200;
 }
+.faq {
+	padding-top: 120px;
+	padding-left: 20%;
+	padding-right: 20%;
+	text-align: left;
+	width: 100%;
+}
+.faq h4 {
+	font-size: 1.5em;
+	font-weight: 400;
+	letter-spacing: 0em;
+}

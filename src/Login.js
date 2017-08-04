@@ -29,6 +29,30 @@ class Login extends Component {
     });
   }
 
+  handlePasswordReset(event) {
+    event.preventDefault();
+
+    var email = ReactDOM.findDOMNode(this.refs.loginEmail).value.trim();
+
+    var that = this;
+    if (email != null){
+      firebase.auth().sendPasswordResetEmail(email).then(function() {
+        that.setState({
+          loginError: 'Please check your email for Password reset email.'
+        });
+      }).catch(function(error) {
+        that.setState({
+          loginError: 'User with this Email does not exist!'
+        });
+      });
+    }
+    else {
+      that.setState({
+        loginError: 'Please enter your email address'
+      });
+    }
+  }
+
   handleRegister(event) {
     event.preventDefault();
 
@@ -90,13 +114,10 @@ class Login extends Component {
                 <Button className="form-control btn-login" type="submit">
                   Log In
                 </Button>
+                <Button className="form-control btn-info" onClick={this.handlePasswordReset.bind(this)}>
+                  Password Reset
+                </Button>
               </FormGroup>
-              <center><p>
-                New to SPARE? Sign Up.
-              </p></center>
-              <center><p className="forgot-password">
-                Forgot Password?
-              </p></center>
             </Form>
           </Tab>
           <Tab className="login-tab" title="Sign Up" eventKey={2}>

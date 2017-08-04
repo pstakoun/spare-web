@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Accordion, Panel } from 'react-bootstrap';
-import './Landing.css';
 
 class FAQ extends Component {
 

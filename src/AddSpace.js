@@ -22,14 +22,15 @@ class AddSpace extends Component {
       progress: 0,
       spaceId: RandomString.generate(28),
       phoneNum: null,
-	  done: false
+      errorMsg: "",
+      done: false
     };
 
     firebase.database().ref('users/' + firebase.auth().currentUser.uid).on('value', (snapshot) => this.setState({ phoneNum: snapshot.val().phone}));
 
   }
 
-  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0, errorMsg: "Uploading..."});
 
   handleProgress = (progress) => this.setState({progress});
 
@@ -39,9 +40,7 @@ class AddSpace extends Component {
   }
 
   handleUploadSuccess = (filename) => {
-    this.setState({progress: 100, isUploading: false});
-    console.log("Upload Success");
-
+    this.setState({progress: 100, isUploading: false, errorMsg: "Upload Success"});
   };
 
   updateLocation(suggest) {
@@ -60,30 +59,41 @@ class AddSpace extends Component {
 
     var geofireRef = firebase.database().ref('geofire/');
     var geoFire = new GeoFire(geofireRef);
+    if (this.state.address != (null||undefined) && ReactDOM.findDOMNode(this.refs.spaceType).value != (null||undefined) && this.state.progress == 100){
+      firebase.database().ref('spaces/' + this.state.spaceId).set({
+          lat: this.state.location.lat,
+          lng: this.state.location.lng,
+          address: this.state.address,
+          type: ReactDOM.findDOMNode(this.refs.spaceType).value,
+          size: ReactDOM.findDOMNode(this.refs.spaceSize).value,
+          climate_control: this.refs.climate_control.checked,
+          all_access: this.refs.all_access.checked,
+          has_lock: this.refs.has_lock.checked,
+          has_insurance: this.refs.has_insurance.checked,
+          user: firebase.auth().currentUser.uid,
+          photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg",
+          spaceId: this.state.spaceId,
+          contactNum: this.state.phoneNum,
+          status: "active"
+      });
 
-    firebase.database().ref('spaces/' + this.state.spaceId).set({
-        lat: this.state.location.lat,
-        lng: this.state.location.lng,
-        address: this.state.address,
-        type: ReactDOM.findDOMNode(this.refs.spaceType).value,
-        size: ReactDOM.findDOMNode(this.refs.spaceSize).value,
-        climate_control: this.refs.climate_control.checked,
-        all_access: this.refs.all_access.checked,
-        has_lock: this.refs.has_lock.checked,
-        has_insurance: this.refs.has_insurance.checked,
-        user: firebase.auth().currentUser.uid,
-        photoURL: "gs://decentralizedps.appspot.com/images/"+ this.state.spaceId + ".jpg",
-        spaceId: this.state.spaceId,
-        contactNum: this.state.phoneNum,
-        status: "active"
-    });
-
-    geoFire.set(this.state.spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {
-      this.setState({ done: true });
-    }.bind(this), function(error) {
-      console.log("Error: " + error);
-    });
-
+      geoFire.set(this.state.spaceId, [Number(this.state.location.lat), Number(this.state.location.lng)]).then(function() {
+        this.setState({ done: true });
+      }.bind(this), function(error) {
+        console.log("Error: " + error);
+      });
+    }
+    else {
+      if (ReactDOM.findDOMNode(this.refs.spaceType).value == "default"){
+        this.setState({ errorMsg: "Please select size!"});
+      }
+      else if (this.state.progress == 0){
+        this.setState({ errorMsg: "Please upload cover photo!"});
+      }
+      else if (ReactDOM.findDOMNode(this.refs.spaceType).value == (null||undefined) && this.state.progress == 0){
+        this.setState({ errorMsg: "Please complete all fields!"});
+      }
+    }
   }
 
   render() {
@@ -151,6 +161,7 @@ class AddSpace extends Component {
               />
             </FormGroup>
             <FormGroup>
+              <p className="error">{this.state.errorMsg}</p>
               <Button className="profile-button" type="submit">Submit Info</Button>
             </FormGroup>
           </Form>

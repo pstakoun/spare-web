@@ -50,7 +50,7 @@ class SpaceOverlay extends Component {
           </Col>
         </Row>
         <Row>
-          <Button style={{ marginTop: `1vh`, width: `40%` }} onClick={() => this.props.selectSpace(this.props.space)}>Take this Space</Button>
+          <Button style={{ marginTop: `1vh`, width: `40%` }} onClick={() => this.props.selectSpace(this.props.space)}>Book this Space</Button>
         </Row>
       </Panel>
     );

@@ -114,10 +114,10 @@ class EditSpace extends Component {
             </FormGroup>
             <FormGroup>
               <p className="profile-qtitle">Additional Features</p>
-              <label><input type="checkbox" ref="climate_control" /> Has Climate Control</label><br/>
-              <label><input type="checkbox" ref="all_access" /> 24/7 Access</label><br/>
-              <label><input type="checkbox" ref="has_lock" /> Locks Provided</label><br/>
-              <label><input type="checkbox" ref="has_insurance" /> Insurance Provided</label>
+              <label><input type="checkbox" ref="climate_control" defaultChecked={this.props.space.climate_control} /> Has Climate Control</label><br/>
+              <label><input type="checkbox" ref="all_access" defaultChecked={this.props.space.all_access} /> 24/7 Access</label><br/>
+              <label><input type="checkbox" ref="has_lock" defaultChecked={this.props.space.has_lock} /> Locks Provided</label><br/>
+              <label><input type="checkbox" ref="has_insurance" defaultChecked={this.props.space.has_insurance} /> Insurance Provided</label>
             </FormGroup>
             <FormGroup>
               <p className="profile-qtitle">Storage Size</p>

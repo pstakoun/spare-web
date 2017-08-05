@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import { injectStripe, CardElement } from 'react-stripe-elements';
+import { Form } from 'react-bootstrap';
+import { injectStripe, CardElement, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement } from 'react-stripe-elements';
 
 class Checkout extends Component {
   constructor(props) {
@@ -26,11 +27,44 @@ class Checkout extends Component {
   }
 
   render() {
+
+    var style = {
+      base: {
+        iconColor: '#666EE8',
+        color: '#31325F',
+        lineHeight: '40px',
+        fontWeight: 300,
+        fontFamily: 'Helvetica Neue',
+        fontSize: '15px',
+
+        '::placeholder': {
+          color: '#CFD7E0',
+        },
+      },
+    };
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <CardElement />
-        <button>Pay</button>
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <div className="group">
+        <label>
+          <span>Card number</span>
+          <CardNumberElement className="field" style={style}/>
+        </label>
+        <label>
+          <span>Expiry date</span>
+          <CardExpiryElement className="field" style={style}/>
+        </label>
+        <label>
+          <span>CVC</span>
+          <CardCVCElement className="field" style={style}/>
+        </label>
+        <label>
+          <span>Postal code</span>
+          <PostalCodeElement className="field" style={style}/>
+        </label>
+        <button className="button">Pay</button>
+        </div>
+        </Form>
     );
   }
 }

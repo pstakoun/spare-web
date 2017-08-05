@@ -36,18 +36,10 @@ class Confirmation extends Component {
       <div style={{ paddingTop: `50px` }}>
         {this.props.space ? null : <Redirect to='/' push />}
         {this.state.paymentCompleted && <Redirect to='/history' push />}
-      <h4>CONFIRM</h4>
-	    <Panel>
-		  <Col sm={6}>
-		    <Payment handlePayment={this.handlePayment.bind(this)} />
-		  </Col>
-		  <Col sm={4}>
-		    <OrderDetails space={this.props.space} startDate={this.props.startDate} endDate={this.props.endDate}/>
-		  </Col>
-		  <Col lg={12}>
-	        <Link to='/' onClick={this.props.deselectSpace.bind(this)} className='btn btn-default'>Cancel</Link>
-		  </Col>
-		</Panel>
+        <h4>CONFIRM</h4>
+  		  <OrderDetails space={this.props.space} startDate={this.props.startDate} endDate={this.props.endDate}/>
+        <Payment handlePayment={this.handlePayment.bind(this)} />
+        <Link to='/' onClick={this.props.deselectSpace.bind(this)} className='btn-cancel'>Cancel Transaction</Link>
       </div>
     );
   }

@@ -114,9 +114,9 @@ class Login extends Component {
                 <Button className="form-control btn-login" type="submit">
                   Log In
                 </Button>
-                <Button className="form-control btn-info" onClick={this.handlePasswordReset.bind(this)}>
+				{ /* <Button className="form-control btn-info" onClick={this.handlePasswordReset.bind(this)}>
                   Password Reset
-                </Button>
+                </Button> */ }
               </FormGroup>
             </Form>
           </Tab>

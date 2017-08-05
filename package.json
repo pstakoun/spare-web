@@ -10,6 +10,7 @@
     "geofire": "^4.1.2",
     "jquery": "^3.2.1",
     "moment": "^2.18.1",
+    "prettier": "^1.5.3",
     "randomstring": "^1.1.5",
     "react": "^15.6.1",
     "react-alertify-js": "0.0.1",

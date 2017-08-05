@@ -47,7 +47,7 @@ class Login extends Component {
 
     var that = this;
     if (email != null) {
-      firebase
+      /*firebase
         .auth()
         .sendPasswordResetEmail(email)
         .then(function() {
@@ -59,7 +59,7 @@ class Login extends Component {
           that.setState({
             loginError: "User with this Email does not exist!"
           });
-        });
+        });*/
     } else {
       that.setState({
         loginError: "Please enter your email address"

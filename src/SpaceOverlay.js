@@ -44,6 +44,8 @@ class SpaceOverlay extends Component {
             {has_insurance_local}
             {all_access_local}
             {climate_control_local}
+            <p style={{ fontSize: `1.2em`, fontWeight: `400` }}> Type of Space </p>
+            {this.props.space.type}
             <hr/>
             <p style={{ fontSize: `1.2em`, fontWeight: `400` }}> Contact </p>
             {this.props.space.contactNum}

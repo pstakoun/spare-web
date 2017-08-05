@@ -34,8 +34,23 @@ class FindSpace extends Component {
     this.props.resetSpace();
   }
 
+  getSize(length, width, height) {
+    if (length >= 8 && width >= 8 && height >= 6) { return 2; }
+    else if (length >= 5 && width >= 5 && height >= 6) { return 1; }
+    else { return 0; }
+  }
+
+  getSpaceSize(space) {
+    return this.getSize(space.length, space.width, space.height);
+  }
+
   getDefaultLocation() {
     return this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 };
+  }
+
+  getSelectedSize(str) {
+    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
+    return sizeDict[str];
   }
 
   onMapLoad(map) {
@@ -45,11 +60,10 @@ class FindSpace extends Component {
   }
 
   getBounds() {
-    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
     var bounds = new google.maps.LatLngBounds();
     bounds.extend(this.state.location);
     for (var key in this.state.spaces) {
-      if (sizeDict[this.state.size] <= sizeDict[this.state.spaces[key].size]) {
+      if (this.getSelectedSize(this.state.size) <= this.getSpaceSize(this.state.spaces[key])) {
         bounds.extend({ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng });
       }
     }
@@ -57,10 +71,9 @@ class FindSpace extends Component {
   }
 
   renderMarkers() {
-    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
     var arr = [<Marker defaultPosition={this.state.location} />];
     for (var key in this.state.spaces) {
-      if (sizeDict[this.state.size] <= sizeDict[this.state.spaces[key].size]) {
+      if (this.getSelectedSize(this.state.size) <= this.getSpaceSize(this.state.spaces[key])) {
         arr.push(<Marker icon={{ url: 'http://i.imgur.com/9yILi61.png', size: new google.maps.Size(20, 20) }} defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} />);
       }
     }
@@ -103,7 +116,7 @@ class FindSpace extends Component {
     var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
     var space = null;
     for (var key in this.state.spaces) {
-      if (sizeDict[this.state.size] <= sizeDict[this.state.spaces[key].size] && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
+      if (this.getSelectedSize(this.state.size) <= this.getSpaceSize(this.state.spaces[key]) && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
         space = key;
       }
     }

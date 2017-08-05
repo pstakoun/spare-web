@@ -8,8 +8,6 @@ import Geosuggest from 'react-geosuggest';
 import * as GeoFire from 'geofire';
 import FileUploader from 'react-firebase-file-uploader';
 
-import './App.css';
-
 class EditSpace extends Component {
   constructor(props) {
     super(props);
@@ -60,7 +58,9 @@ class EditSpace extends Component {
         lng: this.state.location.lng,
         address: this.state.address,
         type: ReactDOM.findDOMNode(this.refs.spaceType).value,
-        size: ReactDOM.findDOMNode(this.refs.spaceSize).value,
+        width: ReactDOM.findDOMNode(this.refs.spaceWidth).value,
+        length: ReactDOM.findDOMNode(this.refs.spaceLength).value,
+        height: ReactDOM.findDOMNode(this.refs.spaceHeight).value,
         climate_control: this.refs.climate_control.checked,
         all_access: this.refs.all_access.checked,
         has_lock: this.refs.has_lock.checked,
@@ -114,18 +114,16 @@ class EditSpace extends Component {
             </FormGroup>
             <FormGroup>
               <p className="profile-qtitle">Additional Features</p>
-              <label><input type="checkbox" ref="climate_control" defaultChecked={this.props.space.climate_control} /> Has Climate Control</label><br/>
-              <label><input type="checkbox" ref="all_access" defaultChecked={this.props.space.all_access} /> 24/7 Access</label><br/>
-              <label><input type="checkbox" ref="has_lock" defaultChecked={this.props.space.has_lock} /> Locks Provided</label><br/>
-              <label><input type="checkbox" ref="has_insurance" defaultChecked={this.props.space.has_insurance} /> Insurance Provided</label>
+              <label><input type="checkbox" ref="climate_control" defaultChecked={this.state.space && this.props.space.climate_control} /> Has Climate Control</label><br/>
+              <label><input type="checkbox" ref="all_access" defaultChecked={this.state.space && this.props.space.all_access} /> 24/7 Access</label><br/>
+              <label><input type="checkbox" ref="has_lock" defaultChecked={this.state.space && this.props.space.has_lock} /> Locks Provided</label><br/>
+              <label><input type="checkbox" ref="has_insurance" defaultChecked={this.state.space && this.props.space.has_insurance} /> Insurance Provided</label>
             </FormGroup>
             <FormGroup>
-              <p className="profile-qtitle">Storage Size</p>
-              <FormControl componentClass="select" placeholder="Please select..." ref="spaceSize" required="true">
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-              </FormControl>
+              <p className="profile-qtitle">Storage Dimensions (feet)</p>
+              <label>Length <FormControl type="number" ref="spaceLength" required="true" /></label>
+              <label>Width <FormControl type="number" ref="spaceWidth" required="true" /></label>
+              <label>Height <FormControl type="number" ref="spaceHeight" required="true" /></label>
             </FormGroup>
             <FormGroup>
               <p className="profile-qtitle">Select Cover Photo</p>

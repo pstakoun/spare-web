@@ -86,7 +86,7 @@ class SpaceListing extends Component {
             {climate_control_local}
         </Col>
         <Col xs={12} md={2}>
-          <Link to='/spaces/manage' onClick={() => this.props.editSpace(this.state.space)} className="btn btn-default btn-info">Manage Booking</Link>
+          <Link to='/spaces/manage' onClick={() => this.props.editSpace(this.state.space)} className="btn btn-default btn-info">Manage Bookings</Link>
           <Link to='/spaces/edit' onClick={() => this.props.editSpace(this.state.space)} className="btn btn-default">Edit Info</Link>
         </Col>
       </div>

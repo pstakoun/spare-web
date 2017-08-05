@@ -37,7 +37,7 @@ class Landing extends Component {
           <Navbar collapseOnSelect fixedTop fluid>
             <Navbar.Header>
               <Navbar.Brand>
-                <Link to='/'><img src="logo.png" style={{ height: `100%` }} /></Link>
+                <Link to='/'><img src="/logo.png" style={{ height: `100%` }} /></Link>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>

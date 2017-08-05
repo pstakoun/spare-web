@@ -31,6 +31,16 @@ class TransactionDetails extends Component {
     return [<Marker defaultPosition={this.state.location} title="current" />];
   }
 
+  getSize(length, width, height) {
+    if (length >= 8 && width >= 8 && height >= 6) { return 'Large'; }
+    else if (length >= 5 && width >= 5 && height >= 6) { return 'Medium'; }
+    else { return 'Small'; }
+  }
+
+  getSpaceSize(space) {
+    return this.getSize(space.length, space.width, space.height);
+  }
+
   render() {
 
     const SpareMap = withGoogleMap(props => (
@@ -59,7 +69,7 @@ class TransactionDetails extends Component {
           <p className="p-title">Duration</p>
           <p className="p-body">{this.props.trans.duration} Days</p>
           <p className="p-title">Size</p>
-          <p className="p-body">{this.state.space ? this.state.space.size : null}</p>
+          <p className="p-body">{this.state.space ? this.getSpaceSize(this.state.space) : null}</p>
         </Col>
         <Col xs={12} md={4}>
           <p className="p-title">Transaction Timestamp</p>

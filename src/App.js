@@ -6,7 +6,6 @@ import { Link, Redirect, Route, Switch } from 'react-router-dom'
 import * as firebase from 'firebase';
 import moment from 'moment';
 import Landing from './Landing';
-import Preferences from './Preferences';
 import History from './History';
 import Profile from './Profile';
 import FindSpace from './FindSpace';
@@ -27,7 +26,8 @@ class App extends Component {
       space: null,
       startDate: moment(),
       endDate: moment(),
-      confirmation: false
+      confirmation: false,
+	  loggedOut: false
     };
    if (firebase.apps.length === 0) {
       var config = {
@@ -104,10 +104,17 @@ class App extends Component {
     });
   }
 
+  handleLogout(event) {
+    event.preventDefault();
+    firebase.auth().signOut();
+    this.setState({ loggedOut: true });
+  }
+
   render() {
     return (
       <Grid fluid>
         {this.state.user && this.state.confirmation && <Redirect to='/confirm' push />}
+        {this.state.loggedOut && <Redirect to='/' push />}
         {this.state.user ? (
           <Row>
             <Navbar collapseOnSelect fixedTop fluid>
@@ -123,7 +130,7 @@ class App extends Component {
                   <li><Link to='/spaces'>My Spaces</Link></li>
                   <li><Link to='/history'>History</Link></li>
                   <li><Link to='/profile'>Profile</Link></li>
-                  <li><Link to='/preferences'>Preferences</Link></li>
+                  <li><a href="#" onClick={this.handleLogout.bind(this)}>Log Out</a></li>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -136,7 +143,6 @@ class App extends Component {
               <Route exact path='/spaces/manage' render={() => <BookingHistory space={this.state.space} />} />
               <Route exact path='/history' component={History} />
               <Route exact path='/profile' component={Profile} />
-              <Route exact path='/preferences' component={Preferences} />
               <Route exact path='/tos' component={ToS} />
               <Route exact path='/faq' component={FAQ} />
             </Switch>

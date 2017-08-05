@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { StripeProvider, Elements } from 'react-stripe-elements';
-import Checkout from './Checkout';
+import React, { Component } from "react";
+import { StripeProvider, Elements } from "react-stripe-elements";
+import Checkout from "./Checkout";
 
 class Payment extends Component {
   render() {

@@ -1,18 +1,23 @@
 /* eslint-disable no-undef */
 
-import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
-import * as firebase from 'firebase';
-import { withGoogleMap, GoogleMap, Marker, OverlayView } from 'react-google-maps';
-import {geolocated} from 'react-geolocated';
-import * as GeoFire from 'geofire';
-import Geosuggest from 'react-geosuggest';
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
-import SizePicker from './SizePicker';
-import SpaceOverlay from './SpaceOverlay';
+import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+import * as firebase from "firebase";
+import {
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  OverlayView
+} from "react-google-maps";
+import { geolocated } from "react-geolocated";
+import * as GeoFire from "geofire";
+import Geosuggest from "react-geosuggest";
+import DatePicker from "react-datepicker";
+import moment from "moment";
+import SizePicker from "./SizePicker";
+import SpaceOverlay from "./SpaceOverlay";
 
-import 'react-datepicker/dist/react-datepicker.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 class FindSpace extends Component {
   constructor(props) {
@@ -22,12 +27,12 @@ class FindSpace extends Component {
       spaces: {},
       location: this.getDefaultLocation(),
       activeSpace: null,
-      size: 'Small',
+      size: "Small",
       startDate: moment(),
       endDate: moment()
     };
 
-	this.updateMarkers();
+    this.updateMarkers();
   }
 
   componentDidMount() {
@@ -35,9 +40,13 @@ class FindSpace extends Component {
   }
 
   getSize(length, width, height) {
-    if (length >= 8 && width >= 8 && height >= 6) { return 2; }
-    else if (length >= 5 && width >= 5 && height >= 6) { return 1; }
-    else { return 0; }
+    if (length >= 8 && width >= 8 && height >= 6) {
+      return 2;
+    } else if (length >= 5 && width >= 5 && height >= 6) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   getSpaceSize(space) {
@@ -45,11 +54,13 @@ class FindSpace extends Component {
   }
 
   getDefaultLocation() {
-    return this.props.coords ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude } : { lat: 42.361145, lng: -71.057083 };
+    return this.props.coords
+      ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude }
+      : { lat: 42.361145, lng: -71.057083 };
   }
 
   getSelectedSize(str) {
-    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
+    var sizeDict = { Small: 0, Medium: 1, Large: 2 };
     return sizeDict[str];
   }
 
@@ -63,8 +74,14 @@ class FindSpace extends Component {
     var bounds = new google.maps.LatLngBounds();
     bounds.extend(this.state.location);
     for (var key in this.state.spaces) {
-      if (this.getSelectedSize(this.state.size) <= this.getSpaceSize(this.state.spaces[key])) {
-        bounds.extend({ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng });
+      if (
+        this.getSelectedSize(this.state.size) <=
+        this.getSpaceSize(this.state.spaces[key])
+      ) {
+        bounds.extend({
+          lat: this.state.spaces[key].lat,
+          lng: this.state.spaces[key].lng
+        });
       }
     }
     return bounds;
@@ -73,15 +90,29 @@ class FindSpace extends Component {
   renderMarkers() {
     var arr = [<Marker defaultPosition={this.state.location} />];
     for (var key in this.state.spaces) {
-      if (this.getSelectedSize(this.state.size) <= this.getSpaceSize(this.state.spaces[key])) {
-        arr.push(<Marker icon={{ url: 'http://i.imgur.com/9yILi61.png', size: new google.maps.Size(20, 20) }} defaultPosition={{ lat: this.state.spaces[key].lat, lng: this.state.spaces[key].lng }} />);
+      if (
+        this.getSelectedSize(this.state.size) <=
+        this.getSpaceSize(this.state.spaces[key])
+      ) {
+        arr.push(
+          <Marker
+            icon={{
+              url: "http://i.imgur.com/9yILi61.png",
+              size: new google.maps.Size(20, 20)
+            }}
+            defaultPosition={{
+              lat: this.state.spaces[key].lat,
+              lng: this.state.spaces[key].lng
+            }}
+          />
+        );
       }
     }
     return arr;
   }
 
   updateMarkers() {
-    var firebaseRef = firebase.database().ref('geofire');
+    var firebaseRef = firebase.database().ref("geofire");
     var geoFire = new GeoFire(firebaseRef);
 
     var geoQuery = geoFire.query({
@@ -89,20 +120,31 @@ class FindSpace extends Component {
       radius: 5
     });
 
-    geoQuery.on("key_entered", function(key) {
-      firebase.database().ref('spaces/' + key).on('value', function(snapshot) {
-        this.state.spaces[key] = snapshot.val();
-	    this.setState({});
-      }.bind(this));
-    }.bind(this));
+    geoQuery.on(
+      "key_entered",
+      function(key) {
+        firebase.database().ref("spaces/" + key).on(
+          "value",
+          function(snapshot) {
+            this.state.spaces[key] = snapshot.val();
+            this.setState({});
+          }.bind(this)
+        );
+      }.bind(this)
+    );
   }
 
   handleSuggestSelect(suggest) {
-    this.setState({
-      spaces: {},
-      location: suggest.location ? suggest.location : this.getDefaultLocation(),
-      activeSpace: null
-    }, this.updateMarkers.bind(this));
+    this.setState(
+      {
+        spaces: {},
+        location: suggest.location
+          ? suggest.location
+          : this.getDefaultLocation(),
+        activeSpace: null
+      },
+      this.updateMarkers.bind(this)
+    );
   }
 
   handleSizeUpdate(e) {
@@ -113,10 +155,22 @@ class FindSpace extends Component {
   }
 
   handleGo(e) {
-    var sizeDict = { 'Small': 0, 'Medium': 1, 'Large': 2 };
+    var sizeDict = { Small: 0, Medium: 1, Large: 2 };
     var space = null;
     for (var key in this.state.spaces) {
-      if (this.getSelectedSize(this.state.size) <= this.getSpaceSize(this.state.spaces[key]) && (!space || GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[key].lat, this.state.spaces[key].lng]) < GeoFire.distance([this.state.location.lat, this.state.location.lng], [this.state.spaces[space].lat, this.state.spaces[space].lng]))) {
+      if (
+        this.getSelectedSize(this.state.size) <=
+          this.getSpaceSize(this.state.spaces[key]) &&
+        (!space ||
+          GeoFire.distance(
+            [this.state.location.lat, this.state.location.lng],
+            [this.state.spaces[key].lat, this.state.spaces[key].lng]
+          ) <
+            GeoFire.distance(
+              [this.state.location.lat, this.state.location.lng],
+              [this.state.spaces[space].lat, this.state.spaces[space].lng]
+            ))
+      ) {
         space = key;
       }
     }
@@ -126,55 +180,171 @@ class FindSpace extends Component {
   }
 
   render() {
-    var SpareMap = withGoogleMap(props => (
+    var SpareMap = withGoogleMap(props =>
       <GoogleMap
         ref={this.onMapLoad.bind(this)}
         defaultZoom={this.state.activeSpace ? 16 : 14}
-        defaultCenter={this.state.activeSpace ? { lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng } : this.state.location}
-        defaultOptions={{ styles: [{"elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#f5f5f5"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#dadada"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#c9c9c9"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]}], mapTypeControl: false, streetViewControl: false }}
+        defaultCenter={
+          this.state.activeSpace
+            ? {
+                lat: this.state.spaces[this.state.activeSpace].lat,
+                lng: this.state.spaces[this.state.activeSpace].lng
+              }
+            : this.state.location
+        }
+        defaultOptions={{
+          styles: [
+            { elementType: "geometry", stylers: [{ color: "#f5f5f5" }] },
+            { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+            {
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#616161" }]
+            },
+            {
+              elementType: "labels.text.stroke",
+              stylers: [{ color: "#f5f5f5" }]
+            },
+            {
+              featureType: "administrative",
+              elementType: "geometry",
+              stylers: [{ visibility: "off" }]
+            },
+            {
+              featureType: "administrative.land_parcel",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#bdbdbd" }]
+            },
+            { featureType: "poi", stylers: [{ visibility: "off" }] },
+            {
+              featureType: "poi",
+              elementType: "geometry",
+              stylers: [{ color: "#eeeeee" }]
+            },
+            {
+              featureType: "poi",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#757575" }]
+            },
+            {
+              featureType: "poi.park",
+              elementType: "geometry",
+              stylers: [{ color: "#e5e5e5" }]
+            },
+            {
+              featureType: "poi.park",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#9e9e9e" }]
+            },
+            {
+              featureType: "road",
+              elementType: "geometry",
+              stylers: [{ color: "#ffffff" }]
+            },
+            {
+              featureType: "road",
+              elementType: "labels.icon",
+              stylers: [{ visibility: "off" }]
+            },
+            {
+              featureType: "road.arterial",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#757575" }]
+            },
+            {
+              featureType: "road.highway",
+              elementType: "geometry",
+              stylers: [{ color: "#dadada" }]
+            },
+            {
+              featureType: "road.highway",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#616161" }]
+            },
+            {
+              featureType: "road.local",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#9e9e9e" }]
+            },
+            { featureType: "transit", stylers: [{ visibility: "off" }] },
+            {
+              featureType: "transit.line",
+              elementType: "geometry",
+              stylers: [{ color: "#e5e5e5" }]
+            },
+            {
+              featureType: "transit.station",
+              elementType: "geometry",
+              stylers: [{ color: "#eeeeee" }]
+            },
+            {
+              featureType: "water",
+              elementType: "geometry",
+              stylers: [{ color: "#c9c9c9" }]
+            },
+            {
+              featureType: "water",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#9e9e9e" }]
+            }
+          ],
+          mapTypeControl: false,
+          streetViewControl: false
+        }}
       >
         {this.state.activeSpace &&
           <OverlayView
-            position={{ lat: this.state.spaces[this.state.activeSpace].lat, lng: this.state.spaces[this.state.activeSpace].lng }}
+            position={{
+              lat: this.state.spaces[this.state.activeSpace].lat,
+              lng: this.state.spaces[this.state.activeSpace].lng
+            }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-            <SpaceOverlay space={this.state.spaces[this.state.activeSpace]} selectSpace={this.props.selectSpace.bind(this)} />
-          </OverlayView>
-        }
+            <SpaceOverlay
+              space={this.state.spaces[this.state.activeSpace]}
+              selectSpace={this.props.selectSpace.bind(this)}
+            />
+          </OverlayView>}
         {this.renderMarkers()}
       </GoogleMap>
-    ));
+    );
     return (
       <div>
         <div className="filters">
-          <p>I need a</p><SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
-          <p>space near</p><Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
-          <p>from</p><DatePicker placeholderText="Start Date"
-          selected={this.state.startDate}
-          onChange={(date) => {
-            this.setState({ startDate: date });
-            this.props.setStartDate(date);
-            if (this.state.endDate.diff(date) < 0) {
-              this.setState({ endDate: date });
-              this.props.setEndDate(date);
-            }
-          }}
-
-          minDate={moment()}
+          <p>I need a</p>
+          <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
+          <p>space near</p>
+          <Geosuggest onSuggestSelect={this.handleSuggestSelect.bind(this)} />
+          <p>from</p>
+          <DatePicker
+            placeholderText="Start Date"
+            selected={this.state.startDate}
+            onChange={date => {
+              this.setState({ startDate: date });
+              this.props.setStartDate(date);
+              if (this.state.endDate.diff(date) < 0) {
+                this.setState({ endDate: date });
+                this.props.setEndDate(date);
+              }
+            }}
+            minDate={moment()}
           />
-          <p>to</p><DatePicker placeholderText="End Date"
+          <p>to</p>
+          <DatePicker
+            placeholderText="End Date"
             selected={this.state.endDate}
-            onChange={(date) => {
+            onChange={date => {
               this.setState({ endDate: date });
               this.props.setEndDate(date);
             }}
             minDate={this.state.startDate}
           />
-          <div><button onClick={this.handleGo.bind(this)}>Find Match</button></div>
-		    </div>
+          <div>
+            <button onClick={this.handleGo.bind(this)}>Find Match</button>
+          </div>
+        </div>
         <SpareMap
-          containerElement={ <div style={{ height: `80vh` }} /> }
-          mapElement={ <div style={{ height: `100%` }} /> }
+          containerElement={<div style={{ height: `80vh` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
     );

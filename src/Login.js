@@ -1,16 +1,24 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Button, Form, FormControl, FormGroup, Modal, Tab, Tabs } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import * as firebase from 'firebase';
-import './App.css';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import {
+  Button,
+  Form,
+  FormControl,
+  FormGroup,
+  Modal,
+  Tab,
+  Tabs
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import * as firebase from "firebase";
+import "./App.css";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginError: '',
-      registerError: ''
+      loginError: "",
+      registerError: ""
     };
   }
 
@@ -21,12 +29,15 @@ class Login extends Component {
     var password = ReactDOM.findDOMNode(this.refs.loginPassword).value;
 
     var that = this;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      that.setState({
-        loginError: error.message,
-        registerError: ''
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        that.setState({
+          loginError: error.message,
+          registerError: ""
+        });
       });
-    });
   }
 
   handlePasswordReset(event) {
@@ -35,20 +46,23 @@ class Login extends Component {
     var email = ReactDOM.findDOMNode(this.refs.loginEmail).value.trim();
 
     var that = this;
-    if (email != null){
-      firebase.auth().sendPasswordResetEmail(email).then(function() {
-        that.setState({
-          loginError: 'Please check your email for Password reset email.'
+    if (email != null) {
+      firebase
+        .auth()
+        .sendPasswordResetEmail(email)
+        .then(function() {
+          that.setState({
+            loginError: "Please check your email for Password reset email."
+          });
+        })
+        .catch(function(error) {
+          that.setState({
+            loginError: "User with this Email does not exist!"
+          });
         });
-      }).catch(function(error) {
-        that.setState({
-          loginError: 'User with this Email does not exist!'
-        });
-      });
-    }
-    else {
+    } else {
       that.setState({
-        loginError: 'Please enter your email address'
+        loginError: "Please enter your email address"
       });
     }
   }
@@ -56,41 +70,54 @@ class Login extends Component {
   handleRegister(event) {
     event.preventDefault();
 
-    var firstName = ReactDOM.findDOMNode(this.refs.registerFirstName).value.trim();
-    var lastName = ReactDOM.findDOMNode(this.refs.registerLastName).value.trim();
+    var firstName = ReactDOM.findDOMNode(
+      this.refs.registerFirstName
+    ).value.trim();
+    var lastName = ReactDOM.findDOMNode(
+      this.refs.registerLastName
+    ).value.trim();
     var email = ReactDOM.findDOMNode(this.refs.registerEmail).value.trim();
     var password = ReactDOM.findDOMNode(this.refs.registerPassword).value;
-    var confirmPassword = ReactDOM.findDOMNode(this.refs.registerConfirmPassword).value;
+    var confirmPassword = ReactDOM.findDOMNode(
+      this.refs.registerConfirmPassword
+    ).value;
 
     var that = this;
-    if (this.refs.accept_tos.checked === true){
+    if (this.refs.accept_tos.checked === true) {
       if (password === confirmPassword) {
-          firebase.auth().createUserWithEmailAndPassword(email, password).then(function() {
-            firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
-              firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
-                  fname: firstName,
-                  lname: lastName,
-                  email: email,
-                  addInfo: false
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(
+          function() {
+            firebase
+              .auth()
+              .signInWithEmailAndPassword(email, password)
+              .then(function() {
+                firebase
+                  .database()
+                  .ref("users/" + firebase.auth().currentUser.uid)
+                  .set({
+                    fname: firstName,
+                    lname: lastName,
+                    email: email,
+                    addInfo: false
+                  });
+                firebase.auth().currentUser.sendEmailVerification();
               });
-              firebase.auth().currentUser.sendEmailVerification();
-            });
-          }, function(error) {
+          },
+          function(error) {
             that.setState({
-              loginError: '',
+              loginError: "",
               registerError: error.message
             });
-          });
-      }
-      else {
+          }
+        );
+      } else {
         that.setState({
-          registerError: 'Password Mismatch'
+          registerError: "Password Mismatch"
         });
       }
-    }
-    else {
+    } else {
       that.setState({
-        registerError: 'You must accept our Terms of Use'
+        registerError: "You must accept our Terms of Use"
       });
       return;
     }
@@ -99,47 +126,89 @@ class Login extends Component {
   render() {
     return (
       <Modal show={this.props.activeKey > 0} onHide={this.props.handleClose}>
-        <Button className="close" onClick={this.props.handleClose}>&times;</Button>
+        <Button className="close" onClick={this.props.handleClose}>
+          &times;
+        </Button>
         <Tabs defaultActiveKey={this.props.activeKey}>
           <Tab className="login-tab" title="Log In" eventKey={1}>
             <Form onSubmit={this.handleLogin.bind(this)}>
-              <center><p className="error">{this.state.loginError}</p></center>
+              <center>
+                <p className="error">
+                  {this.state.loginError}
+                </p>
+              </center>
               <FormGroup>
-                <FormControl ref="loginEmail" type="email" placeholder="Email Address"/>
+                <FormControl
+                  ref="loginEmail"
+                  type="email"
+                  placeholder="Email Address"
+                />
               </FormGroup>
               <FormGroup>
-                <FormControl ref="loginPassword" type="password" placeholder="Password"/>
+                <FormControl
+                  ref="loginPassword"
+                  type="password"
+                  placeholder="Password"
+                />
               </FormGroup>
               <FormGroup>
                 <Button className="form-control btn-login" type="submit">
                   Log In
                 </Button>
-				{ /* <Button className="form-control btn-info" onClick={this.handlePasswordReset.bind(this)}>
+                {/* <Button className="form-control btn-info" onClick={this.handlePasswordReset.bind(this)}>
                   Password Reset
-                </Button> */ }
+                </Button> */}
               </FormGroup>
             </Form>
           </Tab>
           <Tab className="login-tab" title="Sign Up" eventKey={2}>
             <Form onSubmit={this.handleRegister.bind(this)}>
-              <center><p className="error">{this.state.registerError}</p></center>
+              <center>
+                <p className="error">
+                  {this.state.registerError}
+                </p>
+              </center>
               <FormGroup>
-                <FormControl ref="registerFirstName" type="text" placeholder="First Name" />
+                <FormControl
+                  ref="registerFirstName"
+                  type="text"
+                  placeholder="First Name"
+                />
               </FormGroup>
               <FormGroup>
-                <FormControl ref="registerLastName" type="text" placeholder="Last Name" />
+                <FormControl
+                  ref="registerLastName"
+                  type="text"
+                  placeholder="Last Name"
+                />
               </FormGroup>
               <FormGroup>
-                <FormControl ref="registerEmail" type="email" placeholder="Email Address" />
+                <FormControl
+                  ref="registerEmail"
+                  type="email"
+                  placeholder="Email Address"
+                />
               </FormGroup>
               <FormGroup>
-                <FormControl ref="registerPassword" type="password" placeholder="Password" />
+                <FormControl
+                  ref="registerPassword"
+                  type="password"
+                  placeholder="Password"
+                />
               </FormGroup>
               <FormGroup>
-                <FormControl ref="registerConfirmPassword" type="password" placeholder="Confirm Password" />
+                <FormControl
+                  ref="registerConfirmPassword"
+                  type="password"
+                  placeholder="Confirm Password"
+                />
               </FormGroup>
               <FormGroup>
-                <label><input type="checkbox" ref="accept_tos" /> By Signing Up, I agree to the <Link to='/tos'>Terms of Use</Link>.</label><br/>
+                <label>
+                  <input type="checkbox" ref="accept_tos" /> By Signing Up, I
+                  agree to the <Link to="/tos">Terms of Use</Link>.
+                </label>
+                <br />
               </FormGroup>
               <FormGroup>
                 <Button className="form-control btn-register" type="submit">

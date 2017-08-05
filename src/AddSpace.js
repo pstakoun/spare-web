@@ -117,14 +117,6 @@ class AddSpace extends Component {
     } else {
       if (ReactDOM.findDOMNode(this.refs.spaceType).value == "default") {
         this.setState({ errorMsg: "Please select size!" });
-      } else if (this.state.progress == 0) {
-        this.setState({ errorMsg: "Please upload cover photo!" });
-      } else if (
-        ReactDOM.findDOMNode(this.refs.spaceType).value ==
-          (null || undefined) &&
-        this.state.progress == 0
-      ) {
-        this.setState({ errorMsg: "Please complete all fields!" });
       }
     }
   }

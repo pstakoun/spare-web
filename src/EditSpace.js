@@ -18,7 +18,7 @@ class EditSpace extends Component {
       address: null,
       isUploading: false,
       progress: 0,
-      spaceId: this.props.space.spaceId,
+      spaceId: this.props.space ? this.props.space.spaceId : null,
       phoneNum: null,
 	  done: false
     };
@@ -88,9 +88,9 @@ class EditSpace extends Component {
 
     return (
       <div style={{ paddingTop: `50px` }}>
-	    { this.state.done && <Redirect to='/spaces' push /> }
+	    { (this.state.done || !this.props.space) && <Redirect to='/spaces' push /> }
         <Row>
-          <h4>Edit Space Information</h4>
+          <h4>EDIT SPACE</h4>
         </Row>
         <Row>
           <Col xs={12} md={6}>

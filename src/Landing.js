@@ -43,6 +43,8 @@ class Landing extends Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
+                <NavItem onClick={this.handleSignup.bind(this)}>Find a Space</NavItem>
+                <NavItem onClick={this.handleSignup.bind(this)}>Be a Provider</NavItem>
                 <li><Link to='/faq'>FAQ</Link></li>
                 <NavItem onClick={this.handleLogin.bind(this)}>Log In</NavItem>
                 <NavItem onClick={this.handleSignup.bind(this)}>Sign Up</NavItem>

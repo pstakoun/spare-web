@@ -76,7 +76,10 @@ class Landing extends Component {
             <h2>
               If there's room to spare<br />There's room to share
             </h2>
-            <Button onClick={this.handleSignup.bind(this)} className="find-provider">
+            <Button
+              onClick={this.handleSignup.bind(this)}
+              className="find-provider"
+            >
               Find a provider
             </Button>
           </Jumbotron>
@@ -103,7 +106,9 @@ class Landing extends Component {
             <div className="step3">
               <img src="https://cl.ly/1B0T1s250u0T/star.png" />
               <h4>STEP 3</h4>
-              <p>When you're done, pick up your things and rate your provider</p>
+              <p>
+                When you're done, pick up your things and rate your provider
+              </p>
             </div>
           </Col>
         </Row>
@@ -168,21 +173,54 @@ class Landing extends Component {
             <Row className="feature-font">Security</Row>
           </Col>
         </Row>
-        <Row>
+        <Row className="pricing">
           <Col sm={12}>
             <h3>Cheap and convenient</h3>
           </Col>
-          <Col sm={3}>
-            <img src="/size-sm.png" className="img-responsive" />
+          <Col sm={3} className="priceCol">
+            <Row className="priceRow">
+              <p>Small | 3' * 3' * 4'</p>
+            </Row>
+            <Row>
+              <p>Perfect for travelers!</p>
+              <img src="/size-sm.png" className="img-responsive center-block" />
+            </Row>
+            <Row>
+              <p>Starting at</p>
+              <p>$ 5.99</p>
+            </Row>
           </Col>
-          <Col sm={4}>
-            <img src="/size-md.png" className="img-responsive" />
+          <Col sm={4} className="priceCol">
+            <Row className="priceRow">
+              <p>Medium | 5' * 6' * 4'</p>
+            </Row>
+            <Row>
+              <p>Perfect for college students!</p>
+              <img src="/size-md.png" className="img-responsive center-block" />
+            </Row>
+            <Row>
+              <p>Starting at</p>
+              <p>$ 7.99</p>
+            </Row>
           </Col>
-          <Col sm={5}>
-            <img src="/size-lg.png" className="img-responsive" />
+          <Col sm={5} className="priceCol">
+            <Row className="priceRow">
+              <p>Large | 8' * 8' * 6'</p>
+            </Row>
+            <Row>
+              <p>Perfect for moving and long-term storage!</p>
+              <img src="/size-lg.png" className="img-responsive center-block" />
+            </Row>
+            <Row>
+              <p>Starting at</p>
+              <p>$ 9.99</p>
+            </Row>
           </Col>
           <Col sm={12}>
-            <Button onClick={this.handleSignup.bind(this)} className="find-provider">
+            <Button
+              onClick={this.handleSignup.bind(this)}
+              className="find-provider"
+            >
               Find a provider
             </Button>
           </Col>
@@ -192,14 +230,23 @@ class Landing extends Component {
             <h3>Join the Spare community today!</h3>
           </Col>
           <Col sm={6}>
-            <img src="https://cl.ly/2A1m1t2z2h1M/flierimgs-01.png" className="img-responsive" />
+            <img
+              src="https://cl.ly/2A1m1t2z2h1M/flierimgs-01.png"
+              className="img-responsive"
+            />
           </Col>
           <Col sm={6}>
-            <img src="https://cl.ly/3b2i3N293h45/flierimgs-02.png" className="img-responsive" />
+            <img
+              src="https://cl.ly/3b2i3N293h45/flierimgs-02.png"
+              className="img-responsive"
+            />
           </Col>
         </Row>
         <Row>
-          <h5>To learn more, reach us at <a href="mailto:info@spare.ly">info@spare.ly</a></h5>
+          <h5>
+            To learn more, reach us at{" "}
+            <a href="mailto:info@spare.ly">info@spare.ly</a>
+          </h5>
         </Row>
         <Login
           handleClose={this.handleClose.bind(this)}

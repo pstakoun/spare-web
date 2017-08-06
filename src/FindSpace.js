@@ -343,7 +343,7 @@ class FindSpace extends Component {
           </div>
         </div>
         <SpareMap
-          containerElement={<div style={{ height: `80vh` }} />}
+          containerElement={<div className="spareMap" />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>

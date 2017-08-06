@@ -24,7 +24,7 @@ hr {
   padding: 0;
 }
 @media (min-width: 768px) {
-    .navbar {
+  .navbar {
 		background-color: white;
 		border: none;
 	}
@@ -41,6 +41,9 @@ hr {
 		font-size: 1.25em;
 		padding-top: 0;
 	}
+}
+.spareMap {
+	height: 80vh;
 }
 .filters {
 	display: table-cell;
@@ -216,11 +219,13 @@ hr {
   font-size: 1em;
   position: relative;
   text-align: left;
+	width: 25vw
 }
-@media (min-width: 768px) {
-  .geosuggest {
-    width: 500px;
-  }
+.geosuggest_space {
+  font-size: 1em;
+  position: relative;
+  text-align: left;
+	width: 100%;
 }
 .geosuggest__input {
   width: 100%;

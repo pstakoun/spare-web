@@ -244,7 +244,7 @@ class AddSpace extends Component {
               <FormGroup>
                 <p className="profile-qtitle">Address</p>
                 <Geosuggest
-                  className="profile-input"
+                  className="geosuggest_space profile-input"
                   ref="listingAddress"
                   onSuggestSelect={this.updateLocation.bind(this)}
                 />

@@ -56,7 +56,7 @@ class OrderDetails extends Component {
   }
 
   renderLocation() {
-    return [<Marker defaultPosition={this.state.location} title="current" />];
+    return [<Marker defaultPosition={this.state.location} />];
   }
 
   render() {

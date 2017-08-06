@@ -42,6 +42,10 @@ hr {
 		padding-top: 0;
 	}
 }
+.navbar-nav li.active a {
+  background-color: inherit !important;
+  color: #333 !important;
+}
 .spareMap {
 	height: 80vh;
 }

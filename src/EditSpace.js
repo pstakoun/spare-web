@@ -222,39 +222,54 @@ class EditSpace extends Component {
               </FormGroup>
               <FormGroup>
                 <p className="profile-qtitle">Storage Dimensions (feet)</p>
+                <Col md={4} xs={12}>
                 <label>
                   Length{" "}
                   <FormControl
                     type="number"
                     ref="spaceLength"
                     required="true"
+                    placeholder="0 ft"
+                    style={{ width: `100%` }}
+                    className="dimension"
                     value={this.state.length ? this.state.length : undefined}
                     onChange={event =>
                       this.setState({ length: event.target.value })}
                   />
                 </label>
+                </Col>
+                <Col md={4} xs={12}>
                 <label>
                   Width{" "}
                   <FormControl
                     type="number"
                     ref="spaceWidth"
                     required="true"
+                    placeholder="0 ft"
+                    style={{ width: `100%` }}
+                    className="dimension"
                     value={this.state.width ? this.state.width : undefined}
                     onChange={event =>
                       this.setState({ width: event.target.value })}
                   />
                 </label>
+                </Col>
+                <Col md={4} xs={12}>
                 <label>
                   Height{" "}
                   <FormControl
                     type="number"
                     ref="spaceHeight"
                     required="true"
+                    placeholder="0 ft"
+                    style={{ width: `100%` }}
+                    className="dimension"
                     value={this.state.height ? this.state.height : undefined}
                     onChange={event =>
                       this.setState({ height: event.target.value })}
                   />
                 </label>
+                </Col>
               </FormGroup>
               <FormGroup>
                 <p className="profile-qtitle">Select Cover Photo</p>

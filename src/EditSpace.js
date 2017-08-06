@@ -22,33 +22,17 @@ class EditSpace extends Component {
       location: this.props.coords
         ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude }
         : { lat: 42.361145, lng: -71.057083 },
-      address: null,
+      address: this.props.space ? this.props.space.address : undefined,
       isUploading: false,
       progress: 0,
       spaceId: this.props.space ? this.props.space.spaceId : null,
       phoneNum: null,
       done: false,
-      length: undefined,
-      width: undefined,
-      height: undefined,
-      type: null
+      length: this.props.space ? this.props.space.length : undefined,
+      width: this.props.space ? this.props.space.width : undefined,
+      height: this.props.space ? this.props.space.width : undefined,
+      type: this.props.space ? this.props.space.type : undefined
     };
-  }
-
-  componentDidMount() {
-    firebase
-      .database()
-      .ref("spaces/" + this.state.spaceId)
-      .on("value", snapshot =>
-        this.setState({
-          address: snapshot.val().address,
-          location: { lat: snapshot.val().lat, lng: snapshot.val().lng },
-          length: snapshot.val().length,
-          width: snapshot.val().width,
-          height: snapshot.val().height,
-          type: snapshot.val().type
-        })
-      );
   }
 
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -73,7 +57,7 @@ class EditSpace extends Component {
   }
 
   renderLocation() {
-    return [<Marker defaultPosition={this.state.location} title="current" />];
+    return [<Marker defaultPosition={this.state.location} />];
   }
 
   handleSubmission(event) {
@@ -87,8 +71,8 @@ class EditSpace extends Component {
         lat: this.state.location.lat,
         lng: this.state.location.lng,
         address: this.state.address,
-        type: ReactDOM.findDOMNode(this.refs.spaceType).value,
-        width: ReactDOM.findDOMNode(this.refs.spaceWidth).value,
+        type: this.state.type,
+        width: this.state.width,
         length: ReactDOM.findDOMNode(this.refs.spaceLength).value,
         height: ReactDOM.findDOMNode(this.refs.spaceHeight).value,
         climate_control: this.refs.climate_control.checked,
@@ -146,7 +130,7 @@ class EditSpace extends Component {
                   className="geosuggest_space profile-input"
                   ref="listingAddress"
                   onSuggestSelect={this.updateLocation.bind(this)}
-                  placeholder={this.state.address}
+                  initialValue={this.state.address}
                 />
               </FormGroup>
               <FormGroup>
@@ -176,9 +160,8 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="climate_control"
-                    checked={this.props.space.climate_control}
-                    defaultChecked={
-                      this.state.space && this.props.space.climate_control
+                    checked={
+                      this.props.space && this.props.space.climate_control
                     }
                   />{" "}
                   Has Climate Control
@@ -188,10 +171,7 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="all_access"
-                    checked={this.props.space.all_access}
-                    defaultChecked={
-                      this.state.space && this.props.space.all_access
-                    }
+                    checked={this.state.space && this.props.space.all_access}
                   />{" "}
                   24/7 Access
                 </label>
@@ -200,10 +180,7 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_lock"
-                    checked={this.props.space.has_lock}
-                    defaultChecked={
-                      this.state.space && this.props.space.has_lock
-                    }
+                    checked={this.state.space && this.props.space.has_lock}
                   />{" "}
                   Locks Provided
                 </label>
@@ -212,10 +189,7 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_insurance"
-                    checked={this.props.space.has_insurance}
-                    defaultChecked={
-                      this.state.space && this.props.space.has_insurance
-                    }
+                    checked={this.state.space && this.props.space.has_insurance}
                   />{" "}
                   Insurance Provided
                 </label>

@@ -42,7 +42,7 @@ class FindSpace extends Component {
   getSize(length, width, height) {
     if (length >= 8 && width >= 8 && height >= 6) {
       return 2;
-    } else if (length >= 5 && width >= 5 && height >= 6) {
+    } else if (length >= 5 && width >= 5 && height >= 5) {
       return 1;
     } else {
       return 0;
@@ -117,7 +117,7 @@ class FindSpace extends Component {
 
     var geoQuery = geoFire.query({
       center: [this.state.location.lat, this.state.location.lng],
-      radius: 5
+      radius: 10
     });
 
     geoQuery.on(

@@ -303,25 +303,31 @@ class AddSpace extends Component {
                   </label>
                 </Col>
                 <Col md={4} xs={12}>
-                <label>
-                  Width{" "}
-                  <FormControl type="number" ref="spaceWidth" placeholder="0 ft" style={{ width: `100%` }} required="true" className="dimension"/>
-                </label>
+                  <label>
+                    Width{" "}
+                    <FormControl
+                      type="number"
+                      ref="spaceWidth"
+                      placeholder="0 ft"
+                      style={{ width: `100%` }}
+                      required="true"
+                      className="dimension"
+                    />
+                  </label>
                 </Col>
                 <Col md={4} xs={12}>
-                <label>
-                  Height{" "}
-                  <FormControl
-                    type="number"
-                    ref="spaceHeight"
-                    placeholder="0 ft"
-                    style={{ width: `100%` }}
-                    required="true"
-                    className="dimension"
-                  />
-                </label>
+                  <label>
+                    Height{" "}
+                    <FormControl
+                      type="number"
+                      ref="spaceHeight"
+                      placeholder="0 ft"
+                      style={{ width: `100%` }}
+                      required="true"
+                      className="dimension"
+                    />
+                  </label>
                 </Col>
-
               </FormGroup>
               <FormGroup>
                 <p className="profile-qtitle">Select Cover Photo</p>

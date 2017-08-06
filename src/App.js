@@ -17,6 +17,7 @@ import EditSpace from "./EditSpace";
 import BookingHistory from "./BookingHistory";
 import ToS from "./ToS";
 import FAQ from "./FAQ";
+import Feedback from "./Feedback";
 import "./App.css";
 
 class App extends Component {
@@ -195,6 +196,7 @@ class App extends Component {
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/tos" component={ToS} />
                 <Route exact path="/faq" component={FAQ} />
+                <Route exact path="/feedback" component={Feedback} />
               </Switch>
             </Row>
           : <Switch>

@@ -178,42 +178,45 @@ class Landing extends Component {
             <h3>Cheap and convenient</h3>
           </Col>
           <Col sm={3} className="priceCol">
-            <Row className="priceRow">
-              <p>Small | 3' * 3' * 4'</p>
+            <Row className="planRow">
+              <p>Small | 3' &#215; 3' &#215; 4'</p>
             </Row>
-            <Row>
+            <Row className="graphicRow">
               <p>Perfect for travelers!</p>
               <img src="/size-sm.png" className="img-responsive center-block" />
             </Row>
-            <Row>
-              <p>Starting at</p>
-              <p>$ 5.99</p>
+            <Row className="priceRow">
+              <p>
+                Starting at: <br /> $ 5.99
+              </p>
             </Row>
           </Col>
           <Col sm={4} className="priceCol">
-            <Row className="priceRow">
-              <p>Medium | 5' * 6' * 4'</p>
+            <Row className="planRow">
+              <p>Medium | 5' &#215; 6' &#215; 4'</p>
             </Row>
-            <Row>
+            <Row className="graphicRow">
               <p>Perfect for college students!</p>
               <img src="/size-md.png" className="img-responsive center-block" />
             </Row>
-            <Row>
-              <p>Starting at</p>
-              <p>$ 7.99</p>
+            <Row className="priceRow">
+              <p>
+                Starting at: <br /> $ 7.99
+              </p>
             </Row>
           </Col>
           <Col sm={5} className="priceCol">
-            <Row className="priceRow">
-              <p>Large | 8' * 8' * 6'</p>
+            <Row className="planRow">
+              <p>Large | 8' &#215; 8' &#215; 6'</p>
             </Row>
-            <Row>
+            <Row className="graphicRow">
               <p>Perfect for moving and long-term storage!</p>
               <img src="/size-lg.png" className="img-responsive center-block" />
             </Row>
-            <Row>
-              <p>Starting at</p>
-              <p>$ 9.99</p>
+            <Row className="priceRow">
+              <p>
+                Starting at: <br /> $ 9.99
+              </p>
             </Row>
           </Col>
           <Col sm={12}>
@@ -225,21 +228,31 @@ class Landing extends Component {
             </Button>
           </Col>
         </Row>
-        <Row>
+        <Row className="cta">
           <Col sm={12}>
             <h3>Join the Spare community today!</h3>
           </Col>
-          <Col sm={6}>
-            <img
-              src="https://cl.ly/2A1m1t2z2h1M/flierimgs-01.png"
-              className="img-responsive"
-            />
+          <Col sm={6} className="providerPanel">
+            <Row className="ctaText">
+              <p>Want to make money off your unused space?</p>
+            </Row>
+            <Row className="ctaImg">
+              <img
+                src="https://cl.ly/2A1m1t2z2h1M/flierimgs-01.png"
+                className="img-responsive center-block"
+              />
+            </Row>
           </Col>
-          <Col sm={6}>
-            <img
-              src="https://cl.ly/3b2i3N293h45/flierimgs-02.png"
-              className="img-responsive"
-            />
+          <Col sm={6} className="userPanel">
+            <Row className="ctaText">
+              <p>Need cheap and convenient storage space?</p>
+            </Row>
+            <Row className="ctaImg">
+              <img
+                src="https://cl.ly/3b2i3N293h45/flierimgs-02.png"
+                className="img-responsive center-block"
+              />
+            </Row>
           </Col>
         </Row>
         <Row>

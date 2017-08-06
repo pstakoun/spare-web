@@ -294,7 +294,7 @@ hr {
 	justify-content: center;
 }
 .pricing img {
-	max-height: 30vh;
+	max-height: 20vh;
 }
 .pricing .priceCol {
 	margin-top: 2vw;
@@ -303,17 +303,92 @@ hr {
 	vertical-align: middle;
 }
 .pricing .center-block {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
  }
- .pricing .priceRow {
-	 background-color: #e26e25;
-	 color: white;
-	 vertical-align: middle;
- }
- .pricing .graphicRow {
+ .pricing .planRow {
 	background-color: #e26e25;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
 	color: white;
 	vertical-align: middle;
  }
+ .pricing .graphicRow {
+	background-color: #e2e2e2;
+	color: black;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+	vertical-align: middle;
+ }
+ .pricing .priceRow {
+	background-color: #112a3f;
+	color: white;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+	vertical-align: middle;
+ }
+ .pricing .priceRow p {
+	font-size: 1.5em;
+	padding: 0.8vh;
+ }
+ .pricing .planRow p {
+	font-size: 1.2em;
+ }
+ .pricing p {
+	padding-top: 2vh;
+	font-size: 1em;
+	font-weight: 200;
+ }
+.cta {
+	margin-top: 30px;
+	text-align: center;
+	margin-bottom: 50px;
+	padding-left: 20vw;
+	padding-right: 20vw;
+	vertical-align: middle;
+	min-height: 12vw;
+	align-items: center;
+	display: inherit;
+	justify-content: center;
+}
+.cta .providerPanel {
+	margin-top: 30px;
+}
+.cta .userPanel {
+	margin-top: 30px;
+}
+.cta .providerPanel .ctaText {
+	background-color: #112a3f;
+	color: white;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+	font-weight: 200;
+	font-size: 1.2em;
+}
+.cta .providerPanel .ctaImg {
+	background-color: #112a3f;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+}
+.cta img {
+	height: 25vh;
+}
+.cta .center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+ }
+.cta .userPanel .ctaText {
+	background-color: #e26d1e;
+	color: white;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+	font-weight: 200;
+	font-size: 1.2em;
+}
+.cta .userPanel .ctaImg {
+	background-color: #e26d1e;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+}

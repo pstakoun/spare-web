@@ -24,6 +24,8 @@ class OrderDetails extends Component {
         });
       }.bind(this)
     );
+    this.getPrice();
+    this.handleImg();
   }
 
   handleImg() {
@@ -78,12 +80,6 @@ class OrderDetails extends Component {
       ];
     }
     var Amount = this.state.transAmount / 100;
-    {
-      this.handleImg();
-    }
-    {
-      this.getPrice();
-    }
 
     const SpareMap = withGoogleMap(props =>
       <GoogleMap
@@ -196,8 +192,8 @@ class OrderDetails extends Component {
       <Panel className="orderPanel">
         <Col md={4}>
           <SpareMap
-            containerElement={<div style={{ height: "15vw" }} />}
-            mapElement={<div style={{ height: "15vw" }} />}
+            containerElement={<div className="map-sm" />}
+            mapElement={<div className="map-sm" />}
           />
         </Col>
         <Col md={4}>

@@ -27,8 +27,28 @@ class EditSpace extends Component {
       progress: 0,
       spaceId: this.props.space ? this.props.space.spaceId : null,
       phoneNum: null,
-      done: false
+      done: false,
+      length: undefined,
+      width: undefined,
+      height: undefined,
+      type: null
     };
+  }
+
+  componentDidMount() {
+    firebase
+      .database()
+      .ref("spaces/" + this.state.spaceId)
+      .on("value", snapshot =>
+        this.setState({
+          address: snapshot.val().address,
+          location: { lat: snapshot.val().lat, lng: snapshot.val().lng},
+          length: snapshot.val().length,
+          width: snapshot.val().width,
+          height: snapshot.val().height,
+          type: snapshot.val().type
+        })
+      );
   }
 
   handleUploadStart = () => this.setState({ isUploading: true, progress: 0 });
@@ -126,6 +146,7 @@ class EditSpace extends Component {
                   className="profile-input"
                   ref="listingAddress"
                   onSuggestSelect={this.updateLocation.bind(this)}
+                  placeholder={this.state.address}
                 />
               </FormGroup>
               <FormGroup>
@@ -135,6 +156,8 @@ class EditSpace extends Component {
                   placeholder="Please select..."
                   ref="spaceType"
                   required="true"
+                  value={this.state.type ? this.state.type : null}
+                  onChange={event => this.setState({ type: event.target.value })}
                 >
                   <option value="default" />
                   <option value="Garage">Garage</option>
@@ -152,6 +175,7 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="climate_control"
+                    checked={this.props.space.climate_control}
                     defaultChecked={
                       this.state.space && this.props.space.climate_control
                     }
@@ -163,6 +187,7 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="all_access"
+                    checked={this.props.space.all_access}
                     defaultChecked={
                       this.state.space && this.props.space.all_access
                     }
@@ -174,6 +199,7 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_lock"
+                    checked={this.props.space.has_lock}
                     defaultChecked={
                       this.state.space && this.props.space.has_lock
                     }
@@ -185,6 +211,7 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_insurance"
+                    checked={this.props.space.has_insurance}
                     defaultChecked={
                       this.state.space && this.props.space.has_insurance
                     }
@@ -200,11 +227,19 @@ class EditSpace extends Component {
                     type="number"
                     ref="spaceLength"
                     required="true"
+                    value={this.state.length ? this.state.length : undefined}
+                    onChange={event => this.setState({ length: event.target.value })}
                   />
                 </label>
                 <label>
                   Width{" "}
-                  <FormControl type="number" ref="spaceWidth" required="true" />
+                  <FormControl
+                    type="number"
+                    ref="spaceWidth"
+                    required="true"
+                    value={this.state.width ? this.state.width : undefined}
+                    onChange={event => this.setState({ width: event.target.value })}
+                  />
                 </label>
                 <label>
                   Height{" "}
@@ -212,6 +247,8 @@ class EditSpace extends Component {
                     type="number"
                     ref="spaceHeight"
                     required="true"
+                    value={this.state.height ? this.state.height : undefined}
+                    onChange={event => this.setState({ height: event.target.value })}
                   />
                 </label>
               </FormGroup>

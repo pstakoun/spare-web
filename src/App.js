@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { Grid, Nav, Navbar, NavItem, Row, Tab } from "react-bootstrap";
 import { Link, Redirect, Route, Switch } from "react-router-dom";
+import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import * as firebase from "firebase";
 import moment from "moment";
 import Landing from "./Landing";
@@ -132,23 +133,21 @@ class App extends Component {
                 </Navbar.Header>
                 <Navbar.Collapse>
                   <Nav pullRight>
-                    <li>
-                      <Link to="/">Find a Space</Link>
-                    </li>
-                    <li>
-                      <Link to="/spaces">My Spaces</Link>
-                    </li>
-                    <li>
-                      <Link to="/history">History</Link>
-                    </li>
-                    <li>
-                      <Link to="/profile">Profile</Link>
-                    </li>
-                    <li>
-                      <a href="#" onClick={this.handleLogout.bind(this)}>
-                        Log Out
-                      </a>
-                    </li>
+                    <IndexLinkContainer to="/">
+                      <NavItem>Find a Space</NavItem>
+                    </IndexLinkContainer>
+                    <LinkContainer to="/spaces">
+                      <NavItem>My Spaces</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to="/history">
+                      <NavItem>History</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to="/profile">
+                      <NavItem>Profile</NavItem>
+                    </LinkContainer>
+                    <NavItem onClick={this.handleLogout.bind(this)}>
+                      Log Out
+                    </NavItem>
                   </Nav>
                 </Navbar.Collapse>
               </Navbar>

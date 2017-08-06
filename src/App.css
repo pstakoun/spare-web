@@ -214,6 +214,24 @@ hr {
 	font-size: 1.3em;
 	font-weight: 200;
 }
+.feedback {
+	padding-top: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.feedback h3 {
+	color: #1a3863;
+	font-size: 2em !important;
+	font-weight: 400;
+	margin-bottom: 2vh !important;
+	border: none;
+}
+.feedback .input {
+	width: 60vw;
+	min-height: 30vh;
+	margin-left: 20vw;
+	margin-right: 20vw;
+}
 /* GEOSUGGEST */
 .geosuggest {
   font-size: 1em;

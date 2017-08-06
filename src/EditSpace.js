@@ -31,7 +31,11 @@ class EditSpace extends Component {
       length: this.props.space ? this.props.space.length : undefined,
       width: this.props.space ? this.props.space.width : undefined,
       height: this.props.space ? this.props.space.width : undefined,
-      type: this.props.space ? this.props.space.type : undefined
+      type: this.props.space ? this.props.space.type : undefined,
+      climate_control: this.props.space ? this.props.space.climate_control : undefined,
+      all_access: this.props.space ? this.props.space.all_access : undefined,
+      has_lock: this.props.space ? this.props.space.has_lock : undefined,
+      has_insurance: this.props.space ? this.props.space.has_insurance : undefined
     };
   }
 
@@ -73,12 +77,12 @@ class EditSpace extends Component {
         address: this.state.address,
         type: this.state.type,
         width: this.state.width,
-        length: ReactDOM.findDOMNode(this.refs.spaceLength).value,
-        height: ReactDOM.findDOMNode(this.refs.spaceHeight).value,
-        climate_control: this.refs.climate_control.checked,
-        all_access: this.refs.all_access.checked,
-        has_lock: this.refs.has_lock.checked,
-        has_insurance: this.refs.has_insurance.checked,
+        length: this.state.length,
+        height: this.state.height,
+        climate_control: this.state.climate_control,
+        all_access: this.state.all_access,
+        has_lock: this.state.has_lock,
+        has_insurance: this.state.has_insurance,
         user: firebase.auth().currentUser.uid,
         photoURL:
           "gs://decentralizedps.appspot.com/images/" +
@@ -140,7 +144,7 @@ class EditSpace extends Component {
                   placeholder="Please select..."
                   ref="spaceType"
                   required="true"
-                  value={this.state.type ? this.state.type : null}
+                  value={this.state.type}
                   onChange={event =>
                     this.setState({ type: event.target.value })}
                 >
@@ -160,9 +164,10 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="climate_control"
-                    checked={
+                    defaultChecked={
                       this.props.space && this.props.space.climate_control
                     }
+                    onChange={event => this.setState({ climate_control: event.target.checked })}
                   />{" "}
                   Has Climate Control
                 </label>
@@ -171,7 +176,8 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="all_access"
-                    checked={this.state.space && this.props.space.all_access}
+                    defaultChecked={this.props.space && this.props.space.all_access}
+                    onChange={event => this.setState({ all_access: event.target.checked })}
                   />{" "}
                   24/7 Access
                 </label>
@@ -180,7 +186,8 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_lock"
-                    checked={this.state.space && this.props.space.has_lock}
+                    defaultChecked={this.props.space && this.props.space.has_lock}
+                    onChange={event => this.setState({ has_lock: event.target.checked })}
                   />{" "}
                   Locks Provided
                 </label>
@@ -189,7 +196,8 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_insurance"
-                    checked={this.state.space && this.props.space.has_insurance}
+                    defaultChecked={this.props.space && this.props.space.has_insurance}
+                    onChange={event => this.setState({ has_insurance: event.target.checked })}
                   />{" "}
                   Insurance Provided
                 </label>

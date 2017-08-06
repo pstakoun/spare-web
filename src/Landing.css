@@ -4,7 +4,9 @@ body {
 	text-align: center;
 }
 .jumbotron {
-	background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('http://johnsteinmetz.net/wp-content/uploads/2015/08/localstorage.jpg');
+	background: url('/header.jpg');
+  background-size: cover;
+  background-position: center;
 	text-align: left;
 	padding: 50px 0;
 }
@@ -18,7 +20,7 @@ body {
 	font-weight: 200;
 	line-height: 1.5em;
 }
-.jumbotron button {
+.find-provider {
 	background-color: #e26e25;
 	border: none;
 	border-radius: 10px;
@@ -52,15 +54,6 @@ h4 {
 .step3 p {
 	font-size: 1.5em;
 	font-weight: 200;
-}
-.step1 {
-	background-color: #e2e2e2;
-}
-.step2 {
-	background-color: #cecece;
-}
-.step3 {
-	background-color: #bcbcbc;
 }
 h3 {
 	font-size: 2em;

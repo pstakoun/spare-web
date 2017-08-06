@@ -76,34 +76,34 @@ class Landing extends Component {
             <h2>
               If there's room to spare<br />There's room to share
             </h2>
-            <Button onClick={this.handleSignup.bind(this)}>
+            <Button onClick={this.handleSignup.bind(this)} className="find-provider">
               Find a provider
             </Button>
           </Jumbotron>
         </Row>
         <Row>
           <Col sm={12}>
-            <h3>Optimize your storage experience</h3>
+            <h3>How it works</h3>
           </Col>
           <Col sm={4}>
             <div className="step1">
               <img src="https://cl.ly/1H2A2M2i0p3T/search.png" />
               <h4>STEP 1</h4>
-              <p>Find a Spare provider near you</p>
+              <p>Get matched with a Spare provider near you</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step2">
               <img src="https://cl.ly/3n2r0H2C3C07/pack.png" />
               <h4>STEP 2</h4>
-              <p>Drop off items at your convenience</p>
+              <p>Drop off belongings and start storing immediately</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step3">
               <img src="https://cl.ly/1B0T1s250u0T/star.png" />
               <h4>STEP 3</h4>
-              <p>Pick up and rate your provider</p>
+              <p>When you're done, pick up your things and rate your provider</p>
             </div>
           </Col>
         </Row>
@@ -169,12 +169,37 @@ class Landing extends Component {
           </Col>
         </Row>
         <Row>
-          <Button
-            className="btn-provider"
-            onClick={this.handleSignup.bind(this)}
-          >
-            Find a provider
-          </Button>
+          <Col sm={12}>
+            <h3>Cheap and convenient</h3>
+          </Col>
+          <Col sm={3}>
+            <img src="/size-sm.png" className="img-responsive" />
+          </Col>
+          <Col sm={4}>
+            <img src="/size-md.png" className="img-responsive" />
+          </Col>
+          <Col sm={5}>
+            <img src="/size-lg.png" className="img-responsive" />
+          </Col>
+          <Col sm={12}>
+            <Button onClick={this.handleSignup.bind(this)} className="find-provider">
+              Find a provider
+            </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={12}>
+            <h3>Join the Spare community today!</h3>
+          </Col>
+          <Col sm={6}>
+            <img src="https://cl.ly/2A1m1t2z2h1M/flierimgs-01.png" className="img-responsive" />
+          </Col>
+          <Col sm={6}>
+            <img src="https://cl.ly/3b2i3N293h45/flierimgs-02.png" className="img-responsive" />
+          </Col>
+        </Row>
+        <Row>
+          <h5>To learn more, reach us at <a href="mailto:info@spare.ly">info@spare.ly</a></h5>
         </Row>
         <Login
           handleClose={this.handleClose.bind(this)}

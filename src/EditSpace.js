@@ -42,7 +42,7 @@ class EditSpace extends Component {
       .on("value", snapshot =>
         this.setState({
           address: snapshot.val().address,
-          location: { lat: snapshot.val().lat, lng: snapshot.val().lng},
+          location: { lat: snapshot.val().lat, lng: snapshot.val().lng },
           length: snapshot.val().length,
           width: snapshot.val().width,
           height: snapshot.val().height,
@@ -157,7 +157,8 @@ class EditSpace extends Component {
                   ref="spaceType"
                   required="true"
                   value={this.state.type ? this.state.type : null}
-                  onChange={event => this.setState({ type: event.target.value })}
+                  onChange={event =>
+                    this.setState({ type: event.target.value })}
                 >
                   <option value="default" />
                   <option value="Garage">Garage</option>
@@ -228,7 +229,8 @@ class EditSpace extends Component {
                     ref="spaceLength"
                     required="true"
                     value={this.state.length ? this.state.length : undefined}
-                    onChange={event => this.setState({ length: event.target.value })}
+                    onChange={event =>
+                      this.setState({ length: event.target.value })}
                   />
                 </label>
                 <label>
@@ -238,7 +240,8 @@ class EditSpace extends Component {
                     ref="spaceWidth"
                     required="true"
                     value={this.state.width ? this.state.width : undefined}
-                    onChange={event => this.setState({ width: event.target.value })}
+                    onChange={event =>
+                      this.setState({ width: event.target.value })}
                   />
                 </label>
                 <label>
@@ -248,7 +251,8 @@ class EditSpace extends Component {
                     ref="spaceHeight"
                     required="true"
                     value={this.state.height ? this.state.height : undefined}
-                    onChange={event => this.setState({ height: event.target.value })}
+                    onChange={event =>
+                      this.setState({ height: event.target.value })}
                   />
                 </label>
               </FormGroup>

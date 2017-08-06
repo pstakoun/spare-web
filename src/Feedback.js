@@ -21,9 +21,8 @@ class Feedback extends Component {
     });
 
     this.setState({
-      errorMessage: "Your feedback has been recorded.",
+      errorMessage: "Your feedback has been recorded."
     });
-
   }
 
   render() {
@@ -40,14 +39,12 @@ class Feedback extends Component {
             />
           </FormGroup>
           <FormGroup>
-            <Button
-              className="btn profile-button"
-              bsStyle="info"
-              type="submit"
-            >
+            <Button className="btn profile-button" bsStyle="info" type="submit">
               Send Feedback
             </Button>
-            <p>{this.state.errorMessage}</p>
+            <p>
+              {this.state.errorMessage}
+            </p>
           </FormGroup>
         </Form>
       </div>

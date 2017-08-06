@@ -24,6 +24,8 @@ class OrderDetails extends Component {
         });
       }.bind(this)
     );
+    this.getPrice();
+    this.handleImg();
   }
 
   handleImg() {
@@ -78,12 +80,6 @@ class OrderDetails extends Component {
       ];
     }
     var Amount = this.state.transAmount / 100;
-    {
-      this.handleImg();
-    }
-    {
-      this.getPrice();
-    }
 
     const SpareMap = withGoogleMap(props =>
       <GoogleMap

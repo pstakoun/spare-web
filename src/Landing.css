@@ -6,14 +6,16 @@ body {
 .jumbotron {
 	background: url('/header.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center left;
 	text-align: left;
-	padding: 50px 0;
+	margin: 100px 0;
+  padding: 150px 50px;
+  border-radius: 0 !important;
 }
 .jumbotron h1 {
-	padding-top: 100px;
 	color: white;
 	letter-spacing: 0.75em;
+  margin-top: 0;
 }
 .jumbotron h2 {
 	color: white;

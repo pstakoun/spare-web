@@ -118,7 +118,7 @@ class Landing extends Component {
           </Col>
         </Row>
         <Row className="feature">
-          <Col xs={12} md={2} className="feature-col">
+          <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
               <img
                 className="feature-icon"
@@ -127,7 +127,7 @@ class Landing extends Component {
             </Row>
             <Row className="feature-font">Instant Quote</Row>
           </Col>
-          <Col xs={12} md={2} className="feature-col">
+          <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
               <img
                 className="feature-icon"
@@ -136,7 +136,7 @@ class Landing extends Component {
             </Row>
             <Row className="feature-font">24/7 Access</Row>
           </Col>
-          <Col xs={12} md={2} className="feature-col">
+          <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
               <img
                 className="feature-icon"
@@ -145,7 +145,7 @@ class Landing extends Component {
             </Row>
             <Row className="feature-font">Smart Match</Row>
           </Col>
-          <Col xs={12} md={2} className="feature-col">
+          <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
               <img
                 className="feature-icon"
@@ -154,7 +154,7 @@ class Landing extends Component {
             </Row>
             <Row className="feature-font">Best Locations</Row>
           </Col>
-          <Col xs={12} md={2} className="feature-col">
+          <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
               <img
                 className="feature-icon"
@@ -163,7 +163,7 @@ class Landing extends Component {
             </Row>
             <Row className="feature-font">Feedback</Row>
           </Col>
-          <Col xs={12} md={2} className="feature-col">
+          <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
               <img
                 className="feature-icon"

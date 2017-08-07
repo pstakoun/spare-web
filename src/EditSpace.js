@@ -32,10 +32,14 @@ class EditSpace extends Component {
       width: this.props.space ? this.props.space.width : undefined,
       height: this.props.space ? this.props.space.width : undefined,
       type: this.props.space ? this.props.space.type : undefined,
-      climate_control: this.props.space ? this.props.space.climate_control : undefined,
+      climate_control: this.props.space
+        ? this.props.space.climate_control
+        : undefined,
       all_access: this.props.space ? this.props.space.all_access : undefined,
       has_lock: this.props.space ? this.props.space.has_lock : undefined,
-      has_insurance: this.props.space ? this.props.space.has_insurance : undefined
+      has_insurance: this.props.space
+        ? this.props.space.has_insurance
+        : undefined
     };
   }
 
@@ -167,7 +171,8 @@ class EditSpace extends Component {
                     defaultChecked={
                       this.props.space && this.props.space.climate_control
                     }
-                    onChange={event => this.setState({ climate_control: event.target.checked })}
+                    onChange={event =>
+                      this.setState({ climate_control: event.target.checked })}
                   />{" "}
                   Has Climate Control
                 </label>
@@ -176,8 +181,11 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="all_access"
-                    defaultChecked={this.props.space && this.props.space.all_access}
-                    onChange={event => this.setState({ all_access: event.target.checked })}
+                    defaultChecked={
+                      this.props.space && this.props.space.all_access
+                    }
+                    onChange={event =>
+                      this.setState({ all_access: event.target.checked })}
                   />{" "}
                   24/7 Access
                 </label>
@@ -186,8 +194,11 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_lock"
-                    defaultChecked={this.props.space && this.props.space.has_lock}
-                    onChange={event => this.setState({ has_lock: event.target.checked })}
+                    defaultChecked={
+                      this.props.space && this.props.space.has_lock
+                    }
+                    onChange={event =>
+                      this.setState({ has_lock: event.target.checked })}
                   />{" "}
                   Locks Provided
                 </label>
@@ -196,8 +207,11 @@ class EditSpace extends Component {
                   <input
                     type="checkbox"
                     ref="has_insurance"
-                    defaultChecked={this.props.space && this.props.space.has_insurance}
-                    onChange={event => this.setState({ has_insurance: event.target.checked })}
+                    defaultChecked={
+                      this.props.space && this.props.space.has_insurance
+                    }
+                    onChange={event =>
+                      this.setState({ has_insurance: event.target.checked })}
                   />{" "}
                   Insurance Provided
                 </label>

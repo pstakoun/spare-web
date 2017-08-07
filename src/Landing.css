@@ -354,13 +354,12 @@ hr {
 }
 .cta .providerPanel {
 	margin-top: 30px;
-	background-color: #112a3f;
 }
 .cta .userPanel {
 	margin-top: 30px;
-	background-color: #e26d1e;
 }
 .cta .providerPanel .ctaText {
+	background-color: #112a3f;
 	color: white;
 	margin-left: 0.1vw;
 	margin-right: 0.1vw;
@@ -376,6 +375,11 @@ hr {
 	margin-left: 0.1vw;
 	margin-right: 0.1vw;
 }
+.cta .providerPanel .ctaBtn {
+	background-color: #112a3f;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+}
 .cta img {
 	height: 25vh;
 }
@@ -385,6 +389,7 @@ hr {
 	margin-right: auto;
  }
 .cta .userPanel .ctaText {
+	background-color: #e26d1e;
 	color: white;
 	margin-left: 0.1vw;
 	margin-right: 0.1vw;
@@ -398,4 +403,18 @@ hr {
 	background-color: #e26d1e;
 	margin-left: 0.1vw;
 	margin-right: 0.1vw;
+}
+.cta .userPanel .ctaBtn {
+	background-color: #e26d1e;
+	margin-left: 0.1vw;
+	margin-right: 0.1vw;
+}
+.btn-cta {
+	border: white 1px solid;
+	border-radius: 10px;
+	font-size: 1.5em;
+	color: white;
+	margin: 20px;
+	background-color: rgba(255,255,255,0.25);
+	padding: 12px;
 }

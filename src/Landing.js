@@ -245,9 +245,9 @@ class Landing extends Component {
             <Row className="ctaBtn">
               <Button
                 onClick={this.handleSignup.bind(this)}
-                className="find-provider"
+                className="btn-cta"
               >
-                Be a provider
+                Be a Provider
               </Button>
             </Row>
           </Col>
@@ -264,9 +264,9 @@ class Landing extends Component {
             <Row className="ctaBtn">
               <Button
                 onClick={this.handleSignup.bind(this)}
-                className="find-provider"
+                className="btn-cta"
               >
-                Find a provider
+                Find a Space
               </Button>
             </Row>
           </Col>

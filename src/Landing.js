@@ -90,21 +90,21 @@ class Landing extends Component {
           </Col>
           <Col sm={4}>
             <div className="step1">
-              <img src="https://cl.ly/1H2A2M2i0p3T/search.png" />
+              <img src="/search.png" />
               <h4>STEP 1</h4>
               <p>Get matched with a Spare provider near you</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step2">
-              <img src="https://cl.ly/3n2r0H2C3C07/pack.png" />
+              <img src="/pack.png" />
               <h4>STEP 2</h4>
               <p>Drop off belongings and start storing immediately</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step3">
-              <img src="https://cl.ly/1B0T1s250u0T/star.png" />
+              <img src="/star.png" />
               <h4>STEP 3</h4>
               <p>
                 When you're done, pick up your things and rate your provider
@@ -122,7 +122,7 @@ class Landing extends Component {
             <Row>
               <img
                 className="feature-icon"
-                src="https://cl.ly/313k2P0C1E1R/dollar.png"
+                src="/dollar.png"
               />
             </Row>
             <Row className="feature-font">Instant Quote</Row>
@@ -131,7 +131,7 @@ class Landing extends Component {
             <Row>
               <img
                 className="feature-icon"
-                src="https://cl.ly/2V290s0w011A/daytime.png"
+                src="/daytime.png"
               />
             </Row>
             <Row className="feature-font">24/7 Access</Row>
@@ -140,7 +140,7 @@ class Landing extends Component {
             <Row>
               <img
                 className="feature-icon"
-                src="https://cl.ly/3q1z0X23010S/sync.png"
+                src="/sync.png"
               />
             </Row>
             <Row className="feature-font">Smart Match</Row>
@@ -149,7 +149,7 @@ class Landing extends Component {
             <Row>
               <img
                 className="feature-icon"
-                src="https://cl.ly/1P2D0j0X3725/location.png"
+                src="/location.png"
               />
             </Row>
             <Row className="feature-font">Best Locations</Row>
@@ -158,7 +158,7 @@ class Landing extends Component {
             <Row>
               <img
                 className="feature-icon"
-                src="https://cl.ly/0W152T3M0R2B/message.png"
+                src="/message.png"
               />
             </Row>
             <Row className="feature-font">Feedback</Row>
@@ -167,7 +167,7 @@ class Landing extends Component {
             <Row>
               <img
                 className="feature-icon"
-                src="https://cl.ly/012W1b190l39/security.png"
+                src="/security.png"
               />
             </Row>
             <Row className="feature-font">Security</Row>

@@ -242,6 +242,14 @@ class Landing extends Component {
                 className="img-responsive center-block"
               />
             </Row>
+            <Row className="ctaBtn">
+              <Button
+                onClick={this.handleSignup.bind(this)}
+                className="find-provider"
+              >
+                Be a provider
+              </Button>
+            </Row>
           </Col>
           <Col sm={6} className="userPanel">
             <Row className="ctaText">
@@ -258,7 +266,7 @@ class Landing extends Component {
                 onClick={this.handleSignup.bind(this)}
                 className="find-provider"
               >
-                Find a Space
+                Find a provider
               </Button>
             </Row>
           </Col>

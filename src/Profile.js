@@ -6,10 +6,10 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: null,
-      lname: null,
-      email: null,
-      phone: null
+      fname: undefined,
+      lname: undefined,
+      email: undefined,
+      phone: undefined
     };
   }
 
@@ -53,7 +53,7 @@ class Profile extends Component {
               <FormControl
                 className="profile-input"
                 ref="userFirstName"
-                value={this.state.fname ? this.state.fname : undefined}
+                value={this.state.fname}
                 onChange={event => this.setState({ fname: event.target.value })}
               />
             </FormGroup>
@@ -62,7 +62,7 @@ class Profile extends Component {
               <FormControl
                 className="profile-input"
                 ref="userLastName"
-                value={this.state.lname ? this.state.lname : undefined}
+                value={this.state.lname}
                 onChange={event => this.setState({ lname: event.target.value })}
               />
             </FormGroup>
@@ -72,7 +72,7 @@ class Profile extends Component {
                 className="profile-input"
                 ref="userEmail"
                 type="email"
-                value={this.state.email ? this.state.email : undefined}
+                value={this.state.email}
                 onChange={event => this.setState({ email: event.target.value })}
               />
             </FormGroup>
@@ -81,7 +81,7 @@ class Profile extends Component {
               <FormControl
                 className="profile-input"
                 ref="userPhoneNum"
-                value={this.state.phone ? this.state.phone : undefined}
+                value={this.state.phone}
                 onChange={event => this.setState({ phone: event.target.value })}
               />
             </FormGroup>

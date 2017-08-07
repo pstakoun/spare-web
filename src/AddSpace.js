@@ -24,6 +24,14 @@ class AddSpace extends Component {
         ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude }
         : { lat: 42.361145, lng: -71.057083 },
       address: null,
+      type: undefined,
+      width: undefined,
+      length: undefined,
+      height: undefined,
+      climate_control: false,
+      all_access: false,
+      has_lock: false,
+      has_insurance: false,
       isUploading: false,
       progress: 0,
       spaceId: RandomString.generate(28),
@@ -66,7 +74,7 @@ class AddSpace extends Component {
   }
 
   renderLocation() {
-    return [<Marker defaultPosition={this.state.location} title="current" />];
+    return [<Marker defaultPosition={this.state.location} />];
   }
 
   handleSubmission(event) {
@@ -76,21 +84,23 @@ class AddSpace extends Component {
     var geoFire = new GeoFire(geofireRef);
     if (
       this.state.address != (null || undefined) &&
-      ReactDOM.findDOMNode(this.refs.spaceType).value != (null || undefined) &&
-      this.state.progress == 100
+      this.state.length != (null || undefined) &&
+      this.state.width != (null || undefined) &&
+      this.state.height != (null || undefined) &&
+      this.state.type != (null || undefined)
     ) {
       firebase.database().ref("spaces/" + this.state.spaceId).set({
         lat: this.state.location.lat,
         lng: this.state.location.lng,
         address: this.state.address,
-        type: ReactDOM.findDOMNode(this.refs.spaceType).value,
-        width: ReactDOM.findDOMNode(this.refs.spaceWidth).value,
-        length: ReactDOM.findDOMNode(this.refs.spaceLength).value,
-        height: ReactDOM.findDOMNode(this.refs.spaceHeight).value,
-        climate_control: this.refs.climate_control.checked,
-        all_access: this.refs.all_access.checked,
-        has_lock: this.refs.has_lock.checked,
-        has_insurance: this.refs.has_insurance.checked,
+        type: this.state.type,
+        width: this.state.width,
+        length: this.state.length,
+        height: this.state.height,
+        climate_control: this.state.climate_control,
+        all_access: this.state.all_access,
+        has_lock: this.state.has_lock,
+        has_insurance: this.state.has_insurance,
         user: firebase.auth().currentUser.uid,
         photoURL:
           "gs://decentralizedps.appspot.com/images/" +
@@ -114,10 +124,6 @@ class AddSpace extends Component {
             console.log("Error: " + error);
           }
         );
-    } else {
-      if (ReactDOM.findDOMNode(this.refs.spaceType).value == "default") {
-        this.setState({ errorMsg: "Please select size!" });
-      }
     }
   }
 
@@ -245,7 +251,6 @@ class AddSpace extends Component {
                 <p className="profile-qtitle">Address</p>
                 <Geosuggest
                   className="geosuggest_space profile-input"
-                  ref="listingAddress"
                   onSuggestSelect={this.updateLocation.bind(this)}
                 />
               </FormGroup>
@@ -254,8 +259,9 @@ class AddSpace extends Component {
                 <FormControl
                   componentClass="select"
                   placeholder="Please select..."
-                  ref="spaceType"
                   required="true"
+                  onChange={event =>
+                    this.setState({ type: event.target.value })}
                 >
                   <option value="default" />
                   <option value="Garage">Garage</option>
@@ -270,21 +276,43 @@ class AddSpace extends Component {
               <FormGroup>
                 <p className="profile-qtitle">Additional Features</p>
                 <label>
-                  <input type="checkbox" ref="climate_control" /> Has Climate
-                  Control
+                  <input
+                    type="checkbox"
+                    ref="climate_control"
+                    onChange={event =>
+                      this.setState({ climate_control: event.target.checked })}
+                  />{" "}
+                  Has Climate Control
                 </label>
                 <br />
                 <label>
-                  <input type="checkbox" ref="all_access" /> 24/7 Access
+                  <input
+                    type="checkbox"
+                    ref="all_access"
+                    onChange={event =>
+                      this.setState({ all_access: event.target.checked })}
+                  />{" "}
+                  24/7 Access
                 </label>
                 <br />
                 <label>
-                  <input type="checkbox" ref="has_lock" /> Locks Provided
+                  <input
+                    type="checkbox"
+                    ref="has_lock"
+                    onChange={event =>
+                      this.setState({ has_lock: event.target.checked })}
+                  />{" "}
+                  Locks Provided
                 </label>
                 <br />
                 <label>
-                  <input type="checkbox" ref="has_insurance" /> Insurance
-                  Provided
+                  <input
+                    type="checkbox"
+                    ref="has_insurance"
+                    onChange={event =>
+                      this.setState({ has_insurance: event.target.checked })}
+                  />{" "}
+                  Insurance Provided
                 </label>
               </FormGroup>
               <FormGroup>
@@ -299,6 +327,8 @@ class AddSpace extends Component {
                       style={{ width: `100%` }}
                       required="true"
                       className="dimension"
+                      onChange={event =>
+                        this.setState({ length: event.target.value })}
                     />
                   </label>
                 </Col>
@@ -312,6 +342,8 @@ class AddSpace extends Component {
                       style={{ width: `100%` }}
                       required="true"
                       className="dimension"
+                      onChange={event =>
+                        this.setState({ width: event.target.value })}
                     />
                   </label>
                 </Col>
@@ -325,6 +357,8 @@ class AddSpace extends Component {
                       style={{ width: `100%` }}
                       required="true"
                       className="dimension"
+                      onChange={event =>
+                        this.setState({ height: event.target.value })}
                     />
                   </label>
                 </Col>

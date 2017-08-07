@@ -271,7 +271,7 @@ class Landing extends Component {
             </Row>
           </Col>
         </Row>
-        <Row >
+        <Row>
           <h5 style={{ fontSize: `2em`, marginBottom: `40px` }}>
             To learn more, reach us at{" "}
             <a href="mailto:info@spare.ly">info@spare.ly</a>

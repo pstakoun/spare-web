@@ -175,7 +175,7 @@ class Landing extends Component {
         </Row>
         <Row className="pricing">
           <Col sm={12}>
-            <h3>Cheap and convenient</h3>
+            <h3>Cheap and Convenient</h3>
           </Col>
           <Col sm={3} className="priceCol">
             <Row className="planRow">
@@ -271,8 +271,8 @@ class Landing extends Component {
             </Row>
           </Col>
         </Row>
-        <Row>
-          <h5>
+        <Row >
+          <h5 style={{ fontSize: `2em`, marginBottom: `40px` }}>
             To learn more, reach us at{" "}
             <a href="mailto:info@spare.ly">info@spare.ly</a>
           </h5>

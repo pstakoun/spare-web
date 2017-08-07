@@ -250,7 +250,7 @@ class Landing extends Component {
             </Row>
             <Row className="ctaImg">
               <img
-                src="https://cl.ly/2A1m1t2z2h1M/flierimgs-01.png"
+                src="/flierimgs-01.png"
                 className="img-responsive center-block"
               />
             </Row>
@@ -269,7 +269,7 @@ class Landing extends Component {
             </Row>
             <Row className="ctaImg">
               <img
-                src="https://cl.ly/3b2i3N293h45/flierimgs-02.png"
+                src="/flierimgs-02.png"
                 className="img-responsive center-block"
               />
             </Row>

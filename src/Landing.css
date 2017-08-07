@@ -45,6 +45,10 @@ h4 {
   margin-bottom: 20px;
   margin-top: 50px;
 }
+.step {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
 .step1,
 .step2,
 .step3 {
@@ -54,7 +58,7 @@ h4 {
 .step1 img,
 .step2 img,
 .step3 img {
-  width: 50px;
+  width: 80px;
   margin: 20px;
 }
 .step1 p,
@@ -323,12 +327,12 @@ hr {
 }
 @media (min-width: 768px) {
   .pricing {
-    padding-left: 15vw;
-    padding-right: 15vw;
+    padding-left: 12vw;
+    padding-right: 12vw;
   }
 }
 .pricing img {
-  max-height: 20vh;
+  max-height: 25vh;
 }
 .pricing .priceCol {
   margin-top: 2vw;
@@ -355,6 +359,14 @@ hr {
   margin-right: 0.1vw;
   vertical-align: middle;
 }
+.pricing .descRow {
+  background-color: #e2e2e2;
+  color: black;
+  margin-left: 0.1vw;
+  margin-right: 0.1vw;
+  vertical-align: middle;
+  height: 2em;
+}
 .pricing .priceRow {
   background-color: #112a3f;
   color: white;
@@ -363,7 +375,7 @@ hr {
   vertical-align: middle;
 }
 .pricing .priceRow p {
-  font-size: 1.5em;
+  font-size: 1.3em;
   padding: 0.8vh;
 }
 .pricing .planRow p {
@@ -386,8 +398,8 @@ hr {
 }
 @media (min-width: 768px) {
   .cta {
-    padding-left: 15vw;
-    padding-right: 15vw;
+    padding-left: 12vw;
+    padding-right: 12vw;
   }
 }
 .cta .providerPanel {
@@ -405,9 +417,9 @@ hr {
   font-size: 1.2em;
   font-size: 1.5em;
   padding-top: 2vh;
+  height: 5em;
 }
 .cta .providerPanel .ctaImg {
-  padding-top: 2vh;
   padding-bottom: 2vh;
   background-color: #112a3f;
   margin-left: 0.1vw;
@@ -434,9 +446,9 @@ hr {
   font-weight: 200;
   font-size: 1.5em;
   padding-top: 2vh;
+  height: 5em;
 }
 .cta .userPanel .ctaImg {
-  padding-top: 2vh;
   padding-bottom: 2vh;
   background-color: #e26d1e;
   margin-left: 0.1vw;

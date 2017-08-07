@@ -84,7 +84,7 @@ class Landing extends Component {
             </Button>
           </Jumbotron>
         </Row>
-        <Row>
+        <Row className="step">
           <Col sm={12}>
             <h3>How it works</h3>
           </Col>
@@ -179,10 +179,14 @@ class Landing extends Component {
           </Col>
           <Col sm={3} className="priceCol">
             <Row className="planRow">
-              <p>Small | 3' &#215; 3' &#215; 4'</p>
+              <p>
+                Small <br />3' &#215; 3' &#215; 4'
+              </p>
+            </Row>
+            <Row className="descRow">
+              <p>Perfect for travelers!</p>
             </Row>
             <Row className="graphicRow">
-              <p>Perfect for travelers!</p>
               <img src="/size-sm.png" className="img-responsive center-block" />
             </Row>
             <Row className="priceRow">
@@ -193,10 +197,14 @@ class Landing extends Component {
           </Col>
           <Col sm={4} className="priceCol">
             <Row className="planRow">
-              <p>Medium | 5' &#215; 6' &#215; 4'</p>
+              <p>
+                Medium <br /> 5' &#215; 6' &#215; 4'
+              </p>
+            </Row>
+            <Row className="descRow">
+              <p>Perfect for college students!</p>
             </Row>
             <Row className="graphicRow">
-              <p>Perfect for college students!</p>
               <img src="/size-md.png" className="img-responsive center-block" />
             </Row>
             <Row className="priceRow">
@@ -207,10 +215,14 @@ class Landing extends Component {
           </Col>
           <Col sm={5} className="priceCol">
             <Row className="planRow">
-              <p>Large | 8' &#215; 8' &#215; 6'</p>
+              <p>
+                Large <br /> 8' &#215; 8' &#215; 6'
+              </p>
+            </Row>
+            <Row className="descRow">
+              <p>Perfect for moving and long-term storage!</p>
             </Row>
             <Row className="graphicRow">
-              <p>Perfect for moving and long-term storage!</p>
               <img src="/size-lg.png" className="img-responsive center-block" />
             </Row>
             <Row className="priceRow">

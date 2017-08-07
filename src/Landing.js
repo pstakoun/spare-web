@@ -253,6 +253,14 @@ class Landing extends Component {
                 className="img-responsive center-block"
               />
             </Row>
+            <Row className="ctaBtn">
+              <Button
+                onClick={this.handleSignup.bind(this)}
+                className="find-provider"
+              >
+                Find a Space
+              </Button>
+            </Row>
           </Col>
         </Row>
         <Row>

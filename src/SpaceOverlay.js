@@ -62,9 +62,6 @@ class SpaceOverlay extends Component {
               {" "}Type of Space{" "}
             </p>
             {this.props.space.type}
-            <hr />
-            <p style={{ fontSize: `1.2em`, fontWeight: `400` }}> Contact </p>
-            {this.props.space.contactNum}
           </Col>
         </Row>
         <Row>

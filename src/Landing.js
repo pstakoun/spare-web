@@ -13,63 +13,9 @@ import { Link } from "react-router-dom";
 import "./Landing.css";
 
 class Landing extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loginKey: 0
-    };
-  }
-
-  handleClose() {
-    this.setState({
-      loginKey: 0
-    });
-  }
-
-  handleLogin() {
-    this.setState({
-      loginKey: 1
-    });
-  }
-
-  handleSignup() {
-    this.setState({
-      loginKey: 2
-    });
-  }
-
   render() {
     return (
       <div>
-        <Row>
-          <Navbar collapseOnSelect fixedTop fluid>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <Link to="/">
-                  <img src="/logo.png" style={{ height: `100%` }} />
-                </Link>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav pullRight>
-                <NavItem onClick={this.handleSignup.bind(this)}>
-                  Find a Space
-                </NavItem>
-                <NavItem onClick={this.handleSignup.bind(this)}>
-                  Be a Provider
-                </NavItem>
-                <li>
-                  <Link to="/faq">FAQ</Link>
-                </li>
-                <NavItem onClick={this.handleLogin.bind(this)}>Log In</NavItem>
-                <NavItem onClick={this.handleSignup.bind(this)}>
-                  Sign Up
-                </NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </Row>
         <Row>
           <Jumbotron>
             <h1>SPARE</h1>
@@ -77,7 +23,7 @@ class Landing extends Component {
               If there's room to spare<br />There's room to share
             </h2>
             <Button
-              onClick={this.handleSignup.bind(this)}
+              onClick={this.props.handleSignup.bind(this)}
               className="find-provider"
             >
               Find a provider
@@ -120,55 +66,37 @@ class Landing extends Component {
         <Row className="feature">
           <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
-              <img
-                className="feature-icon"
-                src="/dollar.png"
-              />
+              <img className="feature-icon" src="/dollar.png" />
             </Row>
             <Row className="feature-font">Instant Quote</Row>
           </Col>
           <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
-              <img
-                className="feature-icon"
-                src="/daytime.png"
-              />
+              <img className="feature-icon" src="/daytime.png" />
             </Row>
             <Row className="feature-font">24/7 Access</Row>
           </Col>
           <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
-              <img
-                className="feature-icon"
-                src="/sync.png"
-              />
+              <img className="feature-icon" src="/sync.png" />
             </Row>
             <Row className="feature-font">Smart Match</Row>
           </Col>
           <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
-              <img
-                className="feature-icon"
-                src="/location.png"
-              />
+              <img className="feature-icon" src="/location.png" />
             </Row>
             <Row className="feature-font">Best Locations</Row>
           </Col>
           <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
-              <img
-                className="feature-icon"
-                src="/message.png"
-              />
+              <img className="feature-icon" src="/message.png" />
             </Row>
             <Row className="feature-font">Feedback</Row>
           </Col>
           <Col xs={6} sm={3} md={2} className="feature-col">
             <Row>
-              <img
-                className="feature-icon"
-                src="/security.png"
-              />
+              <img className="feature-icon" src="/security.png" />
             </Row>
             <Row className="feature-font">Security</Row>
           </Col>
@@ -233,7 +161,7 @@ class Landing extends Component {
           </Col>
           <Col sm={12}>
             <Button
-              onClick={this.handleSignup.bind(this)}
+              onClick={this.props.handleSignup.bind(this)}
               className="find-provider"
             >
               Find a provider
@@ -256,7 +184,7 @@ class Landing extends Component {
             </Row>
             <Row className="ctaBtn">
               <Button
-                onClick={this.handleSignup.bind(this)}
+                onClick={this.props.handleSignup.bind(this)}
                 className="btn-cta"
               >
                 Be a Provider
@@ -275,7 +203,7 @@ class Landing extends Component {
             </Row>
             <Row className="ctaBtn">
               <Button
-                onClick={this.handleSignup.bind(this)}
+                onClick={this.props.handleSignup.bind(this)}
                 className="btn-cta"
               >
                 Find a Space
@@ -290,8 +218,8 @@ class Landing extends Component {
           </h5>
         </Row>
         <Login
-          handleClose={this.handleClose.bind(this)}
-          activeKey={this.state.loginKey}
+          handleClose={this.props.handleClose.bind(this)}
+          activeKey={this.props.loginKey}
         />
       </div>
     );

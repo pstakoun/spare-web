@@ -1,11 +1,12 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from "react";
-import { Grid, Nav, Navbar, NavItem, Row, Tab } from "react-bootstrap";
+import { Grid, Row, Tab } from "react-bootstrap";
 import { Link, Redirect, Route, Switch } from "react-router-dom";
 import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import * as firebase from "firebase";
 import moment from "moment";
+import SpareNav from "./SpareNav";
 import Landing from "./Landing";
 import History from "./History";
 import Profile from "./Profile";
@@ -29,7 +30,8 @@ class App extends Component {
       startDate: moment(),
       endDate: moment(),
       confirmation: false,
-      loggedOut: false
+      loggedOut: false,
+      loginKey: 0
     };
     if (firebase.apps.length === 0) {
       var config = {
@@ -114,6 +116,24 @@ class App extends Component {
     this.setState({ loggedOut: true });
   }
 
+  handleClose() {
+    this.setState({
+      loginKey: 0
+    });
+  }
+
+  handleLogin() {
+    this.setState({
+      loginKey: 1
+    });
+  }
+
+  handleSignup() {
+    this.setState({
+      loginKey: 2
+    });
+  }
+
   render() {
     return (
       <Grid fluid>
@@ -121,86 +141,71 @@ class App extends Component {
           this.state.confirmation &&
           <Redirect to="/confirm" push />}
         {this.state.loggedOut && <Redirect to="/" push />}
+        <SpareNav
+          user={this.state.user}
+          handleLogin={this.handleLogin.bind(this)}
+          handleSignup={this.handleSignup.bind(this)}
+          handleLogout={this.handleLogout.bind(this)}
+        />
         {this.state.user
-          ? <Row>
-              <Navbar collapseOnSelect fixedTop fluid>
-                <Navbar.Header>
-                  <Navbar.Brand>
-                    <Link to="/">
-                      <img src="/logo.png" style={{ height: `100%` }} />
-                    </Link>
-                  </Navbar.Brand>
-                  <Navbar.Toggle />
-                </Navbar.Header>
-                <Navbar.Collapse>
-                  <Nav pullRight>
-                    <IndexLinkContainer to="/">
-                      <NavItem>Find a Space</NavItem>
-                    </IndexLinkContainer>
-                    <LinkContainer to="/spaces">
-                      <NavItem>My Spaces</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/history">
-                      <NavItem>History</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/profile">
-                      <NavItem>Profile</NavItem>
-                    </LinkContainer>
-                    <NavItem onClick={this.handleLogout.bind(this)}>
-                      Log Out
-                    </NavItem>
-                  </Nav>
-                </Navbar.Collapse>
-              </Navbar>
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  render={() =>
-                    <FindSpace
-                      resetSpace={this.resetSpace.bind(this)}
-                      setStartDate={this.setStartDate.bind(this)}
-                      setEndDate={this.setEndDate.bind(this)}
-                      selectSpace={this.selectSpace.bind(this)}
-                    />}
-                />
-                <Route
-                  exact
-                  path="/confirm"
-                  render={() =>
-                    <Confirmation
-                      space={this.state.space}
-                      startDate={this.state.startDate}
-                      endDate={this.state.endDate}
-                      deselectSpace={this.deselectSpace.bind(this)}
-                    />}
-                />
-                <Route
-                  exact
-                  path="/spaces"
-                  render={() =>
-                    <MySpaces editSpace={this.editSpace.bind(this)} />}
-                />
-                <Route exact path="/spaces/add" component={AddSpace} />
-                <Route
-                  exact
-                  path="/spaces/edit"
-                  render={() => <EditSpace space={this.state.space} />}
-                />
-                <Route
-                  exact
-                  path="/spaces/manage"
-                  render={() => <BookingHistory space={this.state.space} />}
-                />
-                <Route exact path="/history" component={History} />
-                <Route exact path="/profile" component={Profile} />
-                <Route exact path="/tos" component={ToS} />
-                <Route exact path="/faq" component={FAQ} />
-                <Route exact path="/feedback" component={Feedback} />
-              </Switch>
-            </Row>
+          ? <Switch>
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  <FindSpace
+                    resetSpace={this.resetSpace.bind(this)}
+                    setStartDate={this.setStartDate.bind(this)}
+                    setEndDate={this.setEndDate.bind(this)}
+                    selectSpace={this.selectSpace.bind(this)}
+                  />}
+              />
+              <Route
+                exact
+                path="/confirm"
+                render={() =>
+                  <Confirmation
+                    space={this.state.space}
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    deselectSpace={this.deselectSpace.bind(this)}
+                  />}
+              />
+              <Route
+                exact
+                path="/spaces"
+                render={() =>
+                  <MySpaces editSpace={this.editSpace.bind(this)} />}
+              />
+              <Route exact path="/spaces/add" component={AddSpace} />
+              <Route
+                exact
+                path="/spaces/edit"
+                render={() => <EditSpace space={this.state.space} />}
+              />
+              <Route
+                exact
+                path="/spaces/manage"
+                render={() => <BookingHistory space={this.state.space} />}
+              />
+              <Route exact path="/history" component={History} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/tos" component={ToS} />
+              <Route exact path="/faq" component={FAQ} />
+              <Route exact path="/feedback" component={Feedback} />
+            </Switch>
           : <Switch>
-              <Route exact path="/" component={Landing} />
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  <Landing
+                    handleLogin={this.handleLogin.bind(this)}
+                    handleSignup={this.handleSignup.bind(this)}
+                    handleClose={this.handleClose.bind(this)}
+                    loginKey={this.state.loginKey}
+                  />}
+              />
               <Route exact path="/tos" component={ToS} />
               <Route exact path="/faq" component={FAQ} />
             </Switch>}

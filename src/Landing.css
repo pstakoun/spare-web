@@ -28,11 +28,21 @@ body {
   font-weight: 200;
   line-height: 1.5em;
 }
-.find-provider {
+.jumbotron .find-provider {
   background-color: #e26e25;
   border: none;
   border-radius: 10px;
   color: white;
+  margin: 20px 0;
+  padding: 10px 15px;
+  font-size: 1.5em;
+  font-weight: 200;
+}
+.find-provider {
+  border-color: #e26e25;
+  border-style: solid;
+  border-radius: 10px;
+  color: #e26e25;
   margin: 20px 0;
   padding: 10px 15px;
   font-size: 1.5em;

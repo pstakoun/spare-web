@@ -97,7 +97,7 @@ class FindSpace extends Component {
         arr.push(
           <Marker
             icon={{
-              url: "http://i.imgur.com/9yILi61.png",
+              url: "/marker_orange.png",
               size: new google.maps.Size(20, 20)
             }}
             defaultPosition={{

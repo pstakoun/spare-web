@@ -19,7 +19,9 @@ class EditSpace extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: this.props.space ? { lat: this.props.space.lat, lng: this.props.space.lng } : { lat: 42.361145, lng: -71.057083 },
+      location: this.props.space
+        ? { lat: this.props.space.lat, lng: this.props.space.lng }
+        : { lat: 42.361145, lng: -71.057083 },
       address: this.props.space ? this.props.space.address : undefined,
       isUploading: false,
       progress: 0,
@@ -235,7 +237,7 @@ class EditSpace extends Component {
                 <p className="profile-qtitle">Address</p>
                 <Geosuggest
                   className="geosuggest_space profile-input"
-                  ref={el=>this._geoSuggest=el}
+                  ref={el => (this._geoSuggest = el)}
                   onSuggestSelect={this.updateLocation.bind(this)}
                   initialValue={this.state.address}
                 />

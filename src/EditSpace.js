@@ -19,9 +19,7 @@ class EditSpace extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: this.props.coords
-        ? { lat: this.props.coords.latitude, lng: this.props.coords.longitude }
-        : { lat: 42.361145, lng: -71.057083 },
+      location: this.props.space ? { lat: this.props.space.lat, lng: this.props.space.lng } : { lat: 42.361145, lng: -71.057083 },
       address: this.props.space ? this.props.space.address : undefined,
       isUploading: false,
       progress: 0,
@@ -114,7 +112,108 @@ class EditSpace extends Component {
 
   render() {
     const SpareMap = withGoogleMap(props =>
-      <GoogleMap defaultZoom={15} defaultCenter={this.state.location}>
+      <GoogleMap
+        defaultZoom={15}
+        defaultCenter={this.state.location}
+        defaultOptions={{
+          styles: [
+            { elementType: "geometry", stylers: [{ color: "#f5f5f5" }] },
+            { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+            {
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#616161" }]
+            },
+            {
+              elementType: "labels.text.stroke",
+              stylers: [{ color: "#f5f5f5" }]
+            },
+            {
+              featureType: "administrative",
+              elementType: "geometry",
+              stylers: [{ visibility: "off" }]
+            },
+            {
+              featureType: "administrative.land_parcel",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#bdbdbd" }]
+            },
+            { featureType: "poi", stylers: [{ visibility: "off" }] },
+            {
+              featureType: "poi",
+              elementType: "geometry",
+              stylers: [{ color: "#eeeeee" }]
+            },
+            {
+              featureType: "poi",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#757575" }]
+            },
+            {
+              featureType: "poi.park",
+              elementType: "geometry",
+              stylers: [{ color: "#e5e5e5" }]
+            },
+            {
+              featureType: "poi.park",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#9e9e9e" }]
+            },
+            {
+              featureType: "road",
+              elementType: "geometry",
+              stylers: [{ color: "#ffffff" }]
+            },
+            {
+              featureType: "road",
+              elementType: "labels.icon",
+              stylers: [{ visibility: "off" }]
+            },
+            {
+              featureType: "road.arterial",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#757575" }]
+            },
+            {
+              featureType: "road.highway",
+              elementType: "geometry",
+              stylers: [{ color: "#dadada" }]
+            },
+            {
+              featureType: "road.highway",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#616161" }]
+            },
+            {
+              featureType: "road.local",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#9e9e9e" }]
+            },
+            { featureType: "transit", stylers: [{ visibility: "off" }] },
+            {
+              featureType: "transit.line",
+              elementType: "geometry",
+              stylers: [{ color: "#e5e5e5" }]
+            },
+            {
+              featureType: "transit.station",
+              elementType: "geometry",
+              stylers: [{ color: "#eeeeee" }]
+            },
+            {
+              featureType: "water",
+              elementType: "geometry",
+              stylers: [{ color: "#c9c9c9" }]
+            },
+            {
+              featureType: "water",
+              elementType: "labels.text.fill",
+              stylers: [{ color: "#9e9e9e" }]
+            }
+          ],
+          mapTypeControl: false,
+          streetViewControl: false
+        }}
+      >
         {this.renderLocation()}
       </GoogleMap>
     );
@@ -136,7 +235,7 @@ class EditSpace extends Component {
                 <p className="profile-qtitle">Address</p>
                 <Geosuggest
                   className="geosuggest_space profile-input"
-                  ref="listingAddress"
+                  ref={el=>this._geoSuggest=el}
                   onSuggestSelect={this.updateLocation.bind(this)}
                   initialValue={this.state.address}
                 />

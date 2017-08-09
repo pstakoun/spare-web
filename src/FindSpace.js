@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Row } from "react-bootstrap";
 import * as firebase from "firebase";
 import {
   withGoogleMap,
@@ -308,7 +308,7 @@ class FindSpace extends Component {
       </GoogleMap>
     );
     return (
-      <div>
+      <Row>
         <div className="filters">
           <p>I need a</p>
           <SizePicker handleSizeUpdate={this.handleSizeUpdate.bind(this)} />
@@ -346,7 +346,7 @@ class FindSpace extends Component {
           containerElement={<div className="spareMap" />}
           mapElement={<div style={{ height: `100%` }} />}
         />
-      </div>
+      </Row>
     );
   }
 }

@@ -64,39 +64,39 @@ class Landing extends Component {
           </Col>
         </Row>
         <Row className="feature">
-          <Col xs={6} sm={3} md={2} className="feature-col">
+          <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon" src="/dollar.png" />
+              <img className="feature-icon center-block" src="/dollar.png" />
             </Row>
             <Row className="feature-font">Instant Quote</Row>
           </Col>
-          <Col xs={6} sm={3} md={2} className="feature-col">
+          <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon" src="/daytime.png" />
+              <img className="feature-icon center-block" src="/daytime.png" />
             </Row>
             <Row className="feature-font">24/7 Access</Row>
           </Col>
-          <Col xs={6} sm={3} md={2} className="feature-col">
+          <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon" src="/sync.png" />
+              <img className="feature-icon center-block" src="/sync.png" />
             </Row>
             <Row className="feature-font">Smart Match</Row>
           </Col>
-          <Col xs={6} sm={3} md={2} className="feature-col">
+          <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon" src="/location.png" />
+              <img className="feature-icon center-block" src="/location.png" />
             </Row>
             <Row className="feature-font">Best Locations</Row>
           </Col>
-          <Col xs={6} sm={3} md={2} className="feature-col">
+          <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon" src="/message.png" />
+              <img className="feature-icon center-block" src="/message.png" />
             </Row>
             <Row className="feature-font">Feedback</Row>
           </Col>
-          <Col xs={6} sm={3} md={2} className="feature-col">
+          <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon" src="/security.png" />
+              <img className="feature-icon center-block" src="/security.png" />
             </Row>
             <Row className="feature-font">Security</Row>
           </Col>

@@ -87,6 +87,7 @@ h3 {
   font-size: 1.5em;
   color: #e26e25;
   margin-bottom: 20px;
+  margin-top: 20px;
   font-weight: 200;
 }
 .feature {
@@ -103,12 +104,12 @@ h3 {
   justify-content: center;
 }
 .feature-icon {
-  width: 6vw;
-  min-width: 120px;
+  width: 5vw;
+  min-width: 70px;
 }
 .feature-col {
-  margin-top: 2vw;
-  margin-bottom: 2vw;
+  margin-top: 3vw;
+  margin-bottom: 3vw;
   height: 100%;
   vertical-align: middle;
 }
@@ -443,7 +444,7 @@ hr {
 .cta img {
   height: 25vh;
 }
-.cta .center-block {
+.center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;

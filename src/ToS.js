@@ -11,12 +11,13 @@ class ToS extends Component {
             <ol>
               <li>
                 <p>
-                  {" "}These Terms of Use form a legally binding agreement
-                  between you (“you”, “your”, the “User”, the “Host”, the
-                  “Provider”, or the “Renter”) and Spare (“Spare”, “we”, “us”,
-                  “our”, or the “Company”) which set the rules and conditions of
-                  your use of spare.ly (the “Website”, the “Application”, or the
-                  “Web App”) and our services.{" "}
+                  {" "}
+                  These Terms of Use form a legally binding agreement between
+                  you (“you”, “your”, the “User”, the “Host”, the “Provider”, or
+                  the “Renter”) and Spare (“Spare”, “we”, “us”, “our”, or the
+                  “Company”) which set the rules and conditions of your use of
+                  spare.ly (the “Website”, the “Application”, or the “Web App”)
+                  and our services.{" "}
                 </p>
               </li>
               <li>
@@ -151,9 +152,9 @@ class ToS extends Component {
             <ol>
               <li>
                 <p>
-                  {" "}Website registration requires each User to sign up with
-                  their name, email address, and password, or log in via
-                  Facebook.{" "}
+                  {" "}
+                  Website registration requires each User to sign up with their
+                  name, email address, and password, or log in via Facebook.{" "}
                 </p>
               </li>
               <li>
@@ -181,7 +182,8 @@ class ToS extends Component {
             <ol>
               <li>
                 <p>
-                  {" "}When creating a Listing, the Host must include (if at all
+                  {" "}
+                  When creating a Listing, the Host must include (if at all
                   applicable):
                   <ol>
                     <li>Size of Space (Dimensions)</li>

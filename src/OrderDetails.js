@@ -16,14 +16,17 @@ class OrderDetails extends Component {
   }
 
   componentDidMount() {
-    firebase.database().ref("spaces/" + this.props.space.spaceId).on(
-      "value",
-      function(snapshot) {
-        this.setState({
-          location: { lat: snapshot.val().lat, lng: snapshot.val().lng }
-        });
-      }.bind(this)
-    );
+    firebase
+      .database()
+      .ref("spaces/" + this.props.space.spaceId)
+      .on(
+        "value",
+        function(snapshot) {
+          this.setState({
+            location: { lat: snapshot.val().lat, lng: snapshot.val().lng }
+          });
+        }.bind(this)
+      );
     this.getPrice();
     this.handleImg();
   }
@@ -81,7 +84,7 @@ class OrderDetails extends Component {
     }
     var Amount = this.state.transAmount / 100;
 
-    const SpareMap = withGoogleMap(props =>
+    const SpareMap = withGoogleMap(props => (
       <GoogleMap
         defaultZoom={15}
         defaultCenter={this.state.location}
@@ -186,7 +189,7 @@ class OrderDetails extends Component {
       >
         {this.renderLocation()}
       </GoogleMap>
-    );
+    ));
 
     return (
       <Panel className="orderPanel">
@@ -221,9 +224,7 @@ class OrderDetails extends Component {
             {this.props.space ? this.props.space.size : null}
           </p>
           <p className="p-title">Amount</p>
-          <p className="p-body">
-            USD$ {Amount}
-          </p>
+          <p className="p-body">USD$ {Amount}</p>
         </Col>
       </Panel>
     );

@@ -1,10 +1,10 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
   text-align: center;
 }
 .jumbotron {
-  background: url('/header.jpg');
+  background: url("/header.jpg");
   background-size: cover;
   background-position: 25% center;
   text-align: left;

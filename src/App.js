@@ -31,7 +31,8 @@ class App extends Component {
       endDate: moment(),
       confirmation: false,
       loggedOut: false,
-      loginKey: 0
+      loginKey: 0,
+      loggedIn: false
     };
     if (firebase.apps.length === 0) {
       var config = {
@@ -57,14 +58,18 @@ class App extends Component {
   authHandler(newUser) {
     if (newUser) {
       this.setState({
-        user: newUser
+        user: newUser,
+        loggedIn: true
       });
-      firebase.database().ref("users/" + newUser.uid).on("value", snapshot =>
-        FS.identify(newUser.uid, {
-          displayName: snapshot.val().fname + " " + snapshot.val().lname,
-          email: newUser.email
-        })
-      );
+      firebase
+        .database()
+        .ref("users/" + newUser.uid)
+        .on("value", snapshot =>
+          FS.identify(newUser.uid, {
+            displayName: snapshot.val().fname + " " + snapshot.val().lname,
+            email: newUser.email
+          })
+        );
     } else {
       this.setState({
         user: null
@@ -138,8 +143,8 @@ class App extends Component {
     return (
       <Grid fluid>
         {this.state.user &&
-          this.state.confirmation &&
-          <Redirect to="/confirm" push />}
+        this.state.confirmation && <Redirect to="/confirm" push />}
+        {this.state.loggedIn && <Redirect to="/find" push />}
         {this.state.loggedOut && <Redirect to="/" push />}
         <SpareNav
           user={this.state.user}
@@ -147,68 +152,85 @@ class App extends Component {
           handleSignup={this.handleSignup.bind(this)}
           handleLogout={this.handleLogout.bind(this)}
         />
-        {this.state.user
-          ? <Switch>
-              <Route
-                exact
-                path="/"
-                render={() =>
-                  <FindSpace
-                    resetSpace={this.resetSpace.bind(this)}
-                    setStartDate={this.setStartDate.bind(this)}
-                    setEndDate={this.setEndDate.bind(this)}
-                    selectSpace={this.selectSpace.bind(this)}
-                  />}
-              />
-              <Route
-                exact
-                path="/confirm"
-                render={() =>
-                  <Confirmation
-                    space={this.state.space}
-                    startDate={this.state.startDate}
-                    endDate={this.state.endDate}
-                    deselectSpace={this.deselectSpace.bind(this)}
-                  />}
-              />
-              <Route
-                exact
-                path="/spaces"
-                render={() =>
-                  <MySpaces editSpace={this.editSpace.bind(this)} />}
-              />
-              <Route exact path="/spaces/add" component={AddSpace} />
-              <Route
-                exact
-                path="/spaces/edit"
-                render={() => <EditSpace space={this.state.space} />}
-              />
-              <Route
-                exact
-                path="/spaces/manage"
-                render={() => <BookingHistory space={this.state.space} />}
-              />
-              <Route exact path="/history" component={History} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/tos" component={ToS} />
-              <Route exact path="/faq" component={FAQ} />
-              <Route exact path="/feedback" component={Feedback} />
-            </Switch>
-          : <Switch>
-              <Route
-                exact
-                path="/"
-                render={() =>
-                  <Landing
-                    handleLogin={this.handleLogin.bind(this)}
-                    handleSignup={this.handleSignup.bind(this)}
-                    handleClose={this.handleClose.bind(this)}
-                    loginKey={this.state.loginKey}
-                  />}
-              />
-              <Route exact path="/tos" component={ToS} />
-              <Route exact path="/faq" component={FAQ} />
-            </Switch>}
+        {this.state.user ? (
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Landing
+                  handleLogin={this.handleLogin.bind(this)}
+                  handleSignup={this.handleSignup.bind(this)}
+                  handleClose={this.handleClose.bind(this)}
+                  loginKey={this.state.loginKey}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/find"
+              render={() => (
+                <FindSpace
+                  resetSpace={this.resetSpace.bind(this)}
+                  setStartDate={this.setStartDate.bind(this)}
+                  setEndDate={this.setEndDate.bind(this)}
+                  selectSpace={this.selectSpace.bind(this)}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/confirm"
+              render={() => (
+                <Confirmation
+                  space={this.state.space}
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  deselectSpace={this.deselectSpace.bind(this)}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/spaces"
+              render={() => <MySpaces editSpace={this.editSpace.bind(this)} />}
+            />
+            <Route exact path="/spaces/add" component={AddSpace} />
+            <Route
+              exact
+              path="/spaces/edit"
+              render={() => <EditSpace space={this.state.space} />}
+            />
+            <Route
+              exact
+              path="/spaces/manage"
+              render={() => <BookingHistory space={this.state.space} />}
+            />
+            <Route exact path="/history" component={History} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/tos" component={ToS} />
+            <Route exact path="/faq" component={FAQ} />
+            <Route exact path="/feedback" component={Feedback} />
+          </Switch>
+        ) : (
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Landing
+                  handleLogin={this.handleLogin.bind(this)}
+                  handleSignup={this.handleSignup.bind(this)}
+                  handleClose={this.handleClose.bind(this)}
+                  loginKey={this.state.loginKey}
+                />
+              )}
+            />
+            <Route exact path="/tos" component={ToS} />
+            <Route exact path="/faq" component={FAQ} />
+            <Route exact path="/feedback" component={Feedback} />
+          </Switch>
+        )}
       </Grid>
     );
   }

@@ -123,13 +123,16 @@ class FindSpace extends Component {
     geoQuery.on(
       "key_entered",
       function(key) {
-        firebase.database().ref("spaces/" + key).on(
-          "value",
-          function(snapshot) {
-            this.state.spaces[key] = snapshot.val();
-            this.setState({});
-          }.bind(this)
-        );
+        firebase
+          .database()
+          .ref("spaces/" + key)
+          .on(
+            "value",
+            function(snapshot) {
+              this.state.spaces[key] = snapshot.val();
+              this.setState({});
+            }.bind(this)
+          );
       }.bind(this)
     );
   }
@@ -180,17 +183,19 @@ class FindSpace extends Component {
   }
 
   render() {
-    var SpareMap = withGoogleMap(props =>
+    var SpareMap = withGoogleMap(props => (
       <GoogleMap
         ref={this.onMapLoad.bind(this)}
         defaultZoom={this.state.activeSpace ? 16 : 14}
         defaultCenter={
-          this.state.activeSpace
-            ? {
-                lat: this.state.spaces[this.state.activeSpace].lat,
-                lng: this.state.spaces[this.state.activeSpace].lng
-              }
-            : this.state.location
+          this.state.activeSpace ? (
+            {
+              lat: this.state.spaces[this.state.activeSpace].lat,
+              lng: this.state.spaces[this.state.activeSpace].lng
+            }
+          ) : (
+            this.state.location
+          )
         }
         defaultOptions={{
           styles: [
@@ -291,7 +296,7 @@ class FindSpace extends Component {
           streetViewControl: false
         }}
       >
-        {this.state.activeSpace &&
+        {this.state.activeSpace && (
           <OverlayView
             position={{
               lat: this.state.spaces[this.state.activeSpace].lat,
@@ -303,10 +308,11 @@ class FindSpace extends Component {
               space={this.state.spaces[this.state.activeSpace]}
               selectSpace={this.props.selectSpace.bind(this)}
             />
-          </OverlayView>}
+          </OverlayView>
+        )}
         {this.renderMarkers()}
       </GoogleMap>
-    );
+    ));
     return (
       <Row>
         <div className="filters">

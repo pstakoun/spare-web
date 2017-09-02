@@ -30,13 +30,16 @@ class Profile extends Component {
   handleInfoChange(event) {
     event.preventDefault();
 
-    firebase.database().ref("users/" + firebase.auth().currentUser.uid).set({
-      fname: this.state.fname.trim(),
-      lname: this.state.lname.trim(),
-      email: this.state.email.trim(),
-      phone: this.state.phone.trim(),
-      addInfo: false
-    });
+    firebase
+      .database()
+      .ref("users/" + firebase.auth().currentUser.uid)
+      .set({
+        fname: this.state.fname.trim(),
+        lname: this.state.lname.trim(),
+        email: this.state.email.trim(),
+        phone: this.state.phone.trim(),
+        addInfo: false
+      });
   }
 
   render() {

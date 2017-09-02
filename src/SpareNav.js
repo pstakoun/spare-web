@@ -9,7 +9,7 @@ class SpareNav extends Component {
       <Navbar collapseOnSelect fixedTop fluid>
         <Navbar.Header>
           <Navbar.Brand>
-            <IndexLinkContainer to="/">
+            <IndexLinkContainer to="/" style={{ listStyle: `none` }}>
               <NavItem>
                 <img src="/logo.png" style={{ height: `100%` }} />
               </NavItem>

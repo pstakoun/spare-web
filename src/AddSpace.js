@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import {
   Button,
   Form,
@@ -83,11 +82,11 @@ class AddSpace extends Component {
     var geofireRef = firebase.database().ref("geofire/");
     var geoFire = new GeoFire(geofireRef);
     if (
-      this.state.address != (null || undefined) &&
-      this.state.length != (null || undefined) &&
-      this.state.width != (null || undefined) &&
-      this.state.height != (null || undefined) &&
-      this.state.type != (null || undefined)
+      this.state.address !== (null || undefined) &&
+      this.state.length !== (null || undefined) &&
+      this.state.width !== (null || undefined) &&
+      this.state.height !== (null || undefined) &&
+      this.state.type !== (null || undefined)
     ) {
       firebase
         .database()

@@ -35,9 +35,7 @@ class SpaceOverlay extends Component {
       climate_control_local = [<p> Has Climate Control System </p>];
     }
 
-    {
-      this.handleImg();
-    }
+    this.handleImg();
     return (
       <Panel style={{ width: `30vw` }}>
         <Row style={{ padding: `none` }}>
@@ -48,6 +46,7 @@ class SpaceOverlay extends Component {
             <img
               className="img-responsive space-overlay"
               style={{ maxWidth: `100%` }}
+              alt=""
             />
           </Col>
           <Col xs={6} style={{ padding: `none`, textAlign: `left` }}>

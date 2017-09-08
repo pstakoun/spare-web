@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from "react";
-import { Button, Panel, Col } from "react-bootstrap";
+import { Panel, Col } from "react-bootstrap";
 import * as firebase from "firebase";
 import moment from "moment";
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";

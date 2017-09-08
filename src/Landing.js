@@ -1,15 +1,6 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Jumbotron,
-  Nav,
-  Navbar,
-  NavItem,
-  Row,
-  Col
-} from "react-bootstrap";
+import { Button, Jumbotron, Row, Col } from "react-bootstrap";
 import Login from "./Login";
-import { Link } from "react-router-dom";
 import "./Landing.css";
 
 class Landing extends Component {
@@ -36,21 +27,21 @@ class Landing extends Component {
           </Col>
           <Col sm={4}>
             <div className="step1">
-              <img src="/search.png" />
+              <img src="/search.png" alt="" />
               <h4>STEP 1</h4>
               <p>Get matched with a Spare provider near you</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step2">
-              <img src="/pack.png" />
+              <img src="/pack.png" alt="" />
               <h4>STEP 2</h4>
               <p>Drop off belongings and start storing immediately</p>
             </div>
           </Col>
           <Col sm={4}>
             <div className="step3">
-              <img src="/star.png" />
+              <img src="/star.png" alt="" />
               <h4>STEP 3</h4>
               <p>
                 When you're done, pick up your things and rate your provider
@@ -66,37 +57,61 @@ class Landing extends Component {
         <Row className="feature">
           <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon center-block" src="/dollar.png" />
+              <img
+                className="feature-icon center-block"
+                src="/dollar.png"
+                alt=""
+              />
             </Row>
             <Row className="feature-font">Instant Quote</Row>
           </Col>
           <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon center-block" src="/daytime.png" />
+              <img
+                className="feature-icon center-block"
+                src="/daytime.png"
+                alt=""
+              />
             </Row>
             <Row className="feature-font">24/7 Access</Row>
           </Col>
           <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon center-block" src="/sync.png" />
+              <img
+                className="feature-icon center-block"
+                src="/sync.png"
+                alt=""
+              />
             </Row>
             <Row className="feature-font">Smart Match</Row>
           </Col>
           <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon center-block" src="/location.png" />
+              <img
+                className="feature-icon center-block"
+                src="/location.png"
+                alt=""
+              />
             </Row>
             <Row className="feature-font">Best Locations</Row>
           </Col>
           <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon center-block" src="/message.png" />
+              <img
+                className="feature-icon center-block"
+                src="/message.png"
+                alt=""
+              />
             </Row>
             <Row className="feature-font">Feedback</Row>
           </Col>
           <Col xs={12} sm={4} md={2} className="feature-col">
             <Row>
-              <img className="feature-icon center-block" src="/security.png" />
+              <img
+                className="feature-icon center-block"
+                src="/security.png"
+                alt=""
+              />
             </Row>
             <Row className="feature-font">Security</Row>
           </Col>
@@ -115,7 +130,11 @@ class Landing extends Component {
               <p>Perfect for travelers!</p>
             </Row>
             <Row className="graphicRow">
-              <img src="/size-sm.png" className="img-responsive center-block" />
+              <img
+                src="/size-sm.png"
+                className="img-responsive center-block"
+                alt=""
+              />
             </Row>
             <Row className="priceRow">
               <p>
@@ -133,7 +152,11 @@ class Landing extends Component {
               <p>Perfect for college students!</p>
             </Row>
             <Row className="graphicRow">
-              <img src="/size-md.png" className="img-responsive center-block" />
+              <img
+                src="/size-md.png"
+                className="img-responsive center-block"
+                alt=""
+              />
             </Row>
             <Row className="priceRow">
               <p>
@@ -151,7 +174,11 @@ class Landing extends Component {
               <p>Perfect for moving and long-term storage!</p>
             </Row>
             <Row className="graphicRow">
-              <img src="/size-lg.png" className="img-responsive center-block" />
+              <img
+                src="/size-lg.png"
+                className="img-responsive center-block"
+                alt=""
+              />
             </Row>
             <Row className="priceRow">
               <p>
@@ -180,6 +207,7 @@ class Landing extends Component {
               <img
                 src="/flierimgs-01.png"
                 className="img-responsive center-block"
+                alt=""
               />
             </Row>
             <Row className="ctaBtn">
@@ -199,6 +227,7 @@ class Landing extends Component {
               <img
                 src="/flierimgs-02.png"
                 className="img-responsive center-block"
+                alt=""
               />
             </Row>
             <Row className="ctaBtn">

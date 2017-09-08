@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from "react";
-import { Button, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import * as firebase from "firebase";
 import {
   withGoogleMap,
@@ -37,6 +37,7 @@ class FindSpace extends Component {
 
   componentDidMount() {
     this.props.resetSpace();
+    this.setState({ location: this.getDefaultLocation() });
   }
 
   getSize(length, width, height) {
@@ -88,7 +89,7 @@ class FindSpace extends Component {
   }
 
   renderMarkers() {
-    var arr = [<Marker defaultPosition={this.state.location} />];
+    var arr = [<Marker defaultPosition={this.state.location} key="pos" />];
     for (var key in this.state.spaces) {
       if (
         this.getSelectedSize(this.state.size) <=
@@ -96,6 +97,7 @@ class FindSpace extends Component {
       ) {
         arr.push(
           <Marker
+		  	key={key}
             icon={{
               url: "/marker_orange.png",
               size: new google.maps.Size(20, 20)
@@ -129,8 +131,9 @@ class FindSpace extends Component {
           .on(
             "value",
             function(snapshot) {
-              this.state.spaces[key] = snapshot.val();
-              this.setState({});
+              var newSpaces = this.state.spaces;
+              newSpaces[key] = snapshot.val();
+              this.setState({ spaces: newSpaces });
             }.bind(this)
           );
       }.bind(this)
@@ -158,7 +161,6 @@ class FindSpace extends Component {
   }
 
   handleGo(e) {
-    var sizeDict = { Small: 0, Medium: 1, Large: 2 };
     var space = null;
     for (var key in this.state.spaces) {
       if (

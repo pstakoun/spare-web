@@ -1,9 +1,8 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from "react";
-import { Grid, Row, Tab } from "react-bootstrap";
-import { Link, Redirect, Route, Switch } from "react-router-dom";
-import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
+import { Grid } from "react-bootstrap";
+import { Redirect, Route, Switch } from "react-router-dom";
 import * as firebase from "firebase";
 import moment from "moment";
 import SpareNav from "./SpareNav";
@@ -144,7 +143,8 @@ class App extends Component {
       <Grid fluid>
         {this.state.user &&
         this.state.confirmation && <Redirect to="/confirm" push />}
-        {this.state.loggedIn && <Redirect to="/find" push />}
+        {this.state.loggedIn &&
+        this.props.location === "/" && <Redirect to="/find" push />}
         {this.state.loggedOut && <Redirect to="/" push />}
         <SpareNav
           user={this.state.user}

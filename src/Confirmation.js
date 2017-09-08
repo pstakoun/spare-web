@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 
 import React, { Component } from "react";
-import { Button, Col, Row, Panel } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import Payment from "./Payment";
 import OrderDetails from "./OrderDetails";

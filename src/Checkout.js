@@ -3,7 +3,6 @@ import * as firebase from "firebase";
 import { Form } from "react-bootstrap";
 import {
   injectStripe,
-  CardElement,
   CardNumberElement,
   CardExpiryElement,
   CardCVCElement,

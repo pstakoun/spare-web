@@ -24,7 +24,7 @@ class MySpaces extends Component {
   renderSpaces() {
     var arr = [];
     for (var key in this.state.spaces) {
-      if (this.state.spaces[key].status == "active") {
+      if (this.state.spaces[key].status === "active") {
         arr.push(
           <Panel className="listingPanel">
             <SpaceListing

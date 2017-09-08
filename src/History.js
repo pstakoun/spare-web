@@ -33,7 +33,7 @@ class History extends Component {
       );
       setTimeout(1000);
     }
-    if (arr.length == 0) {
+    if (arr.length === 0) {
       arr.push(
         <h2>
           <Link to="/">Make your first booking now!</Link>

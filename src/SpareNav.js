@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Nav, Navbar, NavItem, Row, Tab } from "react-bootstrap";
-import { Link, Redirect, Route, Switch } from "react-router-dom";
+import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 
 class SpareNav extends Component {
@@ -11,7 +10,7 @@ class SpareNav extends Component {
           <Navbar.Brand>
             <IndexLinkContainer to="/" style={{ listStyle: `none` }}>
               <NavItem>
-                <img src="/logo.png" style={{ height: `100%` }} />
+                <img src="/logo.png" style={{ height: `100%` }} alt="" />
               </NavItem>
             </IndexLinkContainer>
           </Navbar.Brand>

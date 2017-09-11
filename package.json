@@ -27,6 +27,7 @@
     "react-router-dom": "^4.1.2",
     "react-scripts": "^1.0.10",
     "react-stripe-elements": "0.0.6",
+    "sendbird": "^3.0.41",
     "stripe": "^4.23.1"
   },
   "scripts": {

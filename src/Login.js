@@ -32,6 +32,9 @@ class Login extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(function() {
+        window.location.href = "https://spare.ly/find";
+      })
       .catch(function(error) {
         that.setState({
           loginError: error.message,

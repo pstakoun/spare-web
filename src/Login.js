@@ -104,6 +104,7 @@ class Login extends Component {
                       addInfo: false
                     });
                   firebase.auth().currentUser.sendEmailVerification();
+                  window.location.href = "https://spare.ly/find";
                 });
             },
             function(error) {

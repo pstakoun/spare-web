@@ -118,6 +118,7 @@ class App extends Component {
     event.preventDefault();
     firebase.auth().signOut();
     this.setState({ loggedOut: true });
+    window.location.href = "https://spare.ly/";
   }
 
   handleClose() {

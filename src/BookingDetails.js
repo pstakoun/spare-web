@@ -14,27 +14,21 @@ class BookingDetails extends Component {
   }
 
   componentDidMount() {
-    firebase
-      .database()
-      .ref("spaces/" + this.props.trans.spaceId)
-      .on(
-        "value",
-        function(snapshot) {
-          this.setState({
-            space: snapshot.val(),
-            location: { lat: snapshot.val().lat, lng: snapshot.val().lng }
-          });
-        }.bind(this)
-      );
-    firebase
-      .database()
-      .ref("users/" + this.props.trans.userId)
-      .on(
-        "value",
-        function(snapshot) {
-          this.setState({ user: snapshot.val() });
-        }.bind(this)
-      );
+    firebase.database().ref("spaces/" + this.props.trans.spaceId).on(
+      "value",
+      function(snapshot) {
+        this.setState({
+          space: snapshot.val(),
+          location: { lat: snapshot.val().lat, lng: snapshot.val().lng }
+        });
+      }.bind(this)
+    );
+    firebase.database().ref("users/" + this.props.trans.userId).on(
+      "value",
+      function(snapshot) {
+        this.setState({ user: snapshot.val() });
+      }.bind(this)
+    );
   }
 
   handleImg() {
@@ -60,7 +54,7 @@ class BookingDetails extends Component {
   }
 
   render() {
-    const SpareMap = withGoogleMap(props => (
+    const SpareMap = withGoogleMap(props =>
       <GoogleMap
         defaultZoom={15}
         defaultCenter={this.state.location}
@@ -165,7 +159,7 @@ class BookingDetails extends Component {
       >
         {this.renderLocation()}
       </GoogleMap>
-    ));
+    );
 
     var transAmount = this.props.trans.charge.amount / 100;
 
@@ -183,7 +177,9 @@ class BookingDetails extends Component {
             {this.state.space ? this.state.space.address : null}
           </p>
           <p className="p-title">Duration</p>
-          <p className="p-body">{this.props.trans.duration} Days</p>
+          <p className="p-body">
+            {this.props.trans.duration} Days
+          </p>
           <p className="p-title">Size</p>
           <p className="p-body">
             {this.state.space ? this.state.space.size : null}
@@ -191,21 +187,25 @@ class BookingDetails extends Component {
         </Col>
         <Col md={3}>
           <p className="p-title">Transaction Timestamp</p>
-          <p className="p-body">{this.props.trans.time}</p>
+          <p className="p-body">
+            {this.props.trans.time}
+          </p>
           <p className="p-title">Payment Method</p>
           <p className="p-body">
             {this.props.trans.charge.source.brand}{" "}
             {this.props.trans.charge.source.last4}
           </p>
           <p className="p-title">Amount</p>
-          <p className="p-body">USD$ {transAmount}</p>
+          <p className="p-body">
+            USD$ {transAmount}
+          </p>
         </Col>
         <Col md={3}>
           <p className="p-title">Contact Name</p>
           <p className="p-body">
-            {this.state.user ? (
-              this.state.user.fname + " " + this.state.user.lname
-            ) : null}
+            {this.state.user
+              ? this.state.user.fname + " " + this.state.user.lname
+              : null}
           </p>
           <p className="p-title">Contact Email</p>
           <p className="p-body">

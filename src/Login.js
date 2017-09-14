@@ -88,35 +88,32 @@ class Login extends Component {
     var that = this;
     if (this.refs.accept_tos.checked === true) {
       if (password === confirmPassword) {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then(
-            function() {
-              firebase
-                .auth()
-                .signInWithEmailAndPassword(email, password)
-                .then(function() {
-                  firebase
-                    .database()
-                    .ref("users/" + firebase.auth().currentUser.uid)
-                    .set({
-                      fname: firstName,
-                      lname: lastName,
-                      email: email,
-                      addInfo: false
-                    });
-                  firebase.auth().currentUser.sendEmailVerification();
-                  window.location.href = "https://spare.ly/find";
-                });
-            },
-            function(error) {
-              that.setState({
-                loginError: "",
-                registerError: error.message
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(
+          function() {
+            firebase
+              .auth()
+              .signInWithEmailAndPassword(email, password)
+              .then(function() {
+                firebase
+                  .database()
+                  .ref("users/" + firebase.auth().currentUser.uid)
+                  .set({
+                    fname: firstName,
+                    lname: lastName,
+                    email: email,
+                    addInfo: false
+                  });
+                firebase.auth().currentUser.sendEmailVerification();
+                window.location.href = "https://spare.ly/find";
               });
-            }
-          );
+          },
+          function(error) {
+            that.setState({
+              loginError: "",
+              registerError: error.message
+            });
+          }
+        );
       } else {
         that.setState({
           registerError: "Password Mismatch"
@@ -140,7 +137,9 @@ class Login extends Component {
           <Tab className="login-tab" title="Log In" eventKey={1}>
             <Form onSubmit={this.handleLogin.bind(this)}>
               <center>
-                <p className="error">{this.state.loginError}</p>
+                <p className="error">
+                  {this.state.loginError}
+                </p>
               </center>
               <FormGroup>
                 <FormControl
@@ -169,7 +168,9 @@ class Login extends Component {
           <Tab className="login-tab" title="Sign Up" eventKey={2}>
             <Form onSubmit={this.handleRegister.bind(this)}>
               <center>
-                <p className="error">{this.state.registerError}</p>
+                <p className="error">
+                  {this.state.registerError}
+                </p>
               </center>
               <FormGroup>
                 <FormControl

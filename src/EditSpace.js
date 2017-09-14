@@ -73,55 +73,46 @@ class EditSpace extends Component {
     var geofireRef = firebase.database().ref("geofire/");
     new GeoFire(geofireRef);
 
-    firebase
-      .database()
-      .ref("spaces/" + this.state.spaceId)
-      .update(
-        {
-          lat: this.state.location.lat,
-          lng: this.state.location.lng,
-          address: this.state.address,
-          type: this.state.type,
-          width: this.state.width,
-          length: this.state.length,
-          height: this.state.height,
-          climate_control: this.state.climate_control,
-          all_access: this.state.all_access,
-          has_lock: this.state.has_lock,
-          has_insurance: this.state.has_insurance,
-          user: firebase.auth().currentUser.uid,
-          photoURL:
-            "gs://decentralizedps.appspot.com/images/" +
-            this.state.spaceId +
-            ".jpg",
-          spaceId: this.state.spaceId,
-          contactNum: this.state.phoneNum
-        },
-        function() {
-          this.setState({ done: true });
-        }.bind(this)
-      );
+    firebase.database().ref("spaces/" + this.state.spaceId).update(
+      {
+        lat: this.state.location.lat,
+        lng: this.state.location.lng,
+        address: this.state.address,
+        type: this.state.type,
+        width: this.state.width,
+        length: this.state.length,
+        height: this.state.height,
+        climate_control: this.state.climate_control,
+        all_access: this.state.all_access,
+        has_lock: this.state.has_lock,
+        has_insurance: this.state.has_insurance,
+        user: firebase.auth().currentUser.uid,
+        photoURL:
+          "gs://decentralizedps.appspot.com/images/" +
+          this.state.spaceId +
+          ".jpg",
+        spaceId: this.state.spaceId,
+        contactNum: this.state.phoneNum
+      },
+      function() {
+        this.setState({ done: true });
+      }.bind(this)
+    );
   }
 
   handleDeletion(event) {
     event.preventDefault();
-    firebase
-      .database()
-      .ref("spaces/" + this.state.spaceId)
-      .update(
-        { status: "inactive" },
-        function() {
-          this.setState({ done: true });
-        }.bind(this)
-      );
-    firebase
-      .database()
-      .ref("geofire/" + this.state.spaceId)
-      .remove();
+    firebase.database().ref("spaces/" + this.state.spaceId).update(
+      { status: "inactive" },
+      function() {
+        this.setState({ done: true });
+      }.bind(this)
+    );
+    firebase.database().ref("geofire/" + this.state.spaceId).remove();
   }
 
   render() {
-    const SpareMap = withGoogleMap(props => (
+    const SpareMap = withGoogleMap(props =>
       <GoogleMap
         defaultZoom={15}
         defaultCenter={this.state.location}
@@ -226,13 +217,12 @@ class EditSpace extends Component {
       >
         {this.renderLocation()}
       </GoogleMap>
-    ));
+    );
 
     return (
       <div style={{ paddingTop: `50px` }}>
-        {(this.state.done || !this.props.space) && (
-          <Redirect to="/spaces" push />
-        )}
+        {(this.state.done || !this.props.space) &&
+          <Redirect to="/spaces" push />}
         <Row>
           <h4>EDIT SPACE</h4>
         </Row>

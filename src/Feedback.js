@@ -15,13 +15,10 @@ class Feedback extends Component {
   handleSubmission(event) {
     event.preventDefault();
 
-    firebase
-      .database()
-      .ref("feedbacks/" + RandomString.generate(28))
-      .set({
-        user: firebase.auth().currentUser.uid,
-        message: this.state.message.trim()
-      });
+    firebase.database().ref("feedbacks/" + RandomString.generate(28)).set({
+      user: firebase.auth().currentUser.uid,
+      message: this.state.message.trim()
+    });
 
     this.setState({
       errorMessage: "Your feedback has been recorded."
@@ -45,7 +42,9 @@ class Feedback extends Component {
             <Button className="btn profile-button" bsStyle="info" type="submit">
               Send Feedback
             </Button>
-            <p>{this.state.errorMessage}</p>
+            <p>
+              {this.state.errorMessage}
+            </p>
           </FormGroup>
         </Form>
       </div>

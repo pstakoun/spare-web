@@ -88,30 +88,27 @@ class AddSpace extends Component {
       this.state.height !== (null || undefined) &&
       this.state.type !== (null || undefined)
     ) {
-      firebase
-        .database()
-        .ref("spaces/" + this.state.spaceId)
-        .set({
-          lat: this.state.location.lat,
-          lng: this.state.location.lng,
-          address: this.state.address,
-          type: this.state.type,
-          width: this.state.width,
-          length: this.state.length,
-          height: this.state.height,
-          climate_control: this.state.climate_control,
-          all_access: this.state.all_access,
-          has_lock: this.state.has_lock,
-          has_insurance: this.state.has_insurance,
-          user: firebase.auth().currentUser.uid,
-          photoURL:
-            "gs://decentralizedps.appspot.com/images/" +
-            this.state.spaceId +
-            ".jpg",
-          spaceId: this.state.spaceId,
-          contactNum: this.state.phoneNum,
-          status: "active"
-        });
+      firebase.database().ref("spaces/" + this.state.spaceId).set({
+        lat: this.state.location.lat,
+        lng: this.state.location.lng,
+        address: this.state.address,
+        type: this.state.type,
+        width: this.state.width,
+        length: this.state.length,
+        height: this.state.height,
+        climate_control: this.state.climate_control,
+        all_access: this.state.all_access,
+        has_lock: this.state.has_lock,
+        has_insurance: this.state.has_insurance,
+        user: firebase.auth().currentUser.uid,
+        photoURL:
+          "gs://decentralizedps.appspot.com/images/" +
+          this.state.spaceId +
+          ".jpg",
+        spaceId: this.state.spaceId,
+        contactNum: this.state.phoneNum,
+        status: "active"
+      });
 
       geoFire
         .set(this.state.spaceId, [
@@ -130,7 +127,7 @@ class AddSpace extends Component {
   }
 
   render() {
-    const SpareMap = withGoogleMap(props => (
+    const SpareMap = withGoogleMap(props =>
       <GoogleMap
         defaultZoom={15}
         defaultCenter={this.state.location}
@@ -235,7 +232,7 @@ class AddSpace extends Component {
       >
         {this.renderLocation()}
       </GoogleMap>
-    ));
+    );
 
     return (
       <div style={{ paddingTop: `50px` }}>
@@ -378,7 +375,9 @@ class AddSpace extends Component {
                 />
               </FormGroup>
               <FormGroup>
-                <p className="error">{this.state.errorMsg}</p>
+                <p className="error">
+                  {this.state.errorMsg}
+                </p>
                 <Button className="profile-button" type="submit">
                   Submit Info
                 </Button>

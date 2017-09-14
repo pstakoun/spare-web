@@ -39,7 +39,9 @@ class SpaceOverlay extends Component {
     return (
       <Panel style={{ width: `30vw` }}>
         <Row style={{ padding: `none` }}>
-          <p style={{ fontSize: `1.5em` }}>{this.props.space.address}</p>
+          <p style={{ fontSize: `1.5em` }}>
+            {this.props.space.address}
+          </p>
         </Row>
         <Row>
           <Col xs={6} style={{ padding: `none` }}>
@@ -56,8 +58,7 @@ class SpaceOverlay extends Component {
             {all_access_local}
             {climate_control_local}
             <p style={{ fontSize: `1.2em`, fontWeight: `400` }}>
-              {" "}
-              Type of Space{" "}
+              {" "}Type of Space{" "}
             </p>
             {this.props.space.type}
           </Col>

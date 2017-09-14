@@ -27,23 +27,17 @@ class Confirmation extends Component {
       },
       data => {
         if (data.status === "succeeded") {
-          firebase
-            .database()
-            .ref("trans/" + RandomString.generate(28))
-            .set(
-              {
-                time: moment().format(),
-                userId: firebase.auth().currentUser.uid,
-                spaceId: this.props.space.spaceId,
-                charge: data,
-                duration:
-                  moment(this.props.endDate).diff(
-                    moment(this.props.startDate),
-                    "days"
-                  ) + 1
-              },
-              () => this.setState({ paymentCompleted: true })
-            );
+          firebase.database().ref("trans/" + RandomString.generate(28)).set({
+            time: moment().format(),
+            userId: firebase.auth().currentUser.uid,
+            spaceId: this.props.space.spaceId,
+            charge: data,
+            duration:
+              moment(this.props.endDate).diff(
+                moment(this.props.startDate),
+                "days"
+              ) + 1
+          }, () => this.setState({ paymentCompleted: true }));
         }
       }
     );

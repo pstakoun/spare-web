@@ -13,18 +13,15 @@ class SpaceListing extends Component {
   }
 
   componentDidMount() {
-    firebase
-      .database()
-      .ref("spaces/" + this.props.space.spaceId)
-      .on(
-        "value",
-        function(snapshot) {
-          this.setState({
-            space: snapshot.val(),
-            location: { lat: snapshot.val().lat, lng: snapshot.val().lng }
-          });
-        }.bind(this)
-      );
+    firebase.database().ref("spaces/" + this.props.space.spaceId).on(
+      "value",
+      function(snapshot) {
+        this.setState({
+          space: snapshot.val(),
+          location: { lat: snapshot.val().lat, lng: snapshot.val().lng }
+        });
+      }.bind(this)
+    );
   }
 
   handleImg() {
@@ -45,7 +42,7 @@ class SpaceListing extends Component {
   }
 
   render() {
-    const SpareMap = withGoogleMap(props => (
+    const SpareMap = withGoogleMap(props =>
       <GoogleMap
         defaultZoom={15}
         defaultCenter={this.state.location}
@@ -150,7 +147,7 @@ class SpaceListing extends Component {
       >
         {this.renderLocation()}
       </GoogleMap>
-    ));
+    );
 
     let has_lock_local,
       has_insurance_local,
@@ -180,14 +177,20 @@ class SpaceListing extends Component {
         </Col>
         <Col xs={12} md={3}>
           <p className="p-title">Listing Address</p>
-          <p className="p-body">{this.props.space.address}</p>
+          <p className="p-body">
+            {this.props.space.address}
+          </p>
           <Col xs={12} md={6} className="col-no-padding">
             <p className="p-title">Type</p>
-            <p className="p-body">{this.props.space.type}</p>
+            <p className="p-body">
+              {this.props.space.type}
+            </p>
           </Col>
           <Col xs={12} md={6} className="col-no-padding">
             <p className="p-title">Size</p>
-            <p className="p-body">{this.props.space.size}</p>
+            <p className="p-body">
+              {this.props.space.size}
+            </p>
           </Col>
         </Col>
         <Col xs={12} md={3}>

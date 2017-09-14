@@ -17,55 +17,53 @@ class SpareNav extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          {this.props.user ? (
-            <Nav pullRight>
-              <LinkContainer to="/find">
-                <NavItem>Find a Space</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/spaces">
-                <NavItem>My Spaces</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/history">
-                <NavItem>History</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/profile">
-                <NavItem>Profile</NavItem>
-              </LinkContainer>
-              <NavItem onClick={this.props.handleLogout.bind(this)}>
-                Log Out
-              </NavItem>
-            </Nav>
-          ) : (
-            <Nav pullRight>
-              <IndexLinkContainer
-                to="/"
-                onClick={this.props.handleSignup.bind(this)}
-              >
-                <NavItem>Find a Space</NavItem>
-              </IndexLinkContainer>
-              <IndexLinkContainer
-                to="/"
-                onClick={this.props.handleSignup.bind(this)}
-              >
-                <NavItem>Be a Provider</NavItem>
-              </IndexLinkContainer>
-              <LinkContainer to="/faq" className="faq-nav">
-                <NavItem>FAQ</NavItem>
-              </LinkContainer>
-              <IndexLinkContainer
-                to="/"
-                onClick={this.props.handleLogin.bind(this)}
-              >
-                <NavItem>Log In</NavItem>
-              </IndexLinkContainer>
-              <IndexLinkContainer
-                to="/"
-                onClick={this.props.handleSignup.bind(this)}
-              >
-                <NavItem>Sign Up</NavItem>
-              </IndexLinkContainer>
-            </Nav>
-          )}
+          {this.props.user
+            ? <Nav pullRight>
+                <LinkContainer to="/find">
+                  <NavItem>Find a Space</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/spaces">
+                  <NavItem>My Spaces</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/history">
+                  <NavItem>History</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/profile">
+                  <NavItem>Profile</NavItem>
+                </LinkContainer>
+                <NavItem onClick={this.props.handleLogout.bind(this)}>
+                  Log Out
+                </NavItem>
+              </Nav>
+            : <Nav pullRight>
+                <IndexLinkContainer
+                  to="/"
+                  onClick={this.props.handleSignup.bind(this)}
+                >
+                  <NavItem>Find a Space</NavItem>
+                </IndexLinkContainer>
+                <IndexLinkContainer
+                  to="/"
+                  onClick={this.props.handleSignup.bind(this)}
+                >
+                  <NavItem>Be a Provider</NavItem>
+                </IndexLinkContainer>
+                <LinkContainer to="/faq" className="faq-nav">
+                  <NavItem>FAQ</NavItem>
+                </LinkContainer>
+                <IndexLinkContainer
+                  to="/"
+                  onClick={this.props.handleLogin.bind(this)}
+                >
+                  <NavItem>Log In</NavItem>
+                </IndexLinkContainer>
+                <IndexLinkContainer
+                  to="/"
+                  onClick={this.props.handleSignup.bind(this)}
+                >
+                  <NavItem>Sign Up</NavItem>
+                </IndexLinkContainer>
+              </Nav>}
         </Navbar.Collapse>
       </Navbar>
     );

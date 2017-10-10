@@ -35,10 +35,10 @@ class App extends Component {
     };
     if (firebase.apps.length === 0) {
       var config = {
-        apiKey: "AIzaSyDISmmf3W3F_1pAhcZw804Zny7w2ApYjJ8",
-        databaseURL: "https://decentralizedps.firebaseio.com",
-        authDomain: "decentralizedps.firebaseapp.com",
-        storageBucket: "decentralizedps.appspot.com"
+        apiKey: "INSERT_YOUR_APIKEY",
+        databaseURL: "INSERT_YOUR_dbURL",
+        authDomain: "<yourauthdomain>.firebaseapp.com",
+        storageBucket: "<yourbucket>.appspot.com"
       };
       firebase.initializeApp(config);
     }

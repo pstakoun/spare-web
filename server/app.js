@@ -4,16 +4,16 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const firebase = require("firebase");
 const moment = require("moment");
-const stripe = require("stripe")("sk_live_GZo1QSQDVbdzUi6ssto24s0p");
+const stripe = require("stripe")("sk_strip_token");
 
 app.use(express.static(path.resolve(__dirname, "..", "build")));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var config = {
-  apiKey: "AIzaSyDISmmf3W3F_1pAhcZw804Zny7w2ApYjJ8",
-  databaseURL: "https://decentralizedps.firebaseio.com",
-  authDomain: "decentralizedps.firebaseapp.com",
-  storageBucket: "decentralizedps.appspot.com"
+  apiKey: "INSERT_YOUR_APIKEY",
+  databaseURL: "INSERT_YOUR_dbURL",
+  authDomain: "<yourauthdomain>.firebaseapp.com",
+  storageBucket: "<yourbucket>.appspot.com"
 };
 firebase.initializeApp(config);
 

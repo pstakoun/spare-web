@@ -4,3 +4,4 @@ npm-debug.log.*
 *.swp
 .DS_Store
 build/
+*.sh
